@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudentLoginController;
+use App\Http\Controllers\EmployeeLoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +16,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('portal');
 });
 
-Route::get('/studentLogin',[studentLogin::class,'show'])->middleware('guest')->name('register');;
+Route::get('/studentLogin',[StudentLoginController::class,'show'])->middleware('guest')->name('studentLogin');
+Route::post('/studentLogin',[StudentLoginController::class,'login'])->middleware('guest');
+Route::get('/studentLogout',[StudentLoginController::class,'logout']);
 
+Route::get('/employeeLogin',[EmployeeLoginController::class,'show'])->middleware('guest')->name('employeeLogin');
+Route::post('/employeeLogin',[StudentLoginController::class,'login'])->middleware('guest');
+Route::get('/employeeLogout',[StudentLoginController::class,'logout']);

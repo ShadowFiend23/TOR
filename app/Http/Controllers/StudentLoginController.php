@@ -16,7 +16,7 @@ class StudentLoginController extends Controller
      */
     public function show()
     {
-        return view('auth.login');
+        return view('student.login');
     }
 
     public function login(Request $request)
@@ -44,6 +44,6 @@ class StudentLoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        return redirect()->route('studentLogin');
     }
 }
