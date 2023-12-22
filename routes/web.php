@@ -24,5 +24,18 @@ Route::post('/studentLogin',[StudentLoginController::class,'login'])->middleware
 Route::get('/studentLogout',[StudentLoginController::class,'logout']);
 
 Route::get('/employeeLogin',[EmployeeLoginController::class,'show'])->middleware('guest')->name('employeeLogin');
-Route::post('/employeeLogin',[StudentLoginController::class,'login'])->middleware('guest');
-Route::get('/employeeLogout',[StudentLoginController::class,'logout']);
+Route::post('/employeeLogin',[EmployeeLoginController::class,'login'])->middleware('guest');
+Route::get('/employeeLogout',[EmployeeLoginController::class,'logout']);
+
+
+Route::middleware(['auth','user-role:admin'])->group(function(){
+
+});
+
+Route::middleware(['auth','user-role:student'])->group(function(){
+
+});
+
+Route::middleware(['auth','user-role:employee'])->group(function(){
+
+});

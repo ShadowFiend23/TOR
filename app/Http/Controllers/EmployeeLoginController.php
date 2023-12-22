@@ -26,7 +26,7 @@ class EmployeeLoginController extends Controller
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt(['employeeID' => $request->email, 'password' => $request->password])) {
+        if (Auth::guard('admin')->attempt(['employeeID' => $request->email, 'password' => $request->password])) {
             $request->session()->regenerate();
 
             return redirect()->intended('dashboard');
