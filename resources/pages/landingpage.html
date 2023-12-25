@@ -1,33 +1,35 @@
 <!DOCTYPE html>
-<html lang="en" style="min-height: 601px;">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="images/favicon.ico">
   <title>EVSU Information System</title>
-  <link href="assets/app.css?v=3" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   <link href="assets/fontawesome_icons.css" rel="stylesheet">
-  <link href="assets/homepage.css?v=5" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&family=Roboto&display=swap" rel="stylesheet">
+  <link href="../css/landingpage.css" rel="stylesheet">
   <style type="text/css">
       .app-icon-container {
-          background-image: url(images/bg-logo.png);
+          background-image: url(../assets/images_2/bg-logo.png);
           background-size: auto 100%;
           background-position: top right;
           background-repeat: no-repeat;
       }
   </style>
-
-
 </head>
-<body style="min-height: 601px; padding-top: 0px;">
+<body>
   <div class="main-wrapper">
     <header>
       <div class="container">
         <div class="row">
           <div class="col-sm-12">
             <div class="logo-container">
-                <img src="images/logo-v2.png?v=1" alt="Eastern Visayas State University">
+                <img src="../assets/images/logo-v2.png" alt="Eastern Visayas State University">
             </div>
           </div>
         </div>
@@ -35,25 +37,25 @@
     </header>
     <section class="content-area">
       <div class="container-fluid">
-        <div class="row" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
-          <div class="col-icon col-xs-6 col-sm-4 col-md-4" style="max-width: 50rem;">
+        <div class="row d-flex gx-5 align-items-center justify-content-center">
+          <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4" style="max-width: 30rem;">
             <a class="app-icon-link" href="http://localhost/evsu-oc/student" title="">
               <div style="background-color: #2b972c" class="app-icon-container">
-                  <img class="img-icon" src="images/student-portal.png?v=3" alt="EVSU Student Portal">
+                  <img class="img-icon" src="../assets/images_2/student-portal.png" alt="EVSU Student Portal">
               </div>
             </a>
           </div>
-          <div class="col-icon col-xs-6 col-sm-4 col-md-4" style="max-width: 50rem;">
+          <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4" style="max-width: 30rem;">
             <a class="app-icon-link" href="http://localhost/evsu-oc/admin" title="">
               <div style="background-color: #9c27b0" class="app-icon-container">
-                  <img class="img-icon" src="images/free-ed-is.png?v=3" alt="EVSU Employee Portal">
+                  <img class="img-icon" src="../assets/images_2/free-ed-is.png" alt="EVSU Employee Portal">
               </div>
             </a>
           </div>
-          <div class="col-icon col-xs-6 col-sm-4 col-md-4" style="max-width: 50rem;">
+          <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4" style="max-width: 30rem;">
             <a target="_blank" class="app-icon-link" href="https://apps.evsu.edu.ph/admissions" title="">
               <div style="background-color: #db4437" class="app-icon-container">
-                  <img class="img-icon" src="images/evaluators.png" alt="EVSU Online Admission">
+                  <img class="img-icon" src="../assets/images_2/evaluators.png" alt="EVSU Online Admission">
               </div>
             </a>
           </div>
@@ -69,15 +71,12 @@
       </div>
     </section>
     <footer class="footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-              <p class="text-center">Eastern Visayas State University - Copyright © 2012-2023 All Rights Reserved</p>
-          </div>
+      <div class="row">
+        <div class="col-md-12">
+            <p class="text-center">Eastern Visayas State University - Copyright © 2012-2023 All Rights Reserved</p>
         </div>
       </div>
     </footer>
   </div>
-  <script src="assets/app.js"></script>
 </body>
 </html>
