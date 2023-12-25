@@ -27,15 +27,16 @@ body {
 }
 
 .footer p {
-	margin: 0px;
-	color: #000;
+	margin: 1rem 0 0 0;
+	color: #000000ad;
+	font-size: .7rem;
 }
 
 
 
 body {
-	background-image: url(../assets/images_2/EVSU-v2.jpg);
-	background-size: 150% 120%;
+	background-image: url(../assets/images/landingpage_bg.png);
+	background-size: 143% 125%;
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
@@ -196,8 +197,8 @@ header .logo-container img {
 
 
 .content-area .site-title {
-  margin-top: 10rem;
-  font-size: 2rem;
+  margin-top: 18rem;
+  font-size: 1.5rem;
 	font-weight: bolder;
   color: #252525;
 }
