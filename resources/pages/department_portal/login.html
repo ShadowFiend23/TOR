@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="../../assets/images_2/favicon.ico">
+  <title>EVSU Information System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <link href="assets/fontawesome_icons.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&family=Roboto&display=swap" rel="stylesheet">
+  <link href="../../css/department_portal/login.css" rel="stylesheet">
+</head>
+<body>
+  <div class="flex-container px-2 px-lg-4">
+    <div class="container-fluid px-2 px-lg-4 mx-0 mx-lg-4">
+      <div class="row row-inner-container mt-4">
+        <div class="col-md-12">
+          <div class="row my-form-row">
+            <div class="col-md-6 my-col">
+              <div class="logo-container">
+                <img class="img-logo" src="https://apps.evsu.edu.ph/assets/img/images/logo-v3.png?v=1" alt="logo-v3">
+              </div>
+            </div>
+            <div class="col-md-6 my-col">
+              <div class="my-form-container">
+                <div class="my-form-inner-container">
+                  <div class="header mt-4">
+                    <h2 class="text-center">
+                        Employee Portal
+                    </h2>
+                  </div>
+                  <div class="main">
+                    <div class="row">
+                      <div class="col-xs-12 d-flex align-items-center flex-column mt-5 gap-4">
+                        <h4 class="text-white">Employee Login</h4>
+                        <form action="#" method="post" class="login_validator w-100 px-5">
+                          <input type="hidden" name="ci_csrf_token" value="" />
+                          <div class="form-group mb-3">
+                            <label for="email" class="text-white mb-1">Employee ID</label>
+                            <input value="" type="text" class="form-control  form-control-lg input-lg" id="username" name="username">
+                          </div>
+                          <div class="form-group mb-4">
+                            <label for="password" class="text-white mb-1">Password</label>
+                            <input type="password" class="form-control form-control-lg input-lg" id="password" name="password">
+                          </div>
+                          <div class="form-group mb-3">
+                            <button class="btn btn-primary btn-block btn-lg w-100 text-black" type="submit">LOGIN</button>
+                          </div>
+
+                          <div class="d-flex align-content-center justify-content-between w-100 px-5">
+                            <a href="#" class="text-black text-decoration-none" style="font-family: sans-serif;">Forgot Password</a>
+                            <a href="#" class="text-info text-decoration-none" style="font-family: sans-serif;">Register</a>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="col-xs-12 px-2 px-lg-5">
+                        <div class="container px-2 px-lg-5">
+                          <p class="text-center text-white mt-5 px-2 px-lg-5" style="font-family: sans-serif;" >By using this service, you understood and agree to the <a href="https://apps.evsu.edu.ph/terms-and-conditions" target="_blank" class="text-decoration-none" style="font-family: sans-serif;">EVSU Online Services Terms of Use and Privacy Statement</a>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <p style="margin: 10px 0px"><a href="../landingpage.html" class="text-decoration-none d-flex flex-row align-items-center" style="color: #d30707;"><span class="fw-6 mb-1" style="font-size: 2rem; font-family: sans-serif;"> < </span><small>Go Back</small></a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
