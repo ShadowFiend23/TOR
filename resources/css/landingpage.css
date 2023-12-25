@@ -4,6 +4,8 @@
 html {
   	position: relative;
   	min-height: 100%;
+		font-family: 'Inter', sans-serif;
+		font-family: 'Roboto', sans-serif;
 }
 body {
   	/* Margin bottom by footer height */
@@ -32,7 +34,7 @@ body {
 
 
 body {
-	background-image: url(../images/EVSU-v2.jpg);
+	background-image: url(../assets/images_2/EVSU-v2.jpg);
 	background-size: 150% 120%;
 	background-position: center center;
 	background-repeat: no-repeat;
@@ -194,9 +196,8 @@ header .logo-container img {
 
 
 .content-area .site-title {
-  margin-top: 20rem;
-  font-family: "Inter", sans-serif;
-  font-size: 2.5;
+  margin-top: 10rem;
+  font-size: 2rem;
 	font-weight: bolder;
   color: #252525;
 }
@@ -205,21 +206,21 @@ header .logo-container img {
 /* xs devices*/
 @media screen and (min-width: 320px), (max-width: 320px) {
 	.content-area .site-title {
-		font-size: 1.5rem;
+		font-size: 1rem;
 	}
 }
 
 /* sm devices */
 @media screen and (min-width: 768px) {
 	.content-area .site-title {
-		font-size: 2rem;
+		font-size: 1.5rem;
 	}
 }
 
 /* md devices */
 @media screen and (min-width: 992px) {
 	.content-area .site-title {
-		font-size: 2.5rem;
+		font-size: 2rem;
 	}
 
 }
@@ -227,11 +228,6 @@ header .logo-container img {
 /* lg devices */
 @media screen and (min-width: 1200px) {
 
-}
-
-.col-icon {
-    padding-left:6px;
-    padding-right:6px;
 }
 
 .content-area .app-icon-container {
