@@ -22,14 +22,14 @@ class EmployeeLoginController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'employeeID' => ['required', 'employeeID'],
-            'password' => ['required'],
+            'userID' => 'required|exists:users,userID',
+            'password' => 'required'
         ]);
 
-        if (Auth::guard('admin')->attempt(['employeeID' => $request->email, 'password' => $request->password])) {
+        if (Auth::attempt(['userID' => $request->userID, 'password' => $request->password])) {
             $request->session()->regenerate();
 
-            return redirect()->intended('dashboard');
+            return route('admin');
         }
 
         return back()->withErrors([
