@@ -15,33 +15,45 @@ const alerts = [...alertList].map(element => new bootstrap.Alert(element))
 
 
 /* ===== Responsive Sidepanel ====== */
-const sidePanelToggler = document.getElementById('sidepanel-toggler'); 
-const sidePanel = document.getElementById('app-sidepanel');  
-const sidePanelDrop = document.getElementById('sidepanel-drop'); 
-const sidePanelClose = document.getElementById('sidepanel-close'); 
+const sidePanelToggler = document.getElementById('sidepanel-toggler');
+const sidePanel = document.getElementById('app-sidepanel');
+const sidePanelDrop = document.getElementById('sidepanel-drop');
+const sidePanelClose = document.getElementById('sidepanel-close');
+const appContent = document.getElementById('app-content');
 
 window.addEventListener('load', function(){
-	responsiveSidePanel(); 
+	responsiveSidePanel();
 });
 
 window.addEventListener('resize', function(){
-	responsiveSidePanel(); 
+	responsiveSidePanel();
 });
 
 
 function responsiveSidePanel() {
     let w = window.innerWidth;
+		console.log(2)
 	if(w >= 1200) {
-	    // if larger 
+	    // if larger
 	    //console.log('larger');
+
 		sidePanel.classList.remove('sidepanel-hidden');
 		sidePanel.classList.add('sidepanel-visible');
-		
+		appContent.classList.add('container-xl');
+		appContent.classList.remove('container-fluid');
+		appContent.classList.remove('px-5')
+		appContent.style.marginLeft = '25rem'
 	} else {
 	    // if smaller
 	    //console.log('smaller');
-	    sidePanel.classList.remove('sidepanel-visible');
+		sidePanel.classList.remove('sidepanel-visible');
 		sidePanel.classList.add('sidepanel-hidden');
+		appContent.classList.remove('container-xl');
+		appContent.classList.add('container-fluid');
+		appContent.classList.add('px-5')
+		//appContent.style.marginLeft = '0px'
+		appContent.style.width = '80rem';
+		appContent.style.marginLeft = '20rem'
 	}
 };
 
@@ -50,11 +62,20 @@ sidePanelToggler.addEventListener('click', () => {
 		console.log('visible');
 		sidePanel.classList.remove('sidepanel-visible');
 		sidePanel.classList.add('sidepanel-hidden');
-		
+		appContent.classList.remove('container-xl');
+		appContent.classList.add('container-fluid');
+		appContent.classList.add('px-5')
+		//appContent.style.marginLeft = '0px'
+		appContent.style.width = '80rem';
+		appContent.style.marginLeft = '20rem'
 	} else {
 		console.log('hidden');
 		sidePanel.classList.remove('sidepanel-hidden');
 		sidePanel.classList.add('sidepanel-visible');
+		appContent.classList.add('container-xl');
+		appContent.classList.remove('container-fluid');
+		appContent.classList.remove('px-5')
+		appContent.style.marginLeft = '25rem'
 	}
 });
 
@@ -78,9 +99,9 @@ const searchBox = document.querySelector('.app-search-box');
 searchMobileTrigger.addEventListener('click', () => {
 
 	searchBox.classList.toggle('is-visible');
-	
+
 	let searchMobileTriggerIcon = document.querySelector('.search-mobile-trigger-icon');
-	
+
 	if(searchMobileTriggerIcon.classList.contains('fa-magnifying-glass')) {
 		searchMobileTriggerIcon.classList.remove('fa-magnifying-glass');
 		searchMobileTriggerIcon.classList.add('fa-xmark');
@@ -88,9 +109,9 @@ searchMobileTrigger.addEventListener('click', () => {
 		searchMobileTriggerIcon.classList.remove('fa-xmark');
 		searchMobileTriggerIcon.classList.add('fa-magnifying-glass');
 	}
-	
-		
-	
+
+
+
 });
 
 
