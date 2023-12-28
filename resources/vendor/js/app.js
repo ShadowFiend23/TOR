@@ -48,12 +48,11 @@ function responsiveSidePanel() {
 	    //console.log('smaller');
 		sidePanel.classList.remove('sidepanel-visible');
 		sidePanel.classList.add('sidepanel-hidden');
-		appContent.classList.remove('container-xl');
-		appContent.classList.add('container-fluid');
-		appContent.classList.add('px-5')
-		//appContent.style.marginLeft = '0px'
-		appContent.style.width = '80rem';
-		appContent.style.marginLeft = '20rem'
+		appContent.classList.add('container-xl');
+		appContent.classList.remove('container-fluid');
+		appContent.classList.remove('px-5')
+		appContent.style.marginLeft = '0rem'
+
 	}
 };
 
