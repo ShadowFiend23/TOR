@@ -32,11 +32,9 @@ window.addEventListener('resize', function(){
 
 function responsiveSidePanel() {
     let w = window.innerWidth;
-		console.log(2)
 	if(w >= 1200) {
 	    // if larger
 	    //console.log('larger');
-
 		sidePanel.classList.remove('sidepanel-hidden');
 		sidePanel.classList.add('sidepanel-visible');
 		appContent.classList.add('container-xl');
@@ -45,7 +43,7 @@ function responsiveSidePanel() {
 		appContent.style.marginLeft = '25rem'
 	} else {
 	    // if smaller
-	    //console.log('smaller');
+	  console.log('show ang sidenav');
 		sidePanel.classList.remove('sidepanel-visible');
 		sidePanel.classList.add('sidepanel-hidden');
 		appContent.classList.add('container-xl');
@@ -58,23 +56,31 @@ function responsiveSidePanel() {
 
 sidePanelToggler.addEventListener('click', () => {
 	if (sidePanel.classList.contains('sidepanel-visible')) {
-		console.log('visible');
+		console.log('hideangsidenav');
 		sidePanel.classList.remove('sidepanel-visible');
 		sidePanel.classList.add('sidepanel-hidden');
 		appContent.classList.remove('container-xl');
 		appContent.classList.add('container-fluid');
-		appContent.classList.add('px-5')
 		//appContent.style.marginLeft = '0px'
-		appContent.style.width = '80rem';
-		appContent.style.marginLeft = '20rem'
+		if (window.innerWidth > 768) {
+			// appContent.style.width = '80rem';
+			appContent.style.marginLeft = '0rem'
+			appContent.classList.add('px-5')
+
+		}
 	} else {
-		console.log('hidden');
+		console.log('show ang sidenav')
 		sidePanel.classList.remove('sidepanel-hidden');
 		sidePanel.classList.add('sidepanel-visible');
 		appContent.classList.add('container-xl');
 		appContent.classList.remove('container-fluid');
 		appContent.classList.remove('px-5')
-		appContent.style.marginLeft = '25rem'
+
+		if (window.innerWidth <= 768) {
+			appContent.style.marginLeft = '0rem'
+		} else {
+			appContent.style.marginLeft = '25rem'
+		}
 	}
 });
 
