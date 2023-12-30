@@ -15,9 +15,12 @@ use App\Http\Controllers\EmployeeLoginController;
 |
 */
 
-Route::get('/', function () {
-    return view('portal');
-});
+Route::get('/', function () { return view('landing'); });
+
+# Department routes
+Route::get('/department', function () { return view('department/index'); });
+Route::get('/department/edit', function () { return view('department/edit'); });
+Route::get('/department/new', function () { return view('department/new'); });
 
 Route::get('/studentLogin',[StudentLoginController::class,'show'])->middleware('guest')->name('studentLogin');
 Route::post('/studentLogin',[StudentLoginController::class,'login'])->middleware('guest');
