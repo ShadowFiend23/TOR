@@ -1,15 +1,15 @@
 <x-authenticated_layout>
 
-<div class="container-xl" id="app-content" style="margin-left: 25rem; margin-top: 2rem;">
+<div class="body flex-grow-1 px-3">
   <div class="row">
     <div class="col-12 text-center py-5">
-      <div class="d-flex flex-column shadow">
-        <div class="app-auth-body px-4">
+      <div class="d-flex flex-column shadow bg-white">
+        <div class="px-4">
           <div class="auth-form-container text-start mx-auto">
             <form class="auth-form auth-signup-form ">
               <div class="container">
                 <div class="header pt-4 text-start">
-                  <h1 class="app-page-title">Edit Course</h1>
+                  <h1>Edit Course</h1>
                 </div>
                 <div class="d-flex flex-column flex-lg-row gap-2">
                   <div class="input-group mb-3 gap-2 flex-column">
