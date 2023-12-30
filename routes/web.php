@@ -22,6 +22,10 @@ Route::get('/department', function () { return view('department/index'); });
 Route::get('/department/edit', function () { return view('department/edit'); });
 Route::get('/department/new', function () { return view('department/new'); });
 
+# Curriculum
+Route::get('/curriculum', function () { return view('curriculum/index'); });
+Route::get('/curriculum/show', function () { return view('curriculum/show'); });
+
 Route::get('/studentLogin',[StudentLoginController::class,'show'])->middleware('guest')->name('studentLogin');
 Route::post('/studentLogin',[StudentLoginController::class,'login'])->middleware('guest');
 Route::get('/studentLogout',[StudentLoginController::class,'logout']);

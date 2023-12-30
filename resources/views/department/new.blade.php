@@ -43,7 +43,7 @@
               </div>
               <div class="input-group mb-3 gap-2 d-flex flex-column  align-items-center justify-content-between p-2 ">
                 <div class="cta-container w-100 d-flex justify-content-end gap-2 mt-2">
-                  <a href="index.html" class="btn btn-secondary shadow text-decoration-none">Cancel</a>
+                  <a href="../department/" class="btn btn-secondary shadow text-decoration-none">Cancel</a>
                   <button type="submit" class="btn btn-info text-white shadow">Submit</button>
                 </div>
               </div>
