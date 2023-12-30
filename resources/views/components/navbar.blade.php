@@ -1,5 +1,5 @@
-<header class="header header-sticky mb-4 bg-primary">
-  <div class="container-fluid">
+<header class="header header-sticky p-0 mb-4 bg-primary">
+  <div class="container-fluid px-4">
     <button class="header-toggler px-md-0 me-md-3 text-light" type="button" onclick="coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()">
       <i class='bx bx-menu'></i>
     </button>

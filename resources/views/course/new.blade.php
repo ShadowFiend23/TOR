@@ -1,6 +1,6 @@
 <x-authenticated_layout>
 
-<div class="body flex-grow-1 px-3">
+<div class="container-lg px-3">
   <div class="row">
     <div class="col-12 text-center py-5">
       <div class="d-flex flex-column shadow bg-white">
