@@ -1,7 +1,7 @@
 <x-authenticated_layout>
-  <div class="container-xl" id="app-content" style="margin-left: 25rem; margin-top: 2rem;">
+  <div class="container-lg px-3">
     <div class="card border border-0 px-0 mx-0">
-      <div class="card-header p-4 text-center bg-dark-subtle" >
+      <div class="card-header p-4 text-center bg-dark">
         <h5 class="card-title text-white">ALL CURRICULUMS for <a href="#" class="text-danger text-decoration-underline">Bachelor of Science in Information Technology</a></h5>
       </div>
       <div class="card-body shadow">
@@ -9,9 +9,9 @@
           <div class="modal fade modal-lg" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggle" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
-                <div class="modal-header bg-dark-subtle ps-5">
+                <div class="modal-header bg-dark ps-5">
                   <h1 class="modal-title fs-5 text-white" id="exampleModalToggleLabel2">Add Curriculum</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body px-5">
                   <form action="post">
@@ -47,7 +47,7 @@
           </div>
         </div>
         <div class="d-flex align-items-center justify-content-end mb-4">
-          <button class="btn btn-success text-white" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">
+          <button class="btn btn-success text-white" data-coreui-target="#exampleModalToggle" data-coreui-toggle="modal">
             <span class="text-white">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
@@ -72,7 +72,7 @@
               <td>1945</td>
               <td>
                 <div class="dropdown">
-                  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-coreui-toggle="dropdown" aria-expanded="false">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 30 30" role="img"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg>
                   </button>
                   <ul class="dropdown-menu dropdown-menu-sm" aria-labelledby="dropdownMenuButton">
@@ -108,7 +108,7 @@
               <td>1964</td>
               <td>
                 <div class="dropdown">
-                  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-coreui-toggle="dropdown" aria-expanded="false">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 30 30" role="img"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg>
                   </button>
                   <ul class="dropdown-menu dropdown-menu-sm" aria-labelledby="dropdownMenuButton">
@@ -144,7 +144,7 @@
               <td>1980</td>
               <td>
                 <div class="dropdown">
-                  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-coreui-toggle="dropdown" aria-expanded="false">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 30 30" role="img"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg>
                   </button>
                   <ul class="dropdown-menu dropdown-menu-sm" aria-labelledby="dropdownMenuButton">
@@ -180,7 +180,7 @@
               <td>1996</td>
               <td>
                 <div class="dropdown">
-                  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-coreui-toggle="dropdown" aria-expanded="false">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 30 30" role="img"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg>
                   </button>
                   <ul class="dropdown-menu dropdown-menu-sm" aria-labelledby="dropdownMenuButton">
@@ -216,7 +216,7 @@
               <td>Still Active</td>
               <td>
                 <div class="dropdown">
-                  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-coreui-toggle="dropdown" aria-expanded="false">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 30 30" role="img"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg>
                   </button>
                   <ul class="dropdown-menu dropdown-menu-sm" aria-labelledby="dropdownMenuButton">
@@ -232,7 +232,7 @@
                       </a>
                     </li>
                     <li class="d-flex flex-row justify-content-between">
-                      <a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#editCurriculumModal">
+                      <a class="dropdown-item" href="" data-coreui-toggle="modal" data-coreui-target="#editCurriculumModal">
                         <span class="text-info">
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -255,9 +255,9 @@
           <div class="modal fade modal-lg" id="editCurriculumModal" aria-hidden="true" aria-labelledby="editCurriculumModalLabel" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
-                <div class="modal-header bg-dark-subtle ps-5">
+                <div class="modal-header bg-dark ps-5">
                   <h1 class="modal-title fs-5 text-white" id="editCurriculumModalLabel">Edit Generation Z</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body px-5">
                   <form action="post">
@@ -268,8 +268,8 @@
                   </form>
                 </div>
                 <div class="modal-footer px-5">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                  <button type="button" class="btn btn-info text-white" data-bs-target="#curriculumDialog" data-bs-toggle="modal" >Save changes</button>
+                  <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Cancel</button>
+                  <button type="button" class="btn btn-info text-white" data-coreui-target="#curriculumDialog" data-coreui-toggle="modal" >Save changes</button>
                 </div>
               </div>
             </div>
@@ -278,16 +278,16 @@
           <div class="modal fade modal-lg" id="curriculumDialog" aria-hidden="true" aria-labelledby="curriculumDialogLabel" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
-                <div class="modal-header bg-dark-subtle ps-5">
+                <div class="modal-header bg-dark ps-5">
                   <h1 class="modal-title fs-5 text-white" id="curriculumDialogLabel">Confirmation</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body px-5">
                   <p>The curriculum name has been successfully edited. Do you want to edit or review <span class="text-danger">curriculum?</p>
                 </div>
                 <div class="modal-footer px-5">
-                  <button class="btn btn-secondary" data-bs-toggle="modal">Cancel</button>
-                  <button type="button" class="btn btn-info text-white" data-bs-dismiss="modal">Confirm</button>
+                  <button class="btn btn-secondary" data-coreui-toggle="modal">Cancel</button>
+                  <button type="button" class="btn btn-info text-white" data-coreui-dismiss="modal">Confirm</button>
                 </div>
               </div>
             </div>

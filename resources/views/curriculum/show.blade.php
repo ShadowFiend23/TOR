@@ -1,6 +1,6 @@
 <x-authenticated_layout>
-  <div class="container-xl" id="app-content" style="margin-left: 25rem; margin-top: 2rem;">
-    <div class="d-flex flex-column pt-4 ps-4 bg-dark-subtle">
+  <div class="container-lg px-3">
+    <div class="d-flex flex-column pt-4 ps-4 bg-dark">
       <h2 class="fs-4 text-center text-white">Generation Z</h2>
       <div class="d-flex flex-column">
         <h4 class="fs-6  text-white">Course: <span class="text-decoration-underline">BSIT</span></h4>
@@ -72,9 +72,9 @@
           <div class="modal modal-lg fade" id="presubjectModal" aria-hidden="true" aria-labelledby="presubjectModalLabel" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
-                <div class="modal-header bg-dark-subtle ps-5">
+                <div class="modal-header bg-dark ps-5">
                   <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">Pre-REQUISITE SUBJECTS</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body px-5">
                   <p>Note: <span class="text-info">There are two selected prerequisite subjects for this semester. Please choose the prerequisites for this particular subject for the current semester.</span></p>
@@ -96,8 +96,8 @@
                     </div>
                 </div>
                 <div class="modal-footer px-5">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                  <button type="button" class="btn btn-info text-white" data-bs-target="#presubjectDialog" data-bs-toggle="modal" >Save changes</button>
+                  <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Cancel</button>
+                  <button type="button" class="btn btn-info text-white" data-coreui-target="#presubjectDialog" data-coreui-toggle="modal" >Save changes</button>
                 </div>
               </div>
             </div>
@@ -106,9 +106,9 @@
           <div class="modal modal-lg fade" id="presubjectDialog" aria-hidden="true" aria-labelledby="presubjectDialogLabel" tabindex="-2">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
-                <div class="modal-header bg-dark-subtle ps-5">
+                <div class="modal-header bg-dark ps-5">
                   <h1 class="modal-title fs-5 text-white" id="presubjectDialogLabel">Confirmation</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body px-5">
                   <p>Loading curriculum for <span class="text-danger">3rd Year, 1st Semester, BSIT course. Generation Z, success!</span> Are you ready to proceed with loading for the other semester?</p>
@@ -132,8 +132,8 @@
                     </div>
                 </div>
                 <div class="modal-footer px-5">
-                  <button class="btn btn-secondary" data-bs-toggle="modal">Cancel</button>
-                  <button type="button" class="btn btn-info text-white" data-bs-dismiss="modal">Confirm</button>
+                  <button class="btn btn-secondary" data-coreui-toggle="modal">Cancel</button>
+                  <button type="button" class="btn btn-info text-white" data-coreui-dismiss="modal">Confirm</button>
                 </div>
               </div>
             </div>
@@ -142,27 +142,27 @@
           <div class="modal modal-lg fade" id="alertEmtySelect" aria-hidden="true" aria-labelledby="alertEmtySelectLabel" tabindex="-2">
             <div class="modal-dialog">
               <div class="modal-content">
-                <div class="modal-header bg-dark-subtle ps-5">
+                <div class="modal-header bg-dark ps-5">
                   <h1 class="modal-title fs-5 text-white" id="alertEmtySelectLabel">Alert!</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body px-5">
                   <p>Loading curriculum for <span class="text-danger">3rd Year, 1st Semester, BSIT course. Generation Z, success!</span> Please note that this semester's curriculum doesn't have selected prerequisite subjects.</p>
                 </div>
                 <div class="modal-footer px-5">
-                  <button class="btn btn-secondary" data-bs-toggle="modal">Close</button>
+                  <button class="btn btn-secondary" data-coreui-toggle="modal">Close</button>
                 </div>
               </div>
             </div>
           </div>
           
 
-          <button type="button" class="btn btn-primary btn btn-info text-white" data-bs-target="#presubjectModal"data-bs-toggle="modal">
+          <button type="button" class="btn btn-primary btn btn-info text-white" data-coreui-target="#presubjectModal"data-coreui-toggle="modal">
             Submit
           </button>
 
 
-          <button type="button" class="ms-2 btn btn-primary btn btn-info text-white" data-bs-target="#alertEmtySelect"data-bs-toggle="modal">
+          <button type="button" class="ms-2 btn btn-primary btn btn-info text-white" data-coreui-target="#alertEmtySelect"data-coreui-toggle="modal">
             Sample Alert
           </button>
         </div>

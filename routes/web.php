@@ -19,8 +19,10 @@ Route::get('/', function () { return view('landing'); });
 
 # Department routes
 Route::get('/department', function () { return view('department/index'); });
-Route::get('/department/edit', function () { return view('department/edit'); });
-Route::get('/department/new', function () { return view('department/new'); });
+
+# Course routes
+Route::get('/course/edit', function () { return view('course/edit'); });
+Route::get('/course/new', function () { return view('course/new'); });
 
 # Curriculum
 Route::get('/curriculum', function () { return view('curriculum/index'); });
