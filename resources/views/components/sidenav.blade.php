@@ -1,5 +1,5 @@
 <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
-  <div class="sidebar-header" style="background-color: #861212;">
+  <div class="sidebar-header d-flex justify-content-center" style="background-color: #861212;">
     <div class="sidebar-brand">
       <a class="text-decoration-none fw-bold d-flex align-items-end gap-2" href="index.html">
         <img src="{{ asset('images/logo.png') }}" alt="logo" height="32">
@@ -25,43 +25,43 @@
     </div>
   </div>
   <ul class="sidebar-nav simplebar-scrollable-y" data-coreui="navigation" data-simplebar="init">
-    <li class="nav-item">
+    <li class="nav-item w-100">
       <a class="nav-link" href="#">
         <i class='bx bx-desktop' ></i> 
         <span class="mx-1">Dashboard</span>
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item w-100">
       <a class="nav-link" href="#">
         <i class='bx bx-book' ></i>
         <span class="mx-1">Add Course</span>
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item w-100">
       <a class="nav-link" href="#">
         <i class='bx bx-male'></i>
         <span class="mx-1">In-Charge</span>
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item w-100">
       <a class="nav-link" href="#">
         <i class='bx bx-list-ul' ></i>
         <span class="mx-1">Curriculum List</span>
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item w-100">
       <a class="nav-link" href="#">
         <i class='bx bx-user-plus' ></i>
         <span class="mx-1">Add Students</span>
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item w-100">
       <a class="nav-link" href="#">
         <i class='bx bx-receipt' ></i>
         <span class="mx-1">Latin Honor Application</span>
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item w-100">
       <a class="nav-link" href="#">
         <i class='bx bx-medal' ></i>
         <span class="mx-1">Final Listing of Latin Honor</span>
