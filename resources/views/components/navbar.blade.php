@@ -5,7 +5,7 @@
     </button>
     <ul class="header-nav ms-3">
       <li class="nav-item dropdown"><a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-          <div class="avatar avatar-md"><img class="avatar-img" src="{{ asset('images/avatar.png') }}"></div>
+          <div class="avatar avatar-md"><img class="avatar-img" src="{{ asset('images/avatar.png') }}" alt="Avatar Image"></div>
         </a>
         <div class="dropdown-menu dropdown-menu-end">
           <a class="dropdown-item" href="#">
