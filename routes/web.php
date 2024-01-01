@@ -28,6 +28,7 @@ Route::get('/course/new', function () { return view('course/new'); });
 Route::get('/curriculum', function () { return view('curriculum/index'); });
 Route::get('/curriculum/show', function () { return view('curriculum/show'); });
 Route::get('/curriculum/edit', function () { return view('curriculum/edit'); });
+Route::get('/curriculum/new', function () { return view('curriculum/new'); });
 
 Route::get('/studentLogin',[StudentLoginController::class,'show'])->middleware('guest')->name('studentLogin');
 Route::post('/studentLogin',[StudentLoginController::class,'login'])->middleware('guest');
