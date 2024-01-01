@@ -27,7 +27,7 @@
   <ul class="sidebar-nav simplebar-scrollable-y" data-coreui="navigation" data-simplebar="init">
     <li class="nav-item w-100">
       <a class="nav-link" href="#">
-        <i class='bx bx-desktop' ></i> 
+        <i class='bx bx-desktop' ></i>
         <span class="mx-1">Dashboard</span>
       </a>
     </li>
@@ -44,7 +44,7 @@
       </a>
     </li>
     <li class="nav-item w-100">
-      <a class="nav-link" href="#">
+      <a class="nav-link" href="../curriculum_list">
         <i class='bx bx-list-ul' ></i>
         <span class="mx-1">Curriculum List</span>
       </a>
