@@ -1,5 +1,5 @@
 <x-authenticated_layout>
-  <div class="container-lg px-3">
+  <div class="container-fluid px-5">
     <div class="card border border-0 px-0 mx-0">
       <div class="card-header p-4 text-center bg-dark">
         <h5 class="card-title text-white">ALL CURRICULUMS for <a href="#" class="text-danger text-decoration-underline">Bachelor of Science in Information Technology</a></h5>

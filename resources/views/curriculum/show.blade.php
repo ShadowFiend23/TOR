@@ -1,5 +1,5 @@
 <x-authenticated_layout>
-  <div class="container-lg px-3">
+  <div class="container-fluid px-5">
     <div class="d-flex flex-column pt-4 ps-4 bg-dark">
       <h2 class="fs-4 text-center text-white">Generation Z</h2>
       <div class="d-flex flex-column">
@@ -155,7 +155,7 @@
               </div>
             </div>
           </div>
-          
+
 
           <button type="button" class="btn btn-primary btn btn-info text-white" data-coreui-target="#presubjectModal"data-coreui-toggle="modal">
             Submit
