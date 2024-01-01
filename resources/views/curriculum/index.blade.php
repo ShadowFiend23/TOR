@@ -57,7 +57,7 @@
             Add New
           </button>
         </div>
-        <table id="curriculum_table" class="table" style="width:100%;">
+        <table id="exportable_table" class="table" style="width:100%;">
           <thead>
               <tr>
                   <th>Curriculum Name</th>

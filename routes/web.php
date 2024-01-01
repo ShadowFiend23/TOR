@@ -17,6 +17,33 @@ use App\Http\Controllers\EmployeeLoginController;
 
 Route::get('/', function () { return view('landing'); });
 
+# Admin routes
+Route::get('/admin', function () { return view('admin/index'); });
+
+Route::get('/admin/employees', function () { return view('admin/employees/index'); });
+Route::get('/admin/employees/new', function () { return view('admin/employees/new'); });
+Route::get('/admin/employees/archived', function () { return view('admin/employees/archived'); });
+
+Route::get('/admin/co_admins', function () { return view('admin/co_admins/index'); });
+Route::get('/admin/co_admins/new', function () { return view('admin/co_admins/new'); });
+Route::get('/admin/co_admins/archived', function () { return view('admin/co_admins/archived'); });
+
+Route::get('/admin/departments', function () { return view('admin/departments/index'); });
+Route::get('/admin/departments/new', function () { return view('admin/departments/new'); });
+Route::get('/admin/departments/edit', function () { return view('admin/departments/edit'); });
+
+Route::get('/admin/school_year', function () { return view('admin/school_year/index'); });
+
+Route::get('/admin/students', function () { return view('admin/students/index'); });
+Route::get('/admin/courses', function () { return view('admin/students/courses'); });
+Route::get('/admin/course_id/students', function () { return view('admin/students/students'); });
+Route::get('/admin/course_id/students/new', function () { return view('admin/students/new'); });
+Route::get('/admin/course_id/students/archived', function () { return view('admin/students/archived'); });
+
+Route::get('/admin/rubrics', function () { return view('admin/rubrics/index'); });
+Route::get('/admin/rubrics/edit', function () { return view('admin/rubrics/edit'); });
+
+
 # Department routes
 Route::get('/department', function () { return view('department/index'); });
 

@@ -1,6 +1,6 @@
 <x-authenticated_layout>
 
-<div class="container-fluid px-5">
+<div class="container-lg px-5">
   <h1 class="app-page-title">Dashboard</h1>
   <div class="alert alert-dismissible alert-info">
     Hi Rosalinda!, Welcome to your Dashboard
