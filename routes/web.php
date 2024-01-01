@@ -24,11 +24,16 @@ Route::get('/department', function () { return view('department/index'); });
 Route::get('/course/edit', function () { return view('course/edit'); });
 Route::get('/course/new', function () { return view('course/new'); });
 
-# Curriculum
+# Curriculum for Course
 Route::get('/curriculum', function () { return view('curriculum/index'); });
 Route::get('/curriculum/show', function () { return view('curriculum/show'); });
 Route::get('/curriculum/edit', function () { return view('curriculum/edit'); });
 Route::get('/curriculum/new', function () { return view('curriculum/new'); });
+
+
+# Department Curriculum List
+
+Route::get('/curriculum_list', function () { return view('curriculum_list/index'); });
 
 Route::get('/studentLogin',[StudentLoginController::class,'show'])->middleware('guest')->name('studentLogin');
 Route::post('/studentLogin',[StudentLoginController::class,'login'])->middleware('guest');
