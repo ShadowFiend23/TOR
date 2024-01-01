@@ -286,8 +286,8 @@
                   <p>The curriculum name has been successfully edited. Do you want to edit or review <span class="text-danger">curriculum?</p>
                 </div>
                 <div class="modal-footer px-5">
-                  <button class="btn btn-secondary" data-coreui-toggle="modal">Cancel</button>
-                  <button type="button" class="btn btn-info text-white" data-coreui-dismiss="modal">Confirm</button>
+                  <button class="btn btn-secondary" data-coreui-toggle="modal">No</button>
+                  <a href="../curriculum/edit" class="btn btn-info text-white"> Yes </a>
                 </div>
               </div>
             </div>
