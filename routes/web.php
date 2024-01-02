@@ -23,6 +23,7 @@ Route::get('/admin', function () { return view('admin/index'); });
 Route::get('/admin/employees', function () { return view('admin/employees/index'); });
 Route::get('/admin/employees/new', function () { return view('admin/employees/new'); });
 Route::get('/admin/employees/archived', function () { return view('admin/employees/archived'); });
+Route::get('/admin/employees/registration', function () { return view('admin/employees/registration'); });
 
 Route::get('/admin/co_admins', function () { return view('admin/co_admins/index'); });
 Route::get('/admin/co_admins/new', function () { return view('admin/co_admins/new'); });
