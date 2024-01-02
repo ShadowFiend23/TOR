@@ -4,5 +4,5 @@
 
 import { application } from '../libs/stimulus'
 
-import HelloController from './hello_controller'
-application.register('hello', HelloController)
+import RubricsCalculatorController from './rubrics_calculator_controller'
+application.register('rubrics-calculator', RubricsCalculatorController)
