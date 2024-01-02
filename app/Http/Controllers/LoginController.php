@@ -5,19 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Password;
-use Illuminate\Validation\ValidationException;
 
-class EmployeeLoginController extends Controller
+class LoginController extends Controller
 {
-    /**
-     * Display login page.
-     *
-     * @return Renderable
-     */
+    //
     public function show()
     {
-        return view('employee.login');
+        return view('login');
     }
 
     public function login(Request $request)
@@ -41,9 +35,9 @@ class EmployeeLoginController extends Controller
             }
         }
 
-        return back()->withErrors([
-            'employeeID' => 'The provided credentials do not match our records.',
-        ]);
+        // return back()->withErrors([
+        //     'employeeID' => 'The provided credentials do not match our records.',
+        // ]);
     }
 
     public function logout(Request $request)

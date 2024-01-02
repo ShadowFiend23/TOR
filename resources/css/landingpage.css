@@ -1,0 +1,429 @@
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  	position: relative;
+  	min-height: 100%;
+		font-family: 'Inter', sans-serif;
+		font-family: 'Roboto', sans-serif;
+}
+body {
+  	/* Margin bottom by footer height */
+  	margin-bottom: 60px;
+		overflow: hidden;
+}
+
+@media only screen and (max-width: 768px) {
+  body {
+    overflow: visible;
+  }
+}
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 60px;
+	padding: 20px;
+}
+
+.footer p {
+	margin: 1rem 0 0 0;
+	color: #000000ad;
+	font-size: .7rem;
+}
+
+
+
+body {
+	background-image: url(../assets/images/landingpage_bg.png);
+	background-size: 143% 125%;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+@media only screen and (max-width: 768px) {
+  body {
+    background-size: 250% 100%;
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+  }
+}
+body:before {
+	content: '';
+	width: 100%;
+	height:100%;
+	position: absolute;
+	background-color: rgba(240, 240, 240, 0.49);
+	z-index: -1;
+}
+
+header {
+	background-color: #fff;
+}
+
+header .logo-container {
+	padding:20px;
+	text-align: center;
+}
+header .logo-container img {
+	max-height: 100px;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+}
+
+
+
+.content-area {
+	margin-top: 5rem;
+	padding: 20px 10px;
+}
+
+/* xs devices*/
+@media screen and (min-width: 320px), (max-width: 320px) {
+	.content-area {
+		padding: 20px 10px 50px;
+	}
+}
+
+/* sm devices */
+@media screen and (min-width: 768px) {
+	.content-area {
+		padding: 20px 10px 50px;
+	}
+}
+
+/* md devices */
+@media screen and (min-width: 992px) {
+	.content-area {
+		padding: 20px 10px;
+	}
+}
+
+
+.content-area .app-icon-container {
+	width: 100%;
+	height: auto;
+	background-color: red;
+	margin-top: 50px;
+	padding: 15px;
+	text-align: center;
+	overflow: hidden;
+	color:#fff;
+}
+
+.content-area .app-icon-container .img-icon {
+	height: auto;
+	width: auto;
+	max-width: 100%;
+	max-height: 120px;
+}
+
+.content-area .app-icon-container {
+	height: 300px;
+	display: flex;
+}
+.content-area .app-icon-container.app-small-icon-container {
+	height:69px;
+	display: flex;
+}
+.content-area .app-icon-container * {
+    margin: auto;
+}
+.content-area .app-icon-container.app-slider-container {
+	display: block;
+}
+
+
+/* xs devices*/
+@media screen and (min-width: 320px), (max-width: 320px) {
+	.content-area .app-icon-container .img-icon {
+		height: auto;
+		max-height: 100px;
+	}
+
+	.content-area .app-icon-container {
+		height:auto;
+	}
+	.content-area .app-icon-container.app-small-icon-container {
+		height:auto;
+	}
+
+}
+
+/* sm devices */
+@media screen and (min-width: 768px) {
+	.content-area .app-icon-container .img-icon {
+		height: 100px;
+	}
+	.content-area .app-icon-container {
+		height:150px;
+	}
+	.content-area .app-icon-container.app-small-icon-container {
+		height:auto;
+	}
+}
+
+/* md devices */
+@media screen and (min-width: 992px) {
+	.content-area .app-icon-container .img-icon {
+		height: 200px;     /* The Icon */
+		max-height: 200px;
+	}
+	.content-area .app-icon-container {
+		height: 250px;
+	}
+	.content-area .app-icon-container.app-small-icon-container {
+		height:69px;
+	}
+}
+
+
+.content-area .app-icon-container .icon {
+	font-size: 70px;
+}
+
+.content-area .app-icon-container .text-holder {
+	margin:0px;
+	margin-top: 20px;
+  font-size: 18px;
+}
+
+.content-area .app-icon-link:hover,
+.content-area .app-icon-link:focus {
+	text-decoration: none;
+}
+
+
+.content-area .site-title {
+  margin-top: 18rem;
+  font-size: 1.5rem;
+	font-weight: bolder;
+  color: #252525;
+}
+
+
+/* xs devices*/
+@media screen and (min-width: 320px), (max-width: 320px) {
+	.content-area .site-title {
+		font-size: 1rem;
+	}
+}
+
+/* sm devices */
+@media screen and (min-width: 768px) {
+	.content-area .site-title {
+		font-size: 1.5rem;
+	}
+}
+
+/* md devices */
+@media screen and (min-width: 992px) {
+	.content-area .site-title {
+		font-size: 2rem;
+	}
+
+}
+
+/* lg devices */
+@media screen and (min-width: 1200px) {
+
+}
+
+.content-area .app-icon-container {
+	margin-top: 12px;
+}
+
+.content-area .app-icon-container .text-holder {
+    margin-top: 10px;
+}
+
+
+/* App Map */
+.content-area .app-icon-container.app-map-container {
+	height: 311px;
+	background-color: #f3f2f2;
+	background-image: url(../../../assets/img/icons/google-map.png);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: top left;
+}
+
+.content-area .app-icon-container.app-map-container {
+    padding: 0px;
+}
+.content-area .app-icon-container.app-map-container iframe {
+    width:100%;
+    height: 100%;
+}
+
+/* xs devices*/
+@media screen and (min-width: 320px), (max-width: 320px) {
+
+	.content-area .app-icon-container.app-map-container {
+		height: 300px;
+	}
+}
+
+/* sm devices */
+@media screen and (min-width: 768px) {
+
+	.content-area .app-icon-container.app-map-container {
+		height: 272px;
+	}
+}
+
+/* md devices */
+@media screen and (min-width: 992px) {
+
+	.content-area .app-icon-container.app-map-container {
+		height: 311px;
+	}
+}
+
+
+
+
+/* App Slider */
+.content-area .app-icon-container.app-slider-container {
+	padding: 0px;
+	height: 150px;
+	background-color: #f3f2f2;
+	background-image: url(../../../assets/img/sliders/s1.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+
+
+/* xs devices*/
+@media screen and (min-width: 320px), (max-width: 320px) {
+	.content-area .app-icon-container.app-slider-container {
+		height: 150px;
+	}
+}
+
+/* sm devices */
+@media screen and (min-width: 768px) {
+	.content-area .app-icon-container.app-slider-container {
+		height: 130px;
+	}
+}
+
+/* md devices */
+@media screen and (min-width: 992px) {
+	.content-area .app-icon-container.app-slider-container {
+		height: 150px;
+	}
+}
+
+
+.content-area .app-icon-container.app-slider-container .carousel .item {
+	height: 150px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+
+.content-area .app-icon-container.app-slider-container .carousel .carousel-control {
+	opacity: 0;
+}
+.content-area .app-icon-container.app-slider-container .carousel .carousel-control:hover {
+	opacity: 0.5;
+}
+
+/* xs devices*/
+@media screen and (min-width: 320px), (max-width: 320px) {
+	.content-area .app-icon-container.app-slider-container .carousel .item {
+		height: 150px;
+	}
+}
+
+/* sm devices */
+@media screen and (min-width: 768px) {
+	.content-area .app-icon-container.app-slider-container .carousel .item {
+		height: 150px;
+	}
+}
+
+
+
+/* App Email */
+.content-area .app-icon-container.app-email-container .img-icon {
+    height: 105px;
+    width: auto;
+}
+
+
+/* App EVSU */
+.content-area .app-icon-container.app-evsu-container .img-icon {
+	height: 105px;
+}
+
+/* xs devices*/
+@media screen and (min-width: 320px), (max-width: 320px) {
+
+	.content-area .app-icon-container.app-evsu-container .img-icon {
+	    height: 105px;
+	    margin-top: 0px;
+	    margin-bottom: 0px;
+	}
+}
+
+/* sm devices */
+@media screen and (min-width: 768px) {
+
+	.content-area .app-icon-container.app-evsu-container .img-icon {
+	   	height: 75px;
+	    margin-top: 15px;
+	    margin-bottom: 15px;
+	}
+}
+
+/* md devices */
+@media screen and (min-width: 992px) {
+
+	.content-area .app-icon-container.app-evsu-container .img-icon {
+	    height: 105px;
+	    margin-top: 0px;
+	    margin-bottom: 0px;
+	}
+}
+
+
+
+/* Small Icon */
+.content-area .app-icon-container.app-small-icon-container {
+	padding:5px;
+}
+.content-area .app-icon-container.app-small-icon-container .img-icon {
+	height: 59px;
+	width: auto;
+
+}
+
+
+/* xs devices*/
+@media screen and (min-width: 320px), (max-width: 320px) {
+
+	.content-area .app-icon-container.app-small-icon-container .img-icon {
+		height: 70px;
+	}
+}
+
+/* sm devices */
+@media screen and (min-width: 768px) {
+
+	.content-area .app-icon-container.app-small-icon-container .img-icon {
+		height: 49px;
+	}
+}
+
+/* md devices */
+@media screen and (min-width: 992px) {
+
+	.content-area .app-icon-container.app-small-icon-container .img-icon {
+		height: 59px;
+	}
+}

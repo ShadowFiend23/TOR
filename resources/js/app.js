@@ -1,1 +1,3 @@
-import './bootstrap';
+import './bootstrap.js'
+import './coreui.bundle.min.js'
+import './simplebar.min.js'

@@ -1,11 +1,15 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CoAdminController;
+use App\Http\Controllers\DepartmentHeadController;
 use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\DepartmentsController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentLoginController;
 use App\Http\Controllers\EmployeeLoginController;
+use App\Http\Controllers\StudentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,51 +23,67 @@ use App\Http\Controllers\EmployeeLoginController;
 */
 
 Route::get('/', function () {
-    return view('login');
+    return view('landing');
 });
 
-Route::get('/login', function(){
-    return view('login');
-})->name('login');
-
-Route::get('/studentLogin',[StudentLoginController::class,'show'])->middleware('guest')->name('studentLogin');
-Route::post('/studentLogin',[StudentLoginController::class,'login'])->middleware('guest');
-Route::get('/studentLogout',[StudentLoginController::class,'logout']);
-
-Route::get('/employeeLogin',[EmployeeLoginController::class,'show'])->middleware('guest')->name('employeeLogin');
-Route::post('/employeeLogin',[EmployeeLoginController::class,'login'])->middleware('guest');
-Route::get('/employeeLogout',[EmployeeLoginController::class,'logout']);
-
+Route::get('/login',[LoginController::class,'show'])->middleware('guest')->name('login');
+Route::post('/login',[LoginController::class,'login'])->middleware('guest');
+Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
 Route::middleware(['auth','user-role:admin'])->group(function(){
+
     Route::get('/admin',[EmployeesController::class,'index'])->name('admin');
 
-    //Admin Employees Routes
+    # Admin Employees Routes
     Route::get('/employees',[EmployeesController::class,'employees'])->name('employees');
     Route::get('/addEmployee',[EmployeesController::class,'addEmployeePage'])->name('addEmployee');
     Route::get('/editEmployee',[EmployeesController::class,'editEmployeePage'])->name('editEmployee');
     Route::post('/saveEmployee',[EmployeesController::class,'saveEmployee'])->name('saveEmployee');
     Route::post('/deleteEmployee',[EmployeesController::class,'deleteEmployee']);
 
-    //Admin Department Routes
+    # Admin Department Routes
     Route::get('/departments',[DepartmentsController::class,'departments'])->name('departments');
     Route::get('/addDepartment',[DepartmentsController::class,'addDepartmentPage'])->name('addDepartment');
     Route::get('/editDepartment',[DepartmentsController::class,'editDepartmentPage'])->name('editDepartment');
     Route::post('/saveDepartment',[DepartmentsController::class,'saveDepartment'])->name('saveDepartment');
     Route::post('/deleteDepartment',[DepartmentsController::class,'deleteDepartment']);
 
-    //Admin CoAdmin Routes
+    # Admin CoAdmin Routes
     Route::get('/coAdmin',[CoAdminController::class,'coAdmin'])->name('coAdmin');
     Route::get('/addCoAdmin',[CoAdminController::class,'addCoAdminPage'])->name('addCoAdmin');
     Route::get('/editCoAdmin',[CoAdminController::class,'editCoAdminPage'])->name('editCoAdmin');
     Route::post('/saveCoAdmin',[CoAdminController::class,'saveCoAdmin'])->name('saveCoAdmin');
     Route::post('/deleteCoAdmin',[CoAdminController::class,'deleteCoAdmin']);
-});
 
-Route::middleware(['auth','user-role:student'])->group(function(){
+    # Admin Students Routes
+    Route::get('/students',[StudentsController::class,'students'])->name('students');
+    Route::get('/addStudents',[StudentsController::class,'addStudentPage'])->name('addStudents');
+    Route::get('/editStudents',[StudentsController::class,'editStudentPage'])->name('editStudents');
+    Route::post('/saveStudents',[StudentsController::class,'saveStudent'])->name('saveStudents');
+    Route::post('/deleteStudents',[StudentsController::class,'deleteStudent']);
 
 });
 
 Route::middleware(['auth','user-role:employee'])->group(function(){
+    Route::middleware('permission:depHead')->group(function(){
+        Route::get('/department',[DepartmentHeadController::class,'dashboard'])->name('department');
+
+        Route::get('/curriculum', [DepartmentHeadController::class,'curriculum'])->name('curriculum');
+        Route::get('/curriculum/show',[DepartmentHeadController::class,'showCurriculum']);
+        Route::get('/curriculum/edit',[DepartmentHeadController::class,'editCurriculum']);
+        Route::get('/curriculum/new',[DepartmentHeadController::class,'addCurriculum']);
+        Route::get('/curriculum_list',[DepartmentHeadController::class,'curriculumList']);
+
+        Route::get('/course/add', [DepartmentHeadController::class,'addCourse'])->name('addCourse');
+        Route::get('/course/edit', [DepartmentHeadController::class,'editCourse']);
+        Route::post('/saveCourse', [DepartmentHeadController::class,'saveCourse']);
+    });
+
+    Route::middleware('permission:registrar')->group(function(){
+        Route::get('/registrar', function () { return "Registrar Page"; })->name('registrar');
+    });
+});
+
+Route::middleware(['auth','user-role:student'])->group(function(){
 
 });

@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Models\Employees;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -50,5 +51,12 @@ class User extends Authenticatable
         return new Attribute(
             get: fn($value) => ["admin","employee","student"][$value]
         );
+    }
+
+    public function getRoleCodeAttribute()
+    {
+        $employeeID = $this['userID'];
+
+        return Employees::where('employeeID',$employeeID)->pluck('roleCode')[0] ?? null;
     }
 }
