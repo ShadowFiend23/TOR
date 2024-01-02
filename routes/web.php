@@ -66,3 +66,8 @@ Route::get('/studentLogout',[StudentLoginController::class,'logout']);
 Route::get('/employeeLogin',[EmployeeLoginController::class,'show'])->middleware('guest')->name('employeeLogin');
 Route::post('/employeeLogin',[StudentLoginController::class,'login'])->middleware('guest');
 Route::get('/employeeLogout',[StudentLoginController::class,'logout']);
+
+
+#Static Page
+
+Route::get('/terms-and-conditions', function () { return view('terms_and_conditions/index'); });
