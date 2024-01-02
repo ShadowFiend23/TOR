@@ -1,4 +1,5 @@
 <x-static_page_layout>
+  @vite(['resources/css/terms_and_conditions.css'])
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-6">

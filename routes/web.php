@@ -25,7 +25,9 @@ Route::get('/otp', function () { return view('/otp'); });
 Route::get('/admin/employees', function () { return view('admin/employees/index'); });
 Route::get('/admin/employees/new', function () { return view('admin/employees/new'); });
 Route::get('/admin/employees/archived', function () { return view('admin/employees/archived'); });
-Route::get('/admin/employees/registration', function () { return view('admin/employees/registration'); });
+Route::get('/admin/employees/confirmations', function () { return view('admin/employees/confirmations'); });
+Route::get('/admin/employees/login', function () { return view('admin/employees/login'); });
+Route::get('/admin/employees/register', function () { return view('admin/employees/register'); });
 
 Route::get('/admin/co_admins', function () { return view('admin/co_admins/index'); });
 Route::get('/admin/co_admins/new', function () { return view('admin/co_admins/new'); });

@@ -12,7 +12,7 @@
     <link href="https://apps.evsu.edu.ph/assets/css/app.css?v=3" rel="stylesheet">
     <link href="https://apps.evsu.edu.ph/assets/css/custom_css/fontawesome_icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
-    @vite([ 'resources/css/app.css', 'resources/js/app.js', 'resources/css/terms_and_conditions.css'])
+    @vite([ 'resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
   {{$slot}}
