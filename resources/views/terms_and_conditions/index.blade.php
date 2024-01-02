@@ -9,7 +9,6 @@
 
       <div class="col-md-6 col-right" >
           <div class="main-wrapper" >
-            <header></header>
             <section class="content-area" >
                 <div class="containerx">
                   <div class="row" >

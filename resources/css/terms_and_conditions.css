@@ -5,6 +5,9 @@ body {
   position: relative;
   background-repeat: no-repeat;
 }
+p, li{
+  font-size: 18px !important;
+}
 body:before {
   content: '';
   position: absolute;
