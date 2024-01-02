@@ -74,7 +74,7 @@
               <td>
                 <div class="dropdown">
                   <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-coreui-toggle="dropdown" aria-expanded="false">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 30 30" role="img"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg>
+                    Actions
                   </button>
                   <ul class="dropdown-menu dropdown-menu-sm" aria-labelledby="dropdownMenuButton">
                     <li class="d-flex flex-row justify-content-between">
@@ -110,7 +110,7 @@
               <td>
                 <div class="dropdown">
                   <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-coreui-toggle="dropdown" aria-expanded="false">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 30 30" role="img"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg>
+                    Actions
                   </button>
                   <ul class="dropdown-menu dropdown-menu-sm" aria-labelledby="dropdownMenuButton">
                     <li class="d-flex flex-row justify-content-between">
@@ -146,7 +146,7 @@
               <td>
                 <div class="dropdown">
                   <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-coreui-toggle="dropdown" aria-expanded="false">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 30 30" role="img"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg>
+                    Actions
                   </button>
                   <ul class="dropdown-menu dropdown-menu-sm" aria-labelledby="dropdownMenuButton">
                     <li class="d-flex flex-row justify-content-between">
@@ -182,7 +182,7 @@
               <td>
                 <div class="dropdown">
                   <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-coreui-toggle="dropdown" aria-expanded="false">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 30 30" role="img"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg>
+                    Actions
                   </button>
                   <ul class="dropdown-menu dropdown-menu-sm" aria-labelledby="dropdownMenuButton">
                     <li class="d-flex flex-row justify-content-between">
@@ -218,7 +218,7 @@
               <td>
                 <div class="dropdown">
                   <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-coreui-toggle="dropdown" aria-expanded="false">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 30 30" role="img"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg>
+                    Actions
                   </button>
                   <ul class="dropdown-menu dropdown-menu-sm" aria-labelledby="dropdownMenuButton">
                     <li class="d-flex flex-row justify-content-between">

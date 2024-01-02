@@ -1,57 +1,64 @@
 <x-unauthenticated_layout>
-  <div class="main-wrapper">
-    <header>
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="logo-container">
-                <img src="{{ asset('images/logo-v2.png') }}" alt="Eastern Visayas State University">
+  <div class="container-fluid p-0 vh-100 d-flex flex-column justify-content-between"
+      style="
+        background-image: url({{ asset('images/evsu_bg_transparent_1.png') }});
+        background-size: cover;
+      ">
+    <div>
+      <div class="bg-primary pb-2">
+        <div class="bg-white w-100 text-center">
+          <img src="{{ asset('images/logo-v2.png') }}" class="img-fluid p-3" />
+        </div>
+      </div>
+      <div class="row gx-0">
+        <div class="col-12 col-md-4 p-2 p-md-4">
+          <div class="card bg-success position-relative">
+            <div class="position-absolute w-100 end-0 bottom-0">
+              <img src="{{ asset('images_2/bg-logo.png') }}" class="img-fluid w-100"/>
+            </div>
+            <div class="card-body w-50 mx-auto" style="z-index: 9999;" >
+              <img src="{{ asset('images/student.png') }}" class="img-fluid"/>
+            </div>
+            <div class="card-footer text-center" style="z-index: 9999;" >
+              <a href="#" class="nav-link text-light fs-4 fw-bold">Student Portal</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4 p-2 p-md-4">
+          <div class="card bg-info position-relative">
+            <div class="position-absolute w-100 end-0 bottom-0">
+              <img src="{{ asset('images_2/bg-logo.png') }}" class="img-fluid w-100"/>
+            </div>
+            <div class="card-body w-50 mx-auto" style="z-index: 9999;" >
+              <img src="{{ asset('images/employee.png') }}" class="img-fluid"/>
+            </div>
+            <div class="card-footer text-center" style="z-index: 9999;" >
+              <a href="#" class="nav-link text-light fs-4 fw-bold">Employee Portal</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4 p-2 p-md-4">
+          <div class="card bg-danger position-relative">
+            <div class="position-absolute w-100 end-0 bottom-0">
+              <img src="{{ asset('images_2/bg-logo.png') }}" class="img-fluid w-100"/>
+            </div>
+            <div class="card-body w-50 mx-auto" style="z-index: 9999;" >
+              <img src="{{ asset('images/evaluator-portal.png') }}" class="img-fluid"/>
+            </div>
+            <div class="card-footer text-center" style="z-index: 9999;" >
+              <a href="#" class="nav-link text-light fs-4 fw-bold">Evaluator Portal</a>
             </div>
           </div>
         </div>
       </div>
-    </header>
-    <section class="content-area">
-      <div class="container-fluid">
-        <div class="row d-flex gx-5 align-items-center justify-content-around">
-          <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4" style="max-width: 30rem;">
-            <a class="app-icon-link" href="http://localhost/evsu-oc/student" title="">
-              <div style="background-color: #2b972c" class="app-icon-container">
-                  <img class="img-icon" src="{{ asset('images_2/student-portal.png') }}" alt="EVSU Student Portal">
-              </div>
-            </a>
-          </div>
-          <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4" style="max-width: 30rem;">
-            <a class="app-icon-link" href="/login" title="">
-              <div style="background-color: #9c27b0" class="app-icon-container">
-                  <img class="img-icon" src="{{ asset('images_2/free-ed-is.png') }}" alt="EVSU Employee Portal">
-              </div>
-            </a>
-          </div>
-          <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4" style="max-width: 30rem;">
-            <a target="_blank" class="app-icon-link" href="https://apps.evsu.edu.ph/admissions" title="">
-              <div style="background-color: #db4437" class="app-icon-container">
-                  <img class="img-icon" src="{{ asset('images_2/evaluator_portal.png') }}" alt="EVSU Online Admission">
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
+    </div>
 
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-              <h1 class="site-title text-center">EVSU-OC Integrated Transcript of Records and Latin Honors System</h1>
-          </div>
-        </div>
-      </div>
-    </section>
-    <footer class="footer">
-      <div class="row">
-        <div class="col-md-12">
-            <p class="text-center">Eastern Visayas State University - Copyright © 2012-2023 All Rights Reserved</p>
-        </div>
-      </div>
-    </footer>
+    <div class="text-center mt-5 mt-md-1">
+      <h5 class="fw-bold">
+        EVSU-OC Integrated Transcript of Records and Latin Honors System
+      </h5>
+      <p>Eastern Visayas State University - Copyright © 2012-2023 All Rights Reserved</p>
+    </div>
   </div>
+
 </x-unauthenticated_layout>

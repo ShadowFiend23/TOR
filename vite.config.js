@@ -8,9 +8,7 @@ export default defineConfig({
                 'resources/js/custom.js',
                 'resources/js/app.js',
                 'resources/css/app.css',
-                'resources/css/landingpage.css',
-                'resources/css/simplebar.css',
-                'resources/css/fontawesome_icons.css'
+                'resources/css/simplebar.css'
             ],
             refresh: true,
         }),
