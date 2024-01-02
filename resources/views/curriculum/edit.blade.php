@@ -43,7 +43,7 @@
                     </form>
                   </div>
                   <div class="modal-footer px-5">
-                    <a href="../curriculum/show" class="text-decoration-none btn btn-info text-white">Submit</a>
+                    <a href="../curriculum/new" class="text-decoration-none btn btn-info text-white">Submit</a>
                   </div>
                 </div>
               </div>
@@ -65,9 +65,9 @@
               <table class="table table-hover table-bordered shadow" style="width: 60vw;">
                 <thead>
                   <tr>
-                    <th scope="col" class='fw-semibold' style="width: 10%;">Code</th>
-                    <th colspan="2" scope="col" class='fw-semibold' style="width: 60%;">Description</th>
-                    <th scope="col" class='fw-semibold' style="width: 5%;">Credits</th>
+                    <th scope="col" class='fw-semibold text-center' style="width: 10%;">Code</th>
+                    <th colspan="2" scope="col" class='fw-semibold text-center' style="width: 60%;">Description</th>
+                    <th scope="col" class='fw-semibold text-center' style="width: 5%;">Credits</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -267,7 +267,7 @@
       </div>
 
       <div class="modal fade modal-lg" id="updateModalToggle" aria-hidden="true" aria-labelledby="updateModalToggle" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header bg-dark ps-5">
               <h1 class="modal-title fs-5 text-white" id="updateModalToggleLabel">Notice</h1>

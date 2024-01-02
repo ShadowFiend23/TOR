@@ -12,7 +12,7 @@
       <img class="avatar-img" src="{{ asset('images/avatar.png') }}">
     </div>
     <div class="info-wrapper d-flex flex-column gap-2">
-      <p class="fw-bold mb-0 text-white">ROSALINDA</p>
+      <p class="fw-bold mb-0 text-white">{{ session('firstName') }}</p>
       <div class="icon-wrapper d-flex flex-row gap-2">
         <a class="text-decoration-none text-white border border-white d-flex align-items-center justify-content-center py-1 px-2" href="#">
           <i class='bx bx-cog' ></i>
@@ -26,13 +26,13 @@
   </div>
   <ul class="sidebar-nav simplebar-scrollable-y" data-coreui="navigation" data-simplebar="init">
     <li class="nav-item w-100">
-      <a class="nav-link" href="#">
-        <i class='bx bx-desktop' ></i> 
+      <a class="nav-link" href="{{ route('department') }}">
+        <i class='bx bx-desktop' ></i>
         <span class="mx-1">Dashboard</span>
       </a>
     </li>
     <li class="nav-item w-100">
-      <a class="nav-link" href="#">
+      <a class="nav-link" href="{{ route('addCourse') }}">
         <i class='bx bx-book' ></i>
         <span class="mx-1">Add Course</span>
       </a>
@@ -44,7 +44,7 @@
       </a>
     </li>
     <li class="nav-item w-100">
-      <a class="nav-link" href="#">
+      <a class="nav-link" href="{{ route('curriculum') }}">
         <i class='bx bx-list-ul' ></i>
         <span class="mx-1">Curriculum List</span>
       </a>

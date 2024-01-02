@@ -5,7 +5,7 @@
   <h5>Manage Employee Accounts</h5>
   <div>
     <div class="d-flex gap-1 align-items-center justify-content-end mb-4">
-      <a href="/admin/co_admins/new" class="btn btn-info text-white">
+      <a href="{{ route('addCoAdmin') }}" class="btn btn-info text-white">
         <i class='bx bx-plus' ></i> <span>Add co-admin</span>
       </a>
       <button class="btn btn-success text-white">

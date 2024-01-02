@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="TOR Webbased System">
   <meta name="author" content="Team Rosalinda">
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
   <link rel="shortcut icon" href="{{ asset('images_2/favicon.ico') }}">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <script src='https://unpkg.com/@popperjs/core@2'></script>
@@ -33,7 +34,7 @@
   <x-admin_sidenav/>
   <div class="wrapper d-flex flex-column min-vh-100">
     <x-navbar/>
-    
+
     <div class="body flex-grow-1">
       {{ $slot }}
     </div>

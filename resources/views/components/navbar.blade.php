@@ -11,7 +11,7 @@
           <a class="dropdown-item" href="#">
             <svg class="icon me-2">
               <i class='bx bxs-user-account' ></i>
-            </svg> 
+            </svg>
             Account
           </a>
           <a class="dropdown-item" href="#">
@@ -20,7 +20,7 @@
             </svg> Settings
           </a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">
+          <a class="dropdown-item" href="{{ route('logout') }}">
             <svg class="icon me-2">
               <i class='bx bx-log-out' ></i>
             </svg> Logout

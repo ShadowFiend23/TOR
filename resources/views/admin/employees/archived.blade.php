@@ -49,60 +49,19 @@
           </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>REG123123</td>
-          <td>regsample_one@evsu.edu.ph</td>
-          <td>In-charge/BSM</td>
-          <td>Reg S. Ample I.</td>
-          <td>
-            <a href="#" class="text-info" data-coreui-toggle="modal" data-coreui-target="#exampleModal">Unarchive</a>
-          </td>
-        </tr>
-        <tr>
-          <td>REG456456</td>
-          <td>regsample_two@evsu.edu.ph</td>
-          <td>In-charge/BSIT</td>
-          <td>Reg S. Ample II</td>
-          <td>
-            <a href="#" class="text-info" data-coreui-toggle="modal" data-coreui-target="#exampleModal">Unarchive</a>
-          </td>
-        </tr>
-        <tr>
-          <td>REG789789</td>
-          <td>regsample_three@evsu.edu.ph</td>
-          <td>Registrar</td>
-          <td>Reg S. Ample III</td>
-          <td>
-            <a href="#" class="text-info" data-coreui-toggle="modal" data-coreui-target="#exampleModal">Unarchive</a>
-          </td>
-        </tr>
-        <tr>
-          <td>REG012012</td>
-          <td>regsample_four@evsu.edu.ph</td>
-          <td>SASO</td>
-          <td>Reg S. Ample IV</td>
-          <td>
-            <a href="#" class="text-info" data-coreui-toggle="modal" data-coreui-target="#exampleModal">Unarchive</a>
-          </td>
-        </tr>
-        <tr>
-          <td>REG345345</td>
-          <td>regsample_five@evsu.edu.ph</td>
-          <td>Registrar</td>
-          <td>Reg S. Ample V</td>
-          <td>
-            <a href="#" class="text-info" data-coreui-toggle="modal" data-coreui-target="#exampleModal">Unarchive</a>
-          </td>
-        </tr>
-        <tr>
-          <td>REG678768</td>
-          <td>regsample_six@evsu.edu.ph</td>
-          <td>Department Head/BSM</td>
-          <td>Reg S. Ample VI</td>
-          <td>
-            <a href="#" class="text-info" data-coreui-toggle="modal" data-coreui-target="#exampleModal">Unarchive</a>
-          </td>
-        </tr>
+        @forelse ($employees as $employee)
+            <tr>
+                <td>{{ $employee->employeeID }}</td>
+                <td>{{ $employee->email }}</td>
+                <td>{{ $employee->name }}</td>
+                <td>{{ "$employee->lastName, $employee->firstName" }}</td>
+                <td>
+                    <a href="#" class="text-info" data-coreui-toggle="modal" data-coreui-target="#exampleModal">Unarchive</a>
+                </td>
+            </tr>
+        @empty
+
+        @endforelse
       </tbody>
     </table>
   </div>

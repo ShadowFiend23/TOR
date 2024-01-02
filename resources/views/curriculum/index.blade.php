@@ -35,13 +35,13 @@
                         <option selected>Semester</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
-                        <option selected>Semester</option>
+                        <option value="semester">Semester</option>
                       </select>
                     </div>
                   </form>
                 </div>
                 <div class="modal-footer px-5">
-                  <a href="../curriculum/" class="text-decoration-none btn btn-info text-white">Submit</a>
+                  <a href="../curriculum/new" class="text-decoration-none btn btn-info text-white">Submit</a>
                 </div>
               </div>
             </div>

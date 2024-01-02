@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Validation\ValidationException;
 
 class EmployeeLoginController extends Controller
 {
@@ -22,14 +23,22 @@ class EmployeeLoginController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'employeeID' => ['required', 'employeeID'],
-            'password' => ['required'],
+            'userID' => 'required|exists:users,userID',
+            'password' => 'required'
         ]);
 
-        if (Auth::attempt(['employeeID' => $request->email, 'password' => $request->password])) {
+        if (Auth::attempt(['userID' => $request->userID, 'password' => $request->password])) {
             $request->session()->regenerate();
 
-            return redirect()->intended('dashboard');
+            $user = User::where('userID',$request->userID)->get()[0];
+            $role = $user->role;
+            session('userRole',$role);
+
+            if($role === "admin"){
+                return route('admin');
+            }else if($role === "employee"){
+                return route('department');
+            }
         }
 
         return back()->withErrors([
@@ -44,6 +53,6 @@ class EmployeeLoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('employeeLogin');
+        return redirect()->route('login');
     }
 }

@@ -26,204 +26,43 @@
           </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>REG123123</td>
-          <td>regsample_one@evsu.edu.ph</td>
-          <td>In-charge/BSM</td>
-          <td>Reg S. Ample I.</td>
-          <td>
-            <div class="dropdown">
-              <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-coreui-toggle="dropdown" aria-expanded="false">
-                Actions
-              </button>
-              <ul class="dropdown-menu dropdown-menu-sm" aria-labelledby="dropdownMenuButton">
-                <li class="d-flex flex-row justify-content-between">
-                  <a class="dropdown-item text-info" href="#">
-                    <i class='bx bx-show' ></i>
-                    View
-                  </a>
-                </li>
-                <li class="d-flex flex-row justify-content-between">
-                  <a class="dropdown-item text-info" href="#">
-                    <i class='bx bx-edit-alt' ></i>
-                    Edit
-                  </a>
-                </li>
-                <li class="d-flex flex-row justify-content-between">
-                  <a class="dropdown-item text-info" href="#">
-                    <i class='bx bx-archive-in' ></i>
-                    Archive
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>REG456456</td>
-          <td>regsample_two@evsu.edu.ph</td>
-          <td>In-charge/BSIT</td>
-          <td>Reg S. Ample II</td>
-          <td>
-            <div class="dropdown">
-              <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-coreui-toggle="dropdown" aria-expanded="false">
-                Actions
-              </button>
-              <ul class="dropdown-menu dropdown-menu-sm" aria-labelledby="dropdownMenuButton">
-                <li class="d-flex flex-row justify-content-between">
-                  <a class="dropdown-item text-info" href="#">
-                    <i class='bx bx-show' ></i>
-                    View
-                  </a>
-                </li>
-                <li class="d-flex flex-row justify-content-between">
-                  <a class="dropdown-item text-info" href="#">
-                    <i class='bx bx-edit-alt' ></i>
-                    Edit
-                  </a>
-                </li>
-                <li class="d-flex flex-row justify-content-between">
-                  <a class="dropdown-item text-info" href="#">
-                    <i class='bx bx-archive-in' ></i>
-                    Archive
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>REG789789</td>
-          <td>regsample_three@evsu.edu.ph</td>
-          <td>Registrar</td>
-          <td>Reg S. Ample III</td>
-          <td>
-            <div class="dropdown">
-              <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-coreui-toggle="dropdown" aria-expanded="false">
-                Actions
-              </button>
-              <ul class="dropdown-menu dropdown-menu-sm" aria-labelledby="dropdownMenuButton">
-                <li class="d-flex flex-row justify-content-between">
-                  <a class="dropdown-item text-info" href="#">
-                    <i class='bx bx-show' ></i>
-                    View
-                  </a>
-                </li>
-                <li class="d-flex flex-row justify-content-between">
-                  <a class="dropdown-item text-info" href="#">
-                    <i class='bx bx-edit-alt' ></i>
-                    Edit
-                  </a>
-                </li>
-                <li class="d-flex flex-row justify-content-between">
-                  <a class="dropdown-item text-info" href="#">
-                    <i class='bx bx-archive-in' ></i>
-                    Archive
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>REG012012</td>
-          <td>regsample_four@evsu.edu.ph</td>
-          <td>SASO</td>
-          <td>Reg S. Ample IV</td>
-          <td>
-            <div class="dropdown">
-              <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-coreui-toggle="dropdown" aria-expanded="false">
-                Actions
-              </button>
-              <ul class="dropdown-menu dropdown-menu-sm" aria-labelledby="dropdownMenuButton">
-                <li class="d-flex flex-row justify-content-between">
-                  <a class="dropdown-item text-info" href="#">
-                    <i class='bx bx-show' ></i>
-                    View
-                  </a>
-                </li>
-                <li class="d-flex flex-row justify-content-between">
-                  <a class="dropdown-item text-info" href="#">
-                    <i class='bx bx-edit-alt' ></i>
-                    Edit
-                  </a>
-                </li>
-                <li class="d-flex flex-row justify-content-between">
-                  <a class="dropdown-item text-info" href="#">
-                    <i class='bx bx-archive-in' ></i>
-                    Archive
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>REG345345</td>
-          <td>regsample_five@evsu.edu.ph</td>
-          <td>Registrar</td>
-          <td>Reg S. Ample V</td>
-          <td>
-            <div class="dropdown">
-              <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-coreui-toggle="dropdown" aria-expanded="false">
-                Actions
-              </button>
-              <ul class="dropdown-menu dropdown-menu-sm" aria-labelledby="dropdownMenuButton">
-                <li class="d-flex flex-row justify-content-between">
-                  <a class="dropdown-item text-info" href="#">
-                    <i class='bx bx-show' ></i>
-                    View
-                  </a>
-                </li>
-                <li class="d-flex flex-row justify-content-between">
-                  <a class="dropdown-item text-info" href="#">
-                    <i class='bx bx-edit-alt' ></i>
-                    Edit
-                  </a>
-                </li>
-                <li class="d-flex flex-row justify-content-between">
-                  <a class="dropdown-item text-info" href="#">
-                    <i class='bx bx-archive-in' ></i>
-                    Archive
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>REG678768</td>
-          <td>regsample_six@evsu.edu.ph</td>
-          <td>Department Head/BSM</td>
-          <td>Reg S. Ample VI</td>
-          <td>
-            <div class="dropdown">
-              <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-coreui-toggle="dropdown" aria-expanded="false">
-                Actions
-              </button>
-              <ul class="dropdown-menu dropdown-menu-sm" aria-labelledby="dropdownMenuButton">
-                <li class="d-flex flex-row justify-content-between">
-                  <a class="dropdown-item text-info" href="#">
-                    <i class='bx bx-show' ></i>
-                    View
-                  </a>
-                </li>
-                <li class="d-flex flex-row justify-content-between">
-                  <a class="dropdown-item text-info" href="#">
-                    <i class='bx bx-edit-alt' ></i>
-                    Edit
-                  </a>
-                </li>
-                <li class="d-flex flex-row justify-content-between">
-                  <a class="dropdown-item text-info" href="#">
-                    <i class='bx bx-archive-in' ></i>
-                    Archive
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </td>
-        </tr>
+        @forelse ($employees as $employee)
+            <tr>
+                <td>{{ $employee->employeeID }}</td>
+                <td>{{ $employee->email }}</td>
+                <td>{{ $employee->name }}</td>
+                <td>{{ "$employee->lastName, $employee->firstName" }}</td>
+                <td>
+                    <div class="dropdown">
+                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-coreui-toggle="dropdown" aria-expanded="false">
+                        Actions
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-sm" aria-labelledby="dropdownMenuButton">
+                        <li class="d-flex flex-row justify-content-between">
+                        <a class="dropdown-item text-info" href="#">
+                            <i class='bx bx-show' ></i>
+                            View
+                        </a>
+                        </li>
+                        <li class="d-flex flex-row justify-content-between">
+                        <a class="dropdown-item text-info" href="{{ route('editEmployee'). "/?id=$employee->id" }}">
+                            <i class='bx bx-edit-alt' ></i>
+                            Edit
+                        </a>
+                        </li>
+                        <li class="d-flex flex-row justify-content-between">
+                        <a class="dropdown-item text-info" href="{{ route('deleteEmployee'). "/?id=$employee->id" }}">
+                            <i class='bx bx-archive-in' ></i>
+                            Archive
+                        </a>
+                        </li>
+                    </ul>
+                    </div>
+                </td>
+                </tr>
+        @empty
+
+        @endforelse
       </tbody>
     </table>
   </div>

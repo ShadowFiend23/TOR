@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
   <meta name="description" content="TOR Webbased System">
   <meta name="author" content="Team Rosalinda">
   <link rel="shortcut icon" href="{{ asset('images_2/favicon.ico') }}">
@@ -33,7 +34,7 @@
   <x-sidenav/>
   <div class="wrapper d-flex flex-column min-vh-100">
     <x-navbar/>
-    
+
     <div class="body flex-grow-1">
       {{ $slot }}
     </div>

@@ -1,8 +1,15 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\StudentLoginController;
-use App\Http\Controllers\EmployeeLoginController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CoAdminController;
+use App\Http\Controllers\DepartmentHeadController;
+use App\Http\Controllers\EmployeesController;
+use App\Http\Controllers\DepartmentsController;
+use App\Http\Controllers\RubricsController;
+use App\Http\Controllers\SchoolYearController;
+use App\Http\Controllers\StudentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,61 +22,78 @@ use App\Http\Controllers\EmployeeLoginController;
 |
 */
 
-Route::get('/', function () { return view('landing'); });
+Route::get('/', function () {
+    return view('landing');
+});
 
-# Admin routes
-Route::get('/admin', function () { return view('admin/index'); });
+Route::get('/login',[LoginController::class,'show'])->middleware('guest')->name('login');
+Route::post('/login',[LoginController::class,'login'])->middleware('guest');
+Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
-Route::get('/otp', function () { return view('/otp'); });
+Route::middleware(['auth','user-role:admin'])->group(function(){
 
-Route::get('/admin/employees', function () { return view('admin/employees/index'); });
-Route::get('/admin/employees/new', function () { return view('admin/employees/new'); });
-Route::get('/admin/employees/archived', function () { return view('admin/employees/archived'); });
-Route::get('/admin/employees/confirmations', function () { return view('admin/employees/confirmations'); });
-Route::get('/admin/employees/login', function () { return view('admin/employees/login'); });
-Route::get('/admin/employees/register', function () { return view('admin/employees/register'); });
+    Route::get('/admin',[EmployeesController::class,'index'])->name('admin');
 
-Route::get('/admin/co_admins', function () { return view('admin/co_admins/index'); });
-Route::get('/admin/co_admins/new', function () { return view('admin/co_admins/new'); });
-Route::get('/admin/co_admins/archived', function () { return view('admin/co_admins/archived'); });
+    # Admin Employees Routes
+    Route::prefix('admin')->group(function () {
+        Route::get('/employees',[EmployeesController::class,'employees'])->name('employees');
+        Route::get('/employees/new',[EmployeesController::class,'addEmployeePage'])->name('addEmployee');
+        Route::get('/employees/edit',[EmployeesController::class,'editEmployeePage'])->name('editEmployee');
+        Route::get('/employees/archived',[EmployeesController::class,'archivedPage'])->name('archivedEmployee');
+        Route::post('/saveEmployee',[EmployeesController::class,'saveEmployee'])->name('saveEmployee');
+        Route::get('/deleteEmployee',[EmployeesController::class,'deleteEmployee'])->name('deleteEmployee');
 
-Route::get('/admin/departments', function () { return view('admin/departments/index'); });
-Route::get('/admin/departments/new', function () { return view('admin/departments/new'); });
-Route::get('/admin/departments/edit', function () { return view('admin/departments/edit'); });
+        # Admin Department Routes
+        Route::get('/departments',[DepartmentsController::class,'departments'])->name('departments');
+        Route::get('/departments/new',[DepartmentsController::class,'addDepartmentPage'])->name('addDepartment');
+        Route::get('/departments/edit',[DepartmentsController::class,'editDepartmentPage'])->name('editDepartment');
+        Route::post('/saveDepartment',[DepartmentsController::class,'saveDepartment'])->name('saveDepartment');
+        Route::post('/deleteDepartment',[DepartmentsController::class,'deleteDepartment']);
 
-Route::get('/admin/school_year', function () { return view('admin/school_year/index'); });
+        # Admin CoAdmin Routes
+        Route::get('/co-admin',[CoAdminController::class,'coAdmin'])->name('coAdmin');
+        Route::get('/co-admin/new',[CoAdminController::class,'addCoAdminPage'])->name('addCoAdmin');
+        Route::get('/co-admin/edit',[CoAdminController::class,'editCoAdminPage'])->name('editCoAdmin');
+        Route::post('/saveCoAdmin',[CoAdminController::class,'saveCoAdmin'])->name('saveCoAdmin');
+        Route::post('/deleteCoAdmin',[CoAdminController::class,'deleteCoAdmin']);
 
-Route::get('/admin/students', function () { return view('admin/students/index'); });
-Route::get('/admin/courses', function () { return view('admin/students/courses'); });
-Route::get('/admin/course_id/students', function () { return view('admin/students/students'); });
-Route::get('/admin/course_id/students/new', function () { return view('admin/students/new'); });
-Route::get('/admin/course_id/students/archived', function () { return view('admin/students/archived'); });
+        # Admin Students Routes
+        Route::get('/students',[StudentsController::class,'students'])->name('students');
+        Route::get('/addStudents',[StudentsController::class,'addStudentPage'])->name('addStudents');
+        Route::get('/editStudents',[StudentsController::class,'editStudentPage'])->name('editStudents');
+        Route::post('/saveStudents',[StudentsController::class,'saveStudent'])->name('saveStudents');
+        Route::post('/deleteStudents',[StudentsController::class,'deleteStudent']);
 
-Route::get('/admin/rubrics', function () { return view('admin/rubrics/index'); });
-Route::get('/admin/rubrics/edit', function () { return view('admin/rubrics/edit'); });
+        # Admin School Year
+        Route::get('/admin/school-year',[SchoolYearController::class,'schoolYear'])->name('schoolYear');
 
+        # Admin Rubrics
+        Route::get('/rubrics', [RubricsController::class,'rubrics'])->name('rubrics');
+        Route::get('/rubrics/edit', [RubricsController::class,'editRubrics'])->name('editRubrics');
+    });
 
-# Department routes
-Route::get('/department', function () { return view('department/index'); });
+});
 
-# Course routes
-Route::get('/course/edit', function () { return view('course/edit'); });
-Route::get('/course/new', function () { return view('course/new'); });
+Route::middleware(['auth','user-role:employee'])->group(function(){
+    Route::middleware('permission:department-head')->group(function(){
+        Route::get('/department',[DepartmentHeadController::class,'dashboard'])->name('department');
 
-# Curriculum
-Route::get('/curriculum', function () { return view('curriculum/index'); });
-Route::get('/curriculum/show', function () { return view('curriculum/show'); });
-Route::get('/curriculum/edit', function () { return view('curriculum/edit'); });
+        Route::get('/curriculum', [DepartmentHeadController::class,'curriculum'])->name('curriculum');
+        Route::get('/curriculum/show',[DepartmentHeadController::class,'showCurriculum']);
+        Route::get('/curriculum/edit',[DepartmentHeadController::class,'editCurriculum']);
+        Route::get('/curriculum/new',[DepartmentHeadController::class,'addCurriculum']);
+        Route::get('/curriculum_list',[DepartmentHeadController::class,'curriculumList']);
 
-Route::get('/studentLogin',[StudentLoginController::class,'show'])->middleware('guest')->name('studentLogin');
-Route::post('/studentLogin',[StudentLoginController::class,'login'])->middleware('guest');
-Route::get('/studentLogout',[StudentLoginController::class,'logout']);
+        Route::get('/course/add', [DepartmentHeadController::class,'addCourse'])->name('addCourse');
+        Route::get('/course/edit', [DepartmentHeadController::class,'editCourse']);
+        Route::post('/saveCourse', [DepartmentHeadController::class,'saveCourse']);
+    });
 
-Route::get('/employeeLogin',[EmployeeLoginController::class,'show'])->middleware('guest')->name('employeeLogin');
-Route::post('/employeeLogin',[StudentLoginController::class,'login'])->middleware('guest');
-Route::get('/employeeLogout',[StudentLoginController::class,'logout']);
+    Route::middleware('permission:registrar')->group(function(){
+        Route::get('/registrar', function () { return "Registrar Page"; })->name('registrar');
+    });
+});
 
+Route::middleware(['auth','user-role:student'])->group(function(){
 
-#Static Page
-
-Route::get('/terms-and-conditions', function () { return view('terms_and_conditions/index'); });
+});
