@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class CoAdmin extends Model
 {
     use HasFactory;
+
+    protected $table = "co-admin";
 }

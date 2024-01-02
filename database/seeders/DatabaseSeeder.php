@@ -28,16 +28,6 @@ class DatabaseSeeder extends Seeder
                 "password"  => bcrypt('admin'),
                 "role"      => 0
             ],
-            [
-                "userID"    => "employee",
-                "password"  => bcrypt('employee'),
-                "role"      => 1
-            ],
-            [
-                "userID"    => "student",
-                "password"  => bcrypt('student'),
-                "role"      => 2
-            ],
         ];
 
         foreach($users as $user){
@@ -46,16 +36,24 @@ class DatabaseSeeder extends Seeder
 
         $employeeRoles = [
             [
-                "code" => "depHead",
-                "name" => "Department Head"
+                "code" => "department-head",
+                "name" => "Department Head",
+                "route"=> "department"
+            ],
+            [
+                "code" => "evaluator",
+                "name" => "Evaluator",
+                "route"=> "evaluator"
             ],
             [
                 "code" => "registrar",
-                "name" => "Registrar"
+                "name" => "Registrar",
+                "route"=> "registrar"
             ],
             [
                 "code" => "saso",
-                "name" => "SASO"
+                "name" => "SASO",
+                "route"=> "saso"
             ]
         ];
 

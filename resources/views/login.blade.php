@@ -26,7 +26,7 @@
             let frmData     = new FormData($(this)[0]);
 
             $.ajax({
-                url  : 'login',
+                url  : '/login',
                 data : frmData,
                 type : 'POST',
                 processData: false,

@@ -2,8 +2,9 @@
 
 namespace App\Repositories;
 
-use App\Interfaces\EmployeesRepositoryInterface;
+use App\Models\User;
 use App\Models\Employees;
+use App\Interfaces\EmployeesRepositoryInterface;
 
 class EmployeesRepository implements EmployeesRepositoryInterface
 {
@@ -31,19 +32,56 @@ class EmployeesRepository implements EmployeesRepositoryInterface
         Employees::destroy($employeeID);
     }
 
-    public function createEmployee($params)
+    public function createEmployee($request)
     {
+        $params = $request->except('password');
+
         if(isset($params['id'])){
             $id = $params['id'];
             unset($params['id']);
-            return $this->updateEmployee($id,$params);
+            return $this->updateEmployee($id,$params,$request);
         }
 
-        return Employees::create($params);
+        if(Employees::create($params)){
+            $p = [
+                "userID"    => $request->input('employeeID'),
+                "password"  => bcrypt($request->input('password')),
+                "role"      => 1
+            ];
+
+            return $this->createUser($p);
+        }
     }
 
-    public function updateEmployee($employeeID, $params)
+    public function getUserByUserID($id){
+        return User::where('userID',$id)->first();
+    }
+
+    public function createUser($params){
+        return User::create($params);
+    }
+
+    public function updateEmployee($id, $params, $request)
     {
-        return Employees::whereId($employeeID)->update($params);
+
+        $oldEmployeeData = $this->getEmployeeById($id);
+
+        $user = $this->getUserByUserID($oldEmployeeData['employeeID']);
+
+        if(Employees::whereId($id)->update($params)){
+            $p = [
+                "userID"    => $params['employeeID'],
+                "password"  => bcrypt($request->input('password'))
+            ];
+
+            return $this->updateUser($user,$p);
+        }
+    }
+
+    public function updateUser($user,$params){
+        if($user){
+            return User::whereId($user->id)->update($params);
+        }
+
     }
 }

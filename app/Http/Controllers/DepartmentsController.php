@@ -12,11 +12,11 @@ class DepartmentsController extends Controller
     public function departments(){
         $departments = Departments::join('employees','employees.employeeID','=','departments.departmentHead')
                                     ->get(['departments.*','employees.firstName','employees.lastName']);
-        return view('components.admin.departments',compact('departments'));
+        return view('admin/departments/index',compact('departments'));
     }
 
     public function addDepartmentPage(){
-        return view('components.admin.addDepartments');
+        return view('admin/departments/new');
     }
 
     public function editDepartmentPage(Request $request){
@@ -25,7 +25,7 @@ class DepartmentsController extends Controller
         $department = Departments::find($id);
 
         if($department){
-            return view('components.admin.addDepartments',compact('department'));
+            return view('admin/departments/new',compact('department'));
         }
     }
 

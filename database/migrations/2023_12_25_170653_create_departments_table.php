@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('departmentName');
             $table->string('departmentHead');
-            $table->string('email');
-            $table->string('file');
+            $table->string('departmentColor');
             $table->timestamps();
         });
     }

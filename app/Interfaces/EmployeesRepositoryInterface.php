@@ -8,5 +8,5 @@ interface EmployeesRepositoryInterface
     public function getEmployeeById($employeeID);
     public function deleteEmployee($employeeID);
     public function createEmployee($params);
-    public function updateEmployee($employeeID, $params);
+    public function updateEmployee($employeeID, $params, $password);
 }

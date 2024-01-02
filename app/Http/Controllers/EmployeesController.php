@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Interfaces\EmployeesRepositoryInterface;
+use App\Models\Students;
 use App\Models\Employees;
 use App\Models\Departments;
-use App\Repositories\EmployeesRepository;
 use Illuminate\Http\Request;
+use App\Repositories\EmployeesRepository;
+use App\Interfaces\EmployeesRepositoryInterface;
 
 class EmployeesController extends Controller
 {
@@ -18,27 +19,53 @@ class EmployeesController extends Controller
     }
 
     public function index(){
-        return view('app');
+        $data = [
+            'departments'   => Employees::where('roleCode','department-head'),
+            'registrar'     => Employees::where('roleCode','registrar'),
+            'evaluator'     => Employees::where('roleCode','evaluator'),
+            'saso'          => Employees::where('roleCode','saso'),
+            'students'      => Students::all()
+        ];
+
+        return view('admin/index',compact('data'));
     }
 
     public function employees(){
         $employees = Employees::join('employee_roles','employees.roleCode','=','employee_roles.code')
                             ->get(['employees.*','employee_roles.name']);
 
-        return view('components.employee.employees', compact('employees'));
+        return view('admin/employees/index', compact('employees'));
     }
 
     public function addEmployeePage(){
-        return view('components.employee.addEmployee');
+        $info = [
+            'title'     => "Add Employee",
+            'button'    => "Add Employee"
+        ];
+
+        return view('admin/employees/new',compact('info'));
     }
 
     public function editEmployeePage(Request $request){
         $id = $request->input('id');
 
-        $employee = $this->employeesRepository->getEmployeeById($id);
-        if($employee){
-            return view('components.employee.addEmployee',compact('employee'));
+        $info = [
+            'title'     => "Edit Employee",
+            'button'    => "Update Employee",
+            'data'      => $this->employeesRepository->getEmployeeById($id)
+        ];
+
+        if(!empty($info['data'])){
+            return view('admin/employees/new',compact('info'));
         }
+    }
+
+    public function archivedPage(){
+        $employees = Employees::join('employee_roles','employees.roleCode','=','employee_roles.code')
+                            ->onlyTrashed()
+                            ->get(['employees.*','employee_roles.name']);
+
+        return view('admin/employees/archived', compact('employees'));
     }
 
     public function deleteEmployee(Request $request){
@@ -80,7 +107,7 @@ class EmployeesController extends Controller
             ]);
         }
 
-        $query = $this->employeesRepository->createEmployee($request->except('password'));
+        $query = $this->employeesRepository->createEmployee($request);
 
         if(!$query){
             return response()->json([

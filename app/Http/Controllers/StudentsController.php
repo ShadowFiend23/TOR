@@ -9,15 +9,11 @@ class StudentsController extends Controller
 {
     //
 
-    public function index(){
-        return view('app');
-    }
+    public function students(){
+        // $employees = Students::join('employee_roles','employees.roleCode','=','employee_roles.code')
+        //                     ->get(['employees.*','employee_roles.name']);
 
-    public function employees(){
-        $employees = Students::join('employee_roles','employees.roleCode','=','employee_roles.code')
-                            ->get(['employees.*','employee_roles.name']);
-
-        return view('components.employee.employees', compact('employees'));
+        return view('admin/students/index');
     }
 
     public function addEmployeePage(){

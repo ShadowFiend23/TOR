@@ -1,9 +1,9 @@
 <x-authenticated_layout>
 
-<div class="container-fluid px-5">
+<div class="container-lg px-5">
   <h1 class="app-page-title">Dashboard</h1>
   <div class="alert alert-dismissible alert-info">
-    Hi Rosalinda!, Welcome to your Dashboard
+    Hi {{ session('firstName') }}!, Welcome to your Dashboard
   </div>
   <div class="d-flex align-items-center justify-content-end p-2">
     <a href="{{ route('addCourse') }}"  class="btn btn-success shadow text-white"><span class="text-white">

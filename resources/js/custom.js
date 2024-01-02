@@ -20,6 +20,31 @@ $(function(){
         }
     });
 
+    $("#employeeForm").on("submit",function(e){
+        e.preventDefault();
+
+        let frmData     = new FormData($(this)[0]);
+
+        $.ajax({
+            url  : '/admin/saveEmployee',
+            data : frmData,
+            type : 'POST',
+            processData: false,
+            contentType: false,
+            success : function(data){
+
+            },
+            error: function(xhr){
+                // let response = xhr.responseJSON;
+
+                // Toast.fire({
+                //     icon : 'error',
+                //     title: response.message.split('(')[0]
+                // })
+            }
+        })
+    })
+
     $("#courseForm").on("submit",function(e){
         e.preventDefault();
 

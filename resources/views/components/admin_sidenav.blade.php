@@ -12,7 +12,7 @@
       <img class="avatar-img" src="{{ asset('images/avatar.png') }}">
     </div>
     <div class="info-wrapper d-flex flex-column gap-2">
-      <p class="fw-bold mb-0 text-white">{{ session('firstName') }}</p>
+      <p class="fw-bold mb-0 text-white">{{ ucwords(auth()->user()->role) }}</p>
       <div class="icon-wrapper d-flex flex-row gap-2">
         <a class="text-decoration-none text-white border border-white d-flex align-items-center justify-content-center py-1 px-2" href="#">
           <i class='bx bx-cog' ></i>
@@ -26,45 +26,45 @@
   </div>
   <ul class="sidebar-nav simplebar-scrollable-y" data-coreui="navigation" data-simplebar="init">
     <li class="nav-item w-100">
-      <a class="nav-link" href="{{ route('department') }}">
+      <a class="nav-link" href="{{ route('admin') }}">
         <i class='bx bx-desktop' ></i>
         <span class="mx-1">Dashboard</span>
       </a>
     </li>
     <li class="nav-item w-100">
-      <a class="nav-link" href="{{ route('addCourse') }}">
-        <i class='bx bx-book' ></i>
-        <span class="mx-1">Add Course</span>
+      <a class="nav-link" href="{{ route('employees') }}">
+        <i class='bx bx-briefcase-alt' ></i>
+        <span class="mx-1">Add Employees</span>
       </a>
     </li>
     <li class="nav-item w-100">
-      <a class="nav-link" href="#">
-        <i class='bx bx-male'></i>
-        <span class="mx-1">In-Charge</span>
+      <a class="nav-link" href="{{ route('departments') }}">
+        <i class='bx bx-buildings' ></i>
+        <span class="mx-1">Add Departments</span>
       </a>
     </li>
     <li class="nav-item w-100">
-      <a class="nav-link" href="{{ route('curriculum') }}">
-        <i class='bx bx-list-ul' ></i>
-        <span class="mx-1">Curriculum List</span>
-      </a>
-    </li>
-    <li class="nav-item w-100">
-      <a class="nav-link" href="#">
+      <a class="nav-link" href="{{ route('students') }}">
         <i class='bx bx-user-plus' ></i>
         <span class="mx-1">Add Students</span>
       </a>
     </li>
     <li class="nav-item w-100">
-      <a class="nav-link" href="#">
-        <i class='bx bx-receipt' ></i>
-        <span class="mx-1">Latin Honor Application</span>
+      <a class="nav-link" href="{{ route('schoolYear') }}">
+        <i class='bx bx-calendar' ></i>
+        <span class="mx-1">School Year</span>
       </a>
     </li>
     <li class="nav-item w-100">
-      <a class="nav-link" href="#">
-        <i class='bx bx-medal' ></i>
-        <span class="mx-1">Final Listing of Latin Honor</span>
+      <a class="nav-link" href="{{ route('coAdmin') }}">
+        <i class='bx bx-hard-hat' ></i>
+        <span class="mx-1">Add Co-Admin</span>
+      </a>
+    </li>
+    <li class="nav-item w-100">
+      <a class="nav-link" href="{{ route('rubrics') }}">
+        <i class='bx bx-line-chart'></i>
+        <span class="mx-1">Rubrics</span>
       </a>
     </li>
   </ul>

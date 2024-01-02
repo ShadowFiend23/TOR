@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -24,20 +25,25 @@ class LoginController extends Controller
         if (Auth::attempt(['userID' => $request->userID, 'password' => $request->password])) {
             $request->session()->regenerate();
 
-            $user = User::where('userID',$request->userID)->get()[0];
+            $user = User::leftJoin('employees','employees.employeeID','=', 'users.userID')
+                        ->leftJoin('employee_roles','employees.roleCode','=','employee_roles.code')
+                        ->where('userID',$request->userID)->get()[0];
+
             $role = $user->role;
-            session('userRole',$role);
+            Session::put('userRole', $role);
 
             if($role === "admin"){
                 return route('admin');
             }else if($role === "employee"){
-                return route('department');
+                Session::put('firstName', $user->firstName);
+
+                return route($user->route);
             }
         }
 
-        // return back()->withErrors([
-        //     'employeeID' => 'The provided credentials do not match our records.',
-        // ]);
+        return back()->withErrors([
+            'employeeID' => 'The provided credentials do not match our records.',
+        ]);
     }
 
     public function logout(Request $request)

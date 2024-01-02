@@ -1,5 +1,5 @@
 <x-authenticated_layout>
-  <div class="container-fluid px-5">
+  <div class="container-lg px-5">
     <div class="d-flex flex-column pt-4 ps-4 bg-dark">
       <h2 class="fs-4 text-center text-white">Edit Generation Z</h2>
       <div class="d-flex flex-column">
