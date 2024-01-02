@@ -20,6 +20,8 @@ Route::get('/', function () { return view('landing'); });
 # Admin routes
 Route::get('/admin', function () { return view('admin/index'); });
 
+Route::get('/otp', function () { return view('/otp'); });
+
 Route::get('/admin/employees', function () { return view('admin/employees/index'); });
 Route::get('/admin/employees/new', function () { return view('admin/employees/new'); });
 Route::get('/admin/employees/archived', function () { return view('admin/employees/archived'); });
