@@ -69,7 +69,10 @@ class DepartmentHeadController extends Controller
     }
 
     public function curriculumList(){
-        return view('curriculum_list/index');
+        $curriculums = Curriculum::join('courses','curriculum.course','=','courses.id')
+                                ->get(['curriculum.*', 'courses.courseName']);
+
+        return view('curriculum_list/index',compact('curriculums'));
     }
 
     public function showCurriculum(){

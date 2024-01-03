@@ -82,7 +82,7 @@ Route::middleware(['auth','user-role:employee'])->group(function(){
         Route::get('/curriculum/show',[DepartmentHeadController::class,'showCurriculum'])->name('showCurriculum');
         Route::get('/curriculum/edit',[DepartmentHeadController::class,'editCurriculum'])->name('editCurriculum');
         Route::get('/curriculum/new',[DepartmentHeadController::class,'addCurriculum']);
-        Route::get('/curriculum_list',[DepartmentHeadController::class,'curriculumList']);
+        Route::get('/curriculum-list',[DepartmentHeadController::class,'curriculumList'])->name('curriculumList');
         Route::post('/saveCurriculum',[DepartmentHeadController::class,'saveCurriculum']);
         Route::post('/saveCurriculumName',[DepartmentHeadController::class,'saveCurriculumName']);
         Route::post('/saveSubjects',[DepartmentHeadController::class,'saveSubjects']);
