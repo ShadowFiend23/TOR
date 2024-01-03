@@ -70,5 +70,111 @@ $(function(){
         })
     })
 
+    $("#addCurriculumForm").on("submit",function(e){
+        e.preventDefault();
+
+        let frmData     = new FormData($(this)[0]);
+
+        $.ajax({
+            url  : '/saveCurriculum',
+            data : frmData,
+            type : 'POST',
+            processData: false,
+            contentType: false,
+            success : function(response){
+                if(response.success){
+                    window.location.href = "/curriculum/new?id=" + response.id
+                }
+            },
+            error: function(xhr){
+                // let response = xhr.responseJSON;
+
+                // Toast.fire({
+                //     icon : 'error',
+                //     title: response.message.split('(')[0]
+                // })
+            }
+        })
+    })
+
+    $(".editCurBtn").on('click',function(e){
+        let name    = $(this).data('curname'),
+            id      = $(this).data('curid');
+
+        $("#editCurriculumModalLabel").html(name);
+        $("#curriculumNameInput").val(name);
+        $("#curriculumNameID").val(id);
+    });
+
+    $("#saveCurriculumName").on("click",function(e){
+        e.preventDefault();
+
+        let frmData     = new FormData($("#curriculumNameForm")[0]);
+
+        $.ajax({
+            url  : '/saveCurriculumName',
+            data : frmData,
+            type : 'POST',
+            processData: false,
+            contentType: false,
+            success : function(response){
+                
+            },
+            error: function(xhr){
+                // let response = xhr.responseJSON;
+
+                // Toast.fire({
+                //     icon : 'error',
+                //     title: response.message.split('(')[0]
+                // })
+            }
+        })
+    })
+
+    $("#appendSubject").on('click',function(){
+        let subject     =   `<div class="my-3">
+                                <input type="text" class="form-control" name="subjectCode[]" value="">
+                            </div>`,
+            description =   `<div class="my-3">
+                                <input type="text" class="form-control" name="description[]" value="">
+                            </div>`,
+            credits     =   `<div class="my-3">
+                                <input type="text" class="form-control" name="credits[]" value="3">
+                            </div>`,
+            preReq      =   `<div class="form-check mt-3">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="width: 2rem; height: 2rem;">
+                            </div>`;
+
+        $("#subjectDiv").append(subject);
+        $("#descriptionDiv").append(description);
+        $("#creditsDiv").append(credits);
+        $("#preReqDiv").append(preReq);
+
+    });
+
+    $("#submitSubjects").on('click',function(){
+
+        let frmData     = new FormData($("#subjectsForm")[0]);
+
+        $.ajax({
+            url  : '/saveSubjects',
+            data : frmData,
+            type : 'POST',
+            processData: false,
+            contentType: false,
+            success : function(response){
+
+            },
+            error: function(xhr){
+                // let response = xhr.responseJSON;
+
+                // Toast.fire({
+                //     icon : 'error',
+                //     title: response.message.split('(')[0]
+                // })
+            }
+        })
+    });
+
 });
 

@@ -21,29 +21,29 @@
         });
 
         $("#loginForm").on("submit",function(e){
-            e.preventDefault();
+        e.preventDefault();
 
-            let frmData     = new FormData($(this)[0]);
+        let frmData     = new FormData($(this)[0]);
 
-            $.ajax({
-                url  : '/login',
-                data : frmData,
-                type : 'POST',
-                processData: false,
-                contentType: false,
-                success : function(data){
-                    window.location.replace(data);
-                },
-                error: function(xhr){
-                    // let response = xhr.responseJSON;
+        $.ajax({
+            url  : '/login',
+            data : frmData,
+            type : 'POST',
+            processData: false,
+            contentType: false,
+            success : function(data){
+                window.location.replace(data);
+            },
+            error: function(xhr){
+                // let response = xhr.responseJSON;
 
-                    // Toast.fire({
-                    //     icon : 'error',
-                    //     title: response.message.split('(')[0]
-                    // })
-                }
-            })
+                // Toast.fire({
+                //     icon : 'error',
+                //     title: response.message.split('(')[0]
+                // })
+            }
         })
+    })
     </script>
 </body>
 </html>

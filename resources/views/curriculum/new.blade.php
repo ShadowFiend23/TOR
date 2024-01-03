@@ -1,72 +1,107 @@
 <x-authenticated_layout>
+    @php
+        $info = [];
+
+        if(isset($curriculum->info) && !empty($curriculum->info)){
+            $info = json_decode($curriculum->info,true);
+        }
+    @endphp
   <div class="container-fluid px-5">
     <div class="d-flex flex-column pt-4 ps-4 bg-dark">
-      <h2 class="fs-4 text-center text-white">Generation Z</h2>
+      <h2 class="fs-4 text-center text-white">{{ $curriculum->curriculumName }}</h2>
       <div class="d-flex flex-column">
         <h4 class="fs-6  text-white">Course: <span class="text-decoration-underline">BSIT</span></h4>
-        <h4 class="fs-6 text-white ">Year Level: <span class="text-decoration-underline">3rd Year</span></h4>
-        <h4 class="fs-6 text-white ">Semester: <span class="text-decoration-underline">1</span>  </h4>
+        <h4 class="fs-6 text-white ">Year Level: <span class="text-decoration-underline">{{ $curriculum->yearLevel }}</span></h4>
+        <h4 class="fs-6 text-white ">Semester: <span class="text-decoration-underline">{{ $curriculum->semester }}</span>  </h4>
       </div>
     </div>
-    <form action="" method="get" class="p-4 shadow">
+    <form id="subjectsForm" class="p-4 shadow">
+        <input type="hidden" name="id" value="{{ $curriculum->id }}" />
       <div class="row">
-        <div class="col-3">
+        <div class="col-3" id="subjectDiv">
           <div class="text-black fw-bold">
             Subject Code
           </div>
-          <div class="my-3">
-            <input type="text" class="form-control" id="curriculum-name" value="IT 123">
-          </div>
-          <div class="my-3">
-            <input type="text" class="form-control" id="curriculum-name" value="IT 456">
-          </div>
-          <div class="my-3">
-            <input type="text" class="form-control" id="curriculum-name" value="IT 789">
-          </div>
+            @if (!empty($info))
+                @foreach($info['subjectCode'] as $subjectCode)
+                    <div class="my-3">
+                        <input type="text" class="form-control" name="subjectCode[]" value="{{ $subjectCode }}">
+                    </div>
+                @endforeach
+            @else
+                <div class="my-3">
+                    <input type="text" class="form-control" name="subjectCode[]" value="IT 123">
+                </div>
+                <div class="my-3">
+                    <input type="text" class="form-control" name="subjectCode[]" value="IT 456">
+                </div>
+                <div class="my-3">
+                    <input type="text" class="form-control" name="subjectCode[]" value="IT 789">
+                </div>
+            @endif
         </div>
-        <div class="col-6 col-md-5">
+        <div class="col-6 col-md-5" id="descriptionDiv">
           <div class="text-black fw-bold">
             Descriptive Title
-          </div>
-          <div class="my-3">
-            <input type="text" class="form-control" id="curriculum-name" value="Sample only pre requisite look">
-          </div>
-          <div class="my-3">
-            <input type="text" class="form-control" id="curriculum-name" value="Sample only not pre requisite look">
-          </div>
-          <div class="my-3">
-            <input type="text" class="form-control" id="curriculum-name" value="Sample only pre requisite look">
-          </div>
+            </div>
+            @if (!empty($info))
+                @foreach ($info['description'] as $description)
+                    <div class="my-3">
+                        <input type="text" class="form-control" name="description[]" value="{{ $description }}">
+                    </div>
+                @endforeach
+            @else
+                <div class="my-3">
+                    <input type="text" class="form-control" name="description[]" value="Sample only pre requisite look">
+                </div>
+                <div class="my-3">
+                    <input type="text" class="form-control" name="description[]" value="Sample only not pre requisite look">
+                </div>
+                <div class="my-3">
+                    <input type="text" class="form-control" name="description[]" value="Sample only pre requisite look">
+                </div>
+            @endif
         </div>
-        <div class="col-2">
+        <div class="col-2" id="creditsDiv">
           <div class="text-black fw-bold">
             Credits
           </div>
-          <div class="my-3">
-            <input type="text" class="form-control" id="curriculum-name" value="3">
-          </div>
-          <div class="my-3">
-            <input type="text" class="form-control" id="curriculum-name" value="3">
-          </div>
-          <div class="my-3">
-            <input type="text" class="form-control" id="curriculum-name" value="3">
-          </div>
+            @if (!empty($info))
+                @foreach($info['credits'] as $credits)
+                    <div class="my-3">
+                        <input type="text" class="form-control" name="credits[]" value="{{ $credits }}">
+                    </div>
+                @endforeach
+            @else
+                <div class="my-3">
+                    <input type="text" class="form-control" name="credits[]" value="3">
+                </div>
+                <div class="my-3">
+                    <input type="text" class="form-control" name="credits[]" value="3">
+                </div>
+                <div class="my-3">
+                    <input type="text" class="form-control" name="credits[]" value="3">
+                </div>
+            @endif
         </div>
         <div class="col-1 col-md-2">
           <div class="text-black fw-bold text-nowrap">
             Pre-req
           </div>
-          <div class="d-flex flex-column">
-            <div class="form-check my-3">
+          <div class="d-flex flex-column" id="preReqDiv">
+            <div class="form-check mt-3">
               <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="width: 2rem; height: 2rem;">
             </div>
-            <div class="form-check my-1">
+            <div class="form-check mt-3">
               <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="width: 2rem; height: 2rem;">
             </div>
-            <div class="form-check my-3">
+            <div class="form-check mt-3">
               <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="width: 2rem; height: 2rem;">
             </div>
           </div>
+        </div>
+        <div class="d-flex justify-content-end my-2">
+            <button type="button" class="btn btn-info rounded-circle p-2" id="appendSubject"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg></button>
         </div>
         <div class="d-flex justify-content-end">
           <div class="modal modal-lg fade" id="presubjectModal" aria-hidden="true" aria-labelledby="presubjectModalLabel" tabindex="-1">
@@ -158,7 +193,7 @@
           </div>
 
 
-          <button type="button" class="btn btn-primary btn btn-info text-white" data-coreui-target="#presubjectModal"data-coreui-toggle="modal">
+          <button type="button" class="btn btn-primary btn btn-info text-white" id="submitSubjects">
             Submit
           </button>
 

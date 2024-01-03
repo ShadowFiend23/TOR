@@ -79,10 +79,13 @@ Route::middleware(['auth','user-role:employee'])->group(function(){
         Route::get('/department',[DepartmentHeadController::class,'dashboard'])->name('department');
 
         Route::get('/curriculum', [DepartmentHeadController::class,'curriculum'])->name('curriculum');
-        Route::get('/curriculum/show',[DepartmentHeadController::class,'showCurriculum']);
-        Route::get('/curriculum/edit',[DepartmentHeadController::class,'editCurriculum']);
+        Route::get('/curriculum/show',[DepartmentHeadController::class,'showCurriculum'])->name('showCurriculum');
+        Route::get('/curriculum/edit',[DepartmentHeadController::class,'editCurriculum'])->name('editCurriculum');
         Route::get('/curriculum/new',[DepartmentHeadController::class,'addCurriculum']);
         Route::get('/curriculum_list',[DepartmentHeadController::class,'curriculumList']);
+        Route::post('/saveCurriculum',[DepartmentHeadController::class,'saveCurriculum']);
+        Route::post('/saveCurriculumName',[DepartmentHeadController::class,'saveCurriculumName']);
+        Route::post('/saveSubjects',[DepartmentHeadController::class,'saveSubjects']);
 
         Route::get('/course/add', [DepartmentHeadController::class,'addCourse'])->name('addCourse');
         Route::get('/course/edit', [DepartmentHeadController::class,'editCourse']);
