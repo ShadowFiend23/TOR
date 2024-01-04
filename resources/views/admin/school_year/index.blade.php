@@ -57,33 +57,49 @@
         <i class='bx bx-plus' ></i> <span>New School Year</span>
       </button>
     </div>
-    <table id="regular_datatable" class="table table-light" style="width:100%;">
-      <thead>
-        <tr>
-          <th class="d-none"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>2018-2019 FIRST SEMESTER</td>
-        </tr>
-        <tr>
-          <td>2018-2019 SECOND-SEMESTER</td>
-        </tr>
-        <tr>
-          <td>2019-2020 FIRST SEMESTER</td>
-        </tr>
-        <tr>
-          <td>2019-2020 SECOND SEMESTER</td>
-        </tr>
-        <tr>
-          <td>2020-2021 FIRST SEMESTER</td>
-        </tr>
-        <tr>
-          <td>2020-2021 SECOND SEMESTER</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="card bg-transparent w-75 mx-auto shadow">
+      <div class="card-body">
+        <table id="regular_datatable" class="table table-light" style="width:100%;">
+          <thead>
+            <tr>
+              <th class="d-none"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-0 d-flex justify-content-start">
+                <div class="border border-1 p-2 col-6 text-center mx-auto rounded-1">2018-2019 FIRST SEMESTER</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="border border-0 d-flex justify-content-start">
+                <div class="border border-1 p-2 col-6 text-center mx-auto rounded-1">2018-2019 SECOND-SEMESTER</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="border border-0 d-flex justify-content-start">
+                <div class="border border-1 p-2 col-6 text-center mx-auto rounded-1">2019-2020 FIRST SEMESTER</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="border border-0 d-flex justify-content-start">
+                <div class="border border-1 p-2 col-6 text-center mx-auto rounded-1">2019-2020 SECOND SEMESTER</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="border border-0 d-flex justify-content-start">
+                <div class="border border-1 p-2 col-6 text-center mx-auto rounded-1">2020-2021 FIRST SEMESTER</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="border border-0 d-flex justify-content-start">
+                <div class="border border-1 p-2 col-6 text-center mx-auto rounded-1">2020-2021 SECOND SEMESTER</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
 
