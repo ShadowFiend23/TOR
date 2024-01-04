@@ -2,7 +2,7 @@
   <div class="container-fluid px-5">
     <div class="card border border-0 px-0 mx-0">
       <div class="card-header p-4 text-center bg-dark">
-        <h5 class="card-title text-white">ALL CURRICULUMS<a href="#" class="text-danger text-decoration-underline">Computer Studies Department</a></h5>
+        <h5 class="card-title text-white">ALL CURRICULUMS</h5>
       </div>
       <div class="card-body shadow">
         <table id="curriculum_list_table" class="table" style="width:100%;">

@@ -28,24 +28,6 @@
                       <label for="curriculumName" class="col-form-label">Curriculum Name</label>
                       <input type="text" class="form-control" name="curriculumName" id="curriculumName", placeholder="Enter Curriculum Name">
                     </div>
-                    <label for="yearLevel" class="col-form-label">Year Level</label>
-                    <div class="input-group mb-3">
-                      <select class="form-select" name="yearLevel" id="yearLevel">
-                        <option selected>Select year level</option>
-                        <option value="1">1st</option>
-                        <option value="2">2nd</option>
-                        <option value="3">3rd</option>
-                        <option value="3">4th</option>
-                      </select>
-                    </div>
-                    <label for="semester" class="col-form-label">Semester</label>
-                    <div class="input-group mb-3">
-                      <select class="form-select" name="semester" id="semester">
-                        <option hidden selected>Semester</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                      </select>
-                    </div>
                 </div>
                 <div class="modal-footer px-5">
                     <button class="text-decoration-none btn btn-info text-white">Submit</button>
@@ -97,7 +79,7 @@
                             View
                             </a>
                         </li>
-                        <li class="d-flex flex-row justify-content-between">
+                        {{-- <li class="d-flex flex-row justify-content-between">
                             <a class="dropdown-item editCurBtn" data-curname="{{ $curriculum->curriculumName }}" data-curid="{{ $curriculum->id }}" href="" data-coreui-toggle="modal" data-coreui-target="#editCurriculumModal">
                             <span class="text-info">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -107,7 +89,7 @@
                             </span>
                             Edit
                             </a>
-                        </li>
+                        </li> --}}
                         </ul>
                     </div>
                     </td>

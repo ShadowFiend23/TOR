@@ -118,7 +118,7 @@ $(function(){
             processData: false,
             contentType: false,
             success : function(response){
-                
+
             },
             error: function(xhr){
                 // let response = xhr.responseJSON;
@@ -131,24 +131,26 @@ $(function(){
         })
     })
 
-    $("#appendSubject").on('click',function(){
-        let subject     =   `<div class="my-3">
-                                <input type="text" class="form-control" name="subjectCode[]" value="">
+    $(".addSubject").on('click',function(){
+        let year        = $(this).data('year'),
+            semester    = $(this).data('sem'),
+            subject     =   `<div class="my-3">
+                                <input type="text" class="form-control" name="subjectCode[${year}${semester}][]" value="">
                             </div>`,
             description =   `<div class="my-3">
-                                <input type="text" class="form-control" name="description[]" value="">
+                                <input type="text" class="form-control" name="description[${year}${semester}][]" value="">
                             </div>`,
             credits     =   `<div class="my-3">
-                                <input type="text" class="form-control" name="credits[]" value="3">
+                                <input type="text" class="form-control" name="credits[${year}${semester}][]" value="3">
                             </div>`,
             preReq      =   `<div class="form-check mt-3">
                                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="width: 2rem; height: 2rem;">
                             </div>`;
 
-        $("#subjectDiv").append(subject);
-        $("#descriptionDiv").append(description);
-        $("#creditsDiv").append(credits);
-        $("#preReqDiv").append(preReq);
+        $(`#subjectDiv${year}${semester}`).append(subject);
+        $(`#descriptionDiv${year}${semester}`).append(description);
+        $(`#creditsDiv${year}${semester}`).append(credits);
+        $(`#preReqDiv${year}${semester}`).append(preReq);
 
     });
 
@@ -163,7 +165,9 @@ $(function(){
             processData: false,
             contentType: false,
             success : function(response){
-
+                if(response.success){
+                    window.location.href = "/curriculum/?id=" + response.id
+                }
             },
             error: function(xhr){
                 // let response = xhr.responseJSON;
