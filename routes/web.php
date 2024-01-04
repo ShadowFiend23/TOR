@@ -97,6 +97,8 @@ Route::middleware(['auth','user-role:employee'])->group(function(){
     });
 });
 
+
+Route::get('/department/incharge', function () { return view('/department/incharge/index'); });
 Route::middleware(['auth','user-role:student'])->group(function(){
 
 });
