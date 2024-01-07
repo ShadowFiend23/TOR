@@ -17,7 +17,7 @@
     pdf.getPage(pageNumber).then(function(page) {
       console.log('Page loaded');
 
-      var scale = 1.5;
+      var scale = 0.5;
       var viewport = page.getViewport({scale: scale});
       
       var canvas = document.getElementById('the-canvas');
@@ -72,7 +72,7 @@
         <label>GRANTED HONORABLE DISMISSAL EFFECTIVE</label>
         <input type="text" class="form-control form-control-sm" />
         <div class="text-end mt-3">
-          <a href="{{asset('pdfsample.pdf')}}" class="btn btn-info btn-sm px-3" id="pdfLink">Print</a>
+          <a href="{{asset('sample.pdf')}}" class="btn btn-info btn-sm px-3" id="pdfLink">Print</a>
           <script>
               document.getElementById('pdfLink').addEventListener('click', function(e) {
                 e.preventDefault()
@@ -93,11 +93,10 @@
     <button class="btn btn-success btn-sm">
       Download
     </button>
-    <button class="btn btn-danger btn-sm">
-      Edit
-    </button>
   </div>
   <div class="container-lg py-4 d-flex justify-content-center" id="toPrint">
-    <canvas data-pdf-src="{{asset('pdfsample.pdf')}}" id="the-canvas"></canvas>
+    <div class="w-100">
+      <canvas data-pdf-src="{{asset('sample.pdf')}}" id="the-canvas" style="width: 100% !important;"></canvas>
+    </div>
   </div>
 </x-registrar_layout>
