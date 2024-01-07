@@ -2,7 +2,9 @@
 // Run that command whenever you add a new controller or create them with
 // `php artisan stimulus:make controllerName`
 
-import { application } from '../libs/stimulus'
-
+import { application as app } from '../libs/stimulus'
 import RubricsCalculatorController from './rubrics_calculator_controller'
-application.register('rubrics-calculator', RubricsCalculatorController)
+import TransfereeCurriculumController from './transferee_curriculum_controller'
+
+app.register('rubrics-calculator', RubricsCalculatorController)
+app.register('transferee-curriculum', TransfereeCurriculumController)
