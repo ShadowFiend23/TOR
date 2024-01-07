@@ -6,10 +6,59 @@
       </div>
       <div class="col-12">
         <h4 class="text-black ms-2"><strong>Edit Student Records</strong></h4>
-        <div class="d-flex flex-column ms-4 mb-4">
-          <strong class="text-black fw-bold my-2">Student Credentials</strong>
-          <p class="text-black mb-0">Form 138</p>
-          <p class="text-black mb-0">Transcript of Records(TOR)</p>
+        <div class="py-5 px-3"style="width: 30rem;">
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title text-center">
+                <strong>Student Credentials</strong>
+              </div>
+            </div>
+
+            <div class="card-body d-flex flex-column gap-2">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+                <label class="form-check-label" for="flexCheckDefault">
+                  Form 138
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Grade 12 Report Card
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Certificate of Good Moral Character
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  PSA
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+                <label class="form-check-label" for="flexCheckDefault">
+                  Live Birth Certificate
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Transcript of Records (TOR)
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Other
+                </label>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
