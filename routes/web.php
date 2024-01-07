@@ -30,6 +30,17 @@ Route::get('/login',[LoginController::class,'show'])->middleware('guest')->name(
 Route::post('/login',[LoginController::class,'login'])->middleware('guest');
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
+Route::get('/registrar', function () { return view('registrar/index'); } );
+Route::get('/registrar/courses', function () { return view('registrar/courses'); } );
+Route::get('/registrar/courses/show', function () { return view('registrar/courses/show'); } );
+Route::get('/registrar/tor_request', function () { return view('registrar/tor_request'); } );
+Route::get('/registrar/tor_request/show', function () { return view('registrar/tor_request/show'); } );
+Route::get('/registrar/curriculums', function () { return view('registrar/curriculums'); } );
+Route::get('/registrar/curriculums/show', function () { return view('registrar/curriculums/show'); } );
+
+Route::get('/registrar/tor_analysis', function () { return view('registrar/tor_analysis'); } );
+Route::get('/registrar/logs', function () { return view('registrar/logs'); } );
+
 Route::middleware(['auth','user-role:admin'])->group(function(){
 
     Route::get('/admin',[EmployeesController::class,'index'])->name('admin');
@@ -72,7 +83,7 @@ Route::middleware(['auth','user-role:admin'])->group(function(){
         Route::get('/rubrics/edit', [RubricsController::class,'editRubrics'])->name('editRubrics');
     });
 
-});
+}); 
 
 Route::middleware(['auth','user-role:employee'])->group(function(){
     Route::middleware('permission:department-head')->group(function(){
