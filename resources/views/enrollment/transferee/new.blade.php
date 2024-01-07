@@ -9,37 +9,35 @@
     <div class="py-5 px-3" data-controller="transferee-curriculum" id="parentContainer">
       <div class="card" data-transferee-curriculum-target="container" id="container">
         <div class="card-body d-flex flex-column gap-4">
-          <form action="">
-            <div class="row">
-              <div class="col-12 col-md-6">
-                <label for="previousschool">Previous School</label>
-                <input type="text" name="previousschool" class="form-control mt-2" id="previousschool">
-              </div>
-              <div class="col-12 col-md-6">
-                <label for="couse">Course</label>
-                <input type="text" name="couse" class="form-control mt-2" id="course">
-              </div>
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <label for="previousschool">Previous School</label>
+              <input type="text" name="previousschool" class="form-control mt-2" id="previousschool">
             </div>
-            <div class="row">
-              <div class="col-12 col-md-6">
-                <label for="schoolyear">School Year</label>
-                <input type="text"class="form-control mt-2" name="schoolyear" id="schoolyear">
-              </div>
-              <div class="col-12 col-md-6">
-                <label for="semester">Semester</label>
-                <select class="form-select mt-2" id="semester">
-                  <option selected>First Semester</option>
-                  <option value="1">Second Semester</option>
-                </select>
-              </div>
+            <div class="col-12 col-md-6">
+              <label for="couse">Course</label>
+              <input type="text" name="couse" class="form-control mt-2" id="course">
             </div>
-            <div class="row">
-              <div class="col-12">
-                <label for="semester">Remarks</label>
-                <textarea class="form-control mt-2" name="remarks" id="remarks"></textarea>
-              </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <label for="schoolyear">School Year</label>
+              <input type="text"class="form-control mt-2" name="schoolyear" id="schoolyear">
             </div>
-          </form>
+            <div class="col-12 col-md-6">
+              <label for="semester">Semester</label>
+              <select class="form-select mt-2" id="semester">
+                <option selected>First Semester</option>
+                <option value="1">Second Semester</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <label for="semester">Remarks</label>
+              <textarea class="form-control mt-2" name="remarks" id="remarks"></textarea>
+            </div>
+          </div>
         </div>
       </div>
       <div class="d-flex justify-content-end align-items-center mt-2 gap-2">

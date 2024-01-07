@@ -14,11 +14,13 @@ export default class extends Controller {
     const newContainer = this.initialContainer.cloneNode(true);
     newContainer.classList.add("mt-2");
     this.hideRemover.classList.remove('d-none')
+    newContainer.firstElementChild.firstElementChild.classList.add('d-none')
     container.parentNode.insertBefore(newContainer, container.nextSibling);
   }
 
   removeContainer() {
-    this.containerTarget.remove()
+    // console.log(this.parentContainer.childNodes[this.parentContainer.childNodes.length - 4])
+    this.parentContainer.removeChild(this.parentContainer.childNodes[this.parentContainer.childNodes.length - 4]);
     if (this.parentContainer.childElementCount == 2) {this.hideRemover.classList.add('d-none')}
   }
 }

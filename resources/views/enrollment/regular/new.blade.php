@@ -357,7 +357,7 @@
 
 
       <div class="modal modal-lg gfade" id="selectedSubjectModal" tabindex="-1" aria-labelledby="selectedSubjectModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header bg-dark ps-5">
               <h5 class="modal-title text-white" id="selectedSubjectModalLabel">Please confirm if these are all the subjects intended for enrollment?</h5>

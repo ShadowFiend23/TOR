@@ -174,68 +174,14 @@
                   <tr>
                       <th style="width: 5%">Grade</th>
                       <th style="width: 15%">Code</th>
-                      <th style="width: 7%">Sec.</th>
                       <th >Description</th>
+                      <th ></th>
                   </tr>
                   <tr>
                     <td><input type="text" name="" id="" value="1.5" class="form-control"></td>
                     <td class="pt-3">IT 134 </td>
-                    <td class="pt-3"> 1A </td>
                     <td class="pt-3"> Computer Programming 1 </td>
-                  </tr>
-                  <tr>
-                    <td><input type="text" name="" id="" value="1.1" class="form-control"></td>
-                    <td class="pt-3"> GEN ED 001 </td>
-                    <td class="pt-3"> 1A </td>
-                    <td class="pt-3"> Purposive Communication </td>
-                  </tr>
-                  <tr>
-                    <td><input type="text" name="" id="" value="2.0" class="form-control"></td>
-                    <td class="pt-3"> MATH ENHANCE 1 </td>
-                    <td class="pt-3"> 1A </td>
-                    <td class="pt-3"> College Algebra and Trigonometry </td>
-                  </tr>
-                  <tr>
-                    <td><input type="text" name="" id="" value="1.9" class="form-control"></td>
-                    <td class="pt-3"> GEN ED 004 </td>
-                    <td class="pt-3"> 1A </td>
-                    <td class="pt-3"> Mathematics in the Modern world </td>
-                  </tr>
-                  <tr>
-                  <td><input type="text" name="" id="" value="1.1" class="form-control"></td>
-                    <td class="pt-3"> GEN ED 009 </td>
-                    <td class="pt-3"> 1A </td>
-                    <td class="pt-3"> The Entrepreneurial Mind </td>
-                  </tr>
-                  <tr>
-                    <td><input type="text" name="" id="" value="1.6" class="form-control"></td>
-                    <td class="pt-3"> IT 113 </td>
-                    <td class="pt-3"> 1A </td>
-                    <td class="pt-3"> Introduction to Computing </td>
-                  </tr>
-                  <tr>
-                    <td><input type="text" name="" id="" value="1.2" class="form-control"></td>
-                    <td class="pt-3"> NSTP 113 </td>
-                    <td class="pt-3"> 1A </td>
-                    <td class="pt-3"> CWTS, LTS, MTS(Naval or Air Force) </td>
-                  </tr>
-                  <tr>
-                    <td><input type="text" name="" id="" value="1.4" class="form-control"></td>
-                    <td class="pt-3"> DRR 113 </td>
-                    <td class="pt-3"> 1A </td>
-                    <td class="pt-3"> Disaster Risk Reduction and Education in Emergencies </td>
-                  </tr>
-                  <tr>
-                    <td><input type="text" name="" id="" value="2.2" class="form-control"></td>
-                    <td class="pt-3"> GEN ED 002 </td>
-                    <td class="pt-3"> 1A </td>
-                    <td class="pt-3"> Understanding the Self </td>
-                  </tr>
-                  <tr>
-                    <td><input type="text" name="" id="" value="1.0" class="form-control"></td>
-                    <td class="pt-3"> PATHFIT 112 </td>
-                    <td class="pt-3"> 1A </td>
-                    <td class="pt-3"> Movement Competency Training </td>
+                    <!-- <td><button class="btn btn-primary text-white">Delete</button></td>  only show this delete button if this row is being clicked by the user -->
                   </tr>
                 </table>
               </div>
