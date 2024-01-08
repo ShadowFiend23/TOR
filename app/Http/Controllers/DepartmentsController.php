@@ -10,8 +10,7 @@ class DepartmentsController extends Controller
     //
 
     public function departments(){
-        $departments = Departments::join('employees','employees.employeeID','=','departments.departmentHead')
-                                    ->get(['departments.*','employees.firstName','employees.lastName']);
+        $departments = Departments::all();
         return view('admin/departments/index',compact('departments'));
     }
 
@@ -50,53 +49,40 @@ class DepartmentsController extends Controller
             $request->validate([
                 "departmentName"    => "required",
                 "departmentHead"    => "required",
-                "email"             => "required",
-                "file"              => "required",
+                "departmentColor"   => "required",
             ]);
 
-            $file = $request->file('file');
+            $query = Departments::whereId($request->input('id'))->update($request->except(['id','departmentEmail']));
 
-            if($file->move("uploads",$file->getClientOriginalName())){
-
-                $data = $request->except('id');
-                $data['file'] = "uploads/".$file->getClientOriginalName();
-                $query = Departments::whereId($request->input('id'))->update($data);
-
+            if($query){
+                $response = [
+                    "success" => true
+                ];
             }else{
-                return response()->json([
-                    "success"   => false,
-                    "msg"       => "Error saving department."
-                ]);
+                $response = [
+                    "success" => false
+                ];
             }
-
 
         }else{
             $request->validate([
                 "departmentName"    => "required",
                 "departmentHead"    => "required|exists:employees,employeeID",
-                "email"             => "required",
-                "file"              => "required",
+                "departmentColor"   => "required"
             ]);
-
-            $file = $request->file('file');
-
-            if($file->move("uploads",$file->getClientOriginalName())){
-
-                $data = $request->all();
-                $data['file'] = "uploads/".$file->getClientOriginalName();
-                $query = Departments::create($data);
-
+            $query = Departments::create($request->except(['id','departmentEmail']));
+            if($query){
+                $response = [
+                    "success" => true
+                ];
             }else{
-                return response()->json([
-                    "success"   => false,
-                    "msg"       => "Error saving department."
-                ]);
+                $response = [
+                    "success" => false
+                ];
             }
         }
 
-        return response()->json([
-            "success"   => true,
-            "msg"       => "Successfully saving department."
-        ]);
+
+        return response()->json($response);
     }
 }

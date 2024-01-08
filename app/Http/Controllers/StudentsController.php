@@ -2,25 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Courses;
 use App\Models\Students;
+use App\Models\Departments;
 use Illuminate\Http\Request;
 
 class StudentsController extends Controller
 {
-    //
 
     public function students(){
-        // $employees = Students::join('employee_roles','employees.roleCode','=','employee_roles.code')
-        //                     ->get(['employees.*','employee_roles.name']);
+        $departments = Departments::all();
 
-        return view('admin/students/index');
+        return view('admin/students/index',compact('departments'));
     }
 
-    public function addEmployeePage(){
+    public function addStudentsPage(){
         return view('components.employee.addEmployee');
     }
 
-    public function editEmployeePage(Request $request){
+    public function editStudentsPage(Request $request){
         $id = $request->input('id');
 
         // $employee = $this->employeesRepository->getEmployeeById($id);
@@ -29,57 +30,62 @@ class StudentsController extends Controller
         // }
     }
 
-    public function deleteEmployee(Request $request){
+    public function deleteStudents(Request $request){
         $result = Students::where('id',$request->input('id'))->delete();
 
         if(!$result){
             return response()->json([
                 "success"   => false,
-                "msg"       => "Error deleting employee"
+                "msg"       => "Error deleting student"
             ]);
         }
 
         return response()->json([
             "success"   => true,
-            "msg"       => "Successfully deleted employee"
+            "msg"       => "Successfully deleted student"
         ]);
     }
 
-    public function saveEmployee(Request $request){
-        if(!empty($request->input('id'))){
-            $request->validate([
-                "employeeID"    => "required",
-                "roleCode"      => "required|exists:employee_roles,code",
-                "lastName"      => "required",
-                "firstName"     => "required",
-                "middleName"    => "required",
-                "email"         => "required",
-                "password"      => "required",
-            ]);
-        }else{
-            $request->validate([
-                "employeeID"    => "required|unique:employees,employeeID",
-                "roleCode"      => "required|exists:employee_roles,code",
-                "lastName"      => "required",
-                "firstName"     => "required",
-                "middleName"    => "required",
-                "email"         => "required|unique:employees,email",
-                "password"      => "required",
+    public function saveStudent(Request $request){
+        $request->validate([
+            "studentID"    => "required|unique:students,studentID",
+            "lastName"      => "required",
+            "firstName"     => "required",
+            "middleName"    => "required",
+            "email"         => "required",
+            "password"      => "required",
+        ]);
+
+        $query = Students::create($request->all());
+
+        if(!$query){
+
+            return response()->json([
+                "success"   => false,
+                "msg"       => "Error saving new employee."
             ]);
         }
 
-        // $query = $this->employeesRepository->createEmployee($request->except('password'));
+        $params = [
+            "userID"    => $request->input('studentID'),
+            "password"  => $request->input('password'),
+            "role"      => 2
+        ];
 
-        // if(!$query){
-        //     return response()->json([
-        //         "success"   => false,
-        //         "msg"       => "Error saving new employee."
-        //     ]);
-        // }
+        $query = User::create($params);
+
+        if(!$query){
+
+            return response()->json([
+                "success"   => false,
+                "msg"       => "Error saving new employee."
+            ]);
+        }
 
         return response()->json([
             "success"   => true,
             "msg"       => "Successfully add new employee."
         ]);
     }
+
 }
