@@ -30,6 +30,17 @@ Route::get('/login',[LoginController::class,'show'])->middleware('guest')->name(
 Route::post('/login',[LoginController::class,'login'])->middleware('guest');
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
+Route::get('/registrar', function () { return view('registrar/index'); } );
+Route::get('/registrar/courses', function () { return view('registrar/courses'); } );
+Route::get('/registrar/courses/show', function () { return view('registrar/courses/show'); } );
+Route::get('/registrar/tor_request', function () { return view('registrar/tor_request'); } );
+Route::get('/registrar/tor_request/show', function () { return view('registrar/tor_request/show'); } );
+Route::get('/registrar/curriculums', function () { return view('registrar/curriculums'); } );
+Route::get('/registrar/curriculums/show', function () { return view('registrar/curriculums/show'); } );
+
+Route::get('/registrar/tor_analysis', function () { return view('registrar/tor_analysis'); } );
+Route::get('/registrar/logs', function () { return view('registrar/logs'); } );
+
 Route::middleware(['auth','user-role:admin'])->group(function(){
 
     Route::get('/admin',[EmployeesController::class,'index'])->name('admin');
@@ -72,7 +83,7 @@ Route::middleware(['auth','user-role:admin'])->group(function(){
         Route::get('/rubrics/edit', [RubricsController::class,'editRubrics'])->name('editRubrics');
     });
 
-});
+}); 
 
 Route::middleware(['auth','user-role:employee'])->group(function(){
     Route::middleware('permission:department-head')->group(function(){
@@ -96,6 +107,39 @@ Route::middleware(['auth','user-role:employee'])->group(function(){
         Route::get('/registrar', function () { return "Registrar Page"; })->name('registrar');
     });
 });
+
+
+Route::get('/enrollment', function () { return view('/enrollment/index'); });
+Route::get('/enrollment/new', function () { return view('/enrollment/new'); }); //only for transferee
+
+# Regular student
+Route::get('/enrollment/regular/new', function () { return view('/enrollment/regular/new'); });
+Route::get('/enrollment/regular/show', function () { return view('/enrollment/regular/show'); });
+Route::get('/enrollment/regular/edit', function () { return view('/enrollment/regular/edit'); });
+
+
+# Irregular Student
+Route::get('/enrollment/irregular', function () { return view('/enrollment/irregular/index'); });
+Route::get('/enrollment/irregular/new', function () { return view('/enrollment/irregular/new'); });
+Route::get('/enrollment/irregular/show', function () { return view('/enrollment/irregular/show'); });
+Route::get('/enrollment/irregular/edit', function () { return view('/enrollment/irregular/edit'); });
+
+
+## Transferee Student
+Route::get('/enrollment/transferee', function () { return view('/enrollment/transferee/index'); });
+Route::get('/enrollment/transferee/new', function () { return view('/enrollment/transferee/new'); });
+Route::get('/enrollment/transferee/show', function () { return view('/enrollment/transferee/show'); });
+Route::get('/enrollment/transferee/edit', function () { return view('/enrollment/transferee/edit'); });
+
+
+## Shiftee Student
+
+Route::get('/enrollment/shiftee', function () { return view('/enrollment/shiftee/index'); });
+Route::get('/enrollment/shiftee/show', function () { return view('/enrollment/shiftee/show'); });
+Route::get('/enrollment/shiftee/edit', function () { return view('/enrollment/shiftee/edit'); });
+# Namespace of Shiftee
+Route::get('/enrollment/shiftee/transfer_of_records', function () { return view('/enrollment/shiftee/transfer_of_records/index'); });
+
 
 Route::middleware(['auth','user-role:student'])->group(function(){
 
