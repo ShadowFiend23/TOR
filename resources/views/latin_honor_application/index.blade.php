@@ -47,8 +47,8 @@
 
       <div class="card-body shadow mt-2">
         <div class="d-flex flex-row align-items-center justify-content-end mb-5 gap-2 pt-0 m-0">
-          <a href="./denied_application/" class="btn btn-primary text-white mt-3">Denied Application</a>
-          <a href="./approved_students/" class="btn btn-success text-white mt-3">Approved Student</a>
+          <a href="../latin_honor_application/denied_application/" class="btn btn-primary text-white mt-3">Denied Application</a>
+          <a href="../latin_honor_application/approved_students/" class="btn btn-success text-white mt-3">Approved Student</a>
         </div>
         <table id="student_list_table" class="table table-hover" style="width:100%;">
           <thead>
