@@ -203,7 +203,7 @@ $(function(){
         let year        = $(this).data('year'),
             semester    = $(this).data('sem'),
             subject     =   `<div class="my-3">
-                                <input type="text" class="form-control" name="subjectCode[${year}${semester}][]" value="">
+                                <input type="text" class="form-control subjectCodeInput" name="subjectCode[${year}${semester}][]" value="">
                             </div>`,
             description =   `<div class="my-3">
                                 <input type="text" class="form-control" name="description[${year}${semester}][]" value="">
