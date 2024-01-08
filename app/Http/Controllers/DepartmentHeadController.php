@@ -77,7 +77,7 @@ class DepartmentHeadController extends Controller
 
     public function showCurriculum(Request $request){
         $curriculum = Curriculum::join('courses','curriculum.course','=','courses.id')
-                                ->where('curriculum.course','=',$request->input('id'))
+                                ->where('curriculum.id','=',$request->input('id'))
                                 ->get(['curriculum.*', 'courses.courseName'])->first();
         return view('curriculum/show',compact('curriculum'));
     }
@@ -131,14 +131,13 @@ class DepartmentHeadController extends Controller
     }
 
     public function saveSubjects(Request $request){
-        // $request->validate([
-        //     "subjectCode.*" => "required",
-        //     "description.*" => "required",
-        //     "credits.*" => "required"
-        // ]);
+        $request->validate([
+            "subjectCode.*" => "required",
+            "description.*" => "required",
+            "credits.*" => "required"
+        ]);
 
         $info = json_encode($request->except('id'));
-
         $result = Curriculum::whereId($request->input('id'))->update([ "info" => $info]);
         if($result){
             return response()->json([

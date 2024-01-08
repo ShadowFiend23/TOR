@@ -20,6 +20,20 @@ $(function(){
         }
     });
 
+
+    let el = document.getElementById('preReqChoices'),
+        preReqChoices = null,
+        currentPreReq = null,
+        preReqValues  = {};
+
+    if(el){
+        preReqChoices = new Choices(el,{
+            classNames: {
+                containerOuter: 'form-control',
+            }
+        })
+    }
+
     $("#employeeForm").on("submit",function(e){
         e.preventDefault();
 
@@ -144,7 +158,8 @@ $(function(){
                                 <input type="text" class="form-control" name="credits[${year}${semester}][]" value="3">
                             </div>`,
             preReq      =   `<div class="form-check mt-3">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="width: 2rem; height: 2rem;">
+                                <input class="form-check-input preReqCheckbox" type="checkbox" value="" id="flexCheckDefault" style="width: 2rem; height: 2rem;">
+                                <input type="hidden" name="preReq[${year}${semester}][]" />
                             </div>`;
 
         $(`#subjectDiv${year}${semester}`).append(subject);
@@ -157,6 +172,7 @@ $(function(){
     $("#submitSubjects").on('click',function(){
 
         let frmData     = new FormData($("#subjectsForm")[0]);
+        frmData.append('preReq', JSON.stringify(preReqValues));
 
         $.ajax({
             url  : '/saveSubjects',
@@ -179,6 +195,42 @@ $(function(){
             }
         })
     });
+
+    $(document).on('click','.preReqCheckbox',function(){
+        currentPreReq = $(this);
+
+        let inner = $("#preReqChoices").siblings("[name='search_terms']");
+        inner.val('')
+
+        $("#preReqSubjectLabel").html($(this).data('subject'));
+        $("#presubjectModal").modal('toggle');
+    })
+
+    $(document).on('click','#savePreReq',function(){
+        let values = preReqChoices.getValue(true),
+            key = $("#preReqSubjectLabel").html();
+
+        preReqValues[key] = values.join(',');
+        $("#presubjectModal").modal('toggle');
+    });
+
+    $("#cancelPreReq").on("click", function () {
+        if(currentPreReq){
+            currentPreReq.prop('checked',!currentPreReq.prop('checked'));
+        }
+
+        preReqChoices.clearStore();
+        $("#presubjectModal").modal('toggle');
+    });
+
+    $(document).on('keyup','.subjectCodeInput',function(){
+        let subjectCode = $(this).val(),
+            index = $('.subjectCodeInput').index(this),
+            preReqCheckbox = $(".preReqCheckbox").eq(index);
+
+        preReqCheckbox.data('subject',subjectCode);
+
+    })
 
 });
 

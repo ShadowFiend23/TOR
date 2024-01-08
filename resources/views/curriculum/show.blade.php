@@ -1,8 +1,10 @@
 <x-authenticated_layout>
     @php
+        $info = [];
         if(isset($curriculum) && !empty($curriculum)){
             $course = $curriculum->courseName ?? "";
             $info   = json_decode($curriculum->info,true) ?? [];
+            $preReq = json_decode($info['preReq'],true);
         }
 
         $years = [
@@ -16,7 +18,7 @@
     <div class="d-flex flex-column pt-4 ps-4 bg-dark">
       <h2 class="fs-4 text-center text-white">Generation Z</h2>
       <div class="d-flex flex-column">
-        <h4 class="fs-6  text-white">Only: <span class="text-decoration-underline">{{ $course }}</span></h4>
+        <h4 class="fs-6  text-white">Only: <span class="text-decoration-underline">{{ 'test' }}</span></h4>
       </div>
     </div>
 
@@ -54,6 +56,7 @@
                         <th scope="col" class='fw-semibold text-center' style="width: 10%;">Code</th>
                         <th colspan="2" scope="col" class='fw-semibold text-center' style="width: 60%;">Description</th>
                         <th scope="col" class='fw-semibold text-center' style="width: 5%;">Credits</th>
+                        <th scope="col" class='fw-semibold text-center' style="width: 5%;">Pre Requisite</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -62,6 +65,9 @@
                             <th scope="row" class="text-center" style="width: 10%;">{{ $subjectCode }}</th>
                             <td colspan="2" class="ps-5" style="width: 60%;">{{ $info['description'][$i . "1"][$loop->index] }}</td>
                             <td class="text-center" style="width: 5%;">{{ $info['credits'][$i . "1"][$loop->index] }}</td>
+                            @if( array_key_exists($subjectCode,$preReq))
+                                <td>{{ $preReq[$subjectCode] }}</td>
+                            @endif
                         </tr>
                     @endforeach
 
@@ -80,6 +86,7 @@
                     <th scope="col" class="fw-semibold text-center" style="width: 10%;">Code</th>
                     <th colspan="2" scope="col" class='fw-semibold text-center' style="width: 60%;">Description</th>
                     <th scope="col" class='fw-semibold text-center' style="width: 5%;">Credits</th>
+                    <th scope="col" class='fw-semibold text-center' style="width: 5%;">Pre Requisite</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -88,6 +95,9 @@
                         <th scope="row" class="text-center" style="width: 10%;">{{ $subjectCode }}</th>
                         <td colspan="2" class="ps-5" style="width: 60%;">{{ $info['description'][$i . "2"][$loop->index] }}</td>
                         <td class="text-center" style="width: 5%;">{{ $info['credits'][$i . "2"][$loop->index] }}</td>
+                        @if( array_key_exists($subjectCode,$preReq))
+                            <td>{{ $preReq[$subjectCode] }}</td>
+                        @endif
                     </tr>
                 @endforeach
                 </tbody>

@@ -25,13 +25,13 @@
                             Subject Code
                         </div>
                         <div class="my-3">
-                            <input type="text" class="form-control" name="subjectCode[{{ $i }}1][]" value="IT 123">
+                            <input type="text" class="form-control subjectCodeInput" name="subjectCode[{{ $i }}1][]" value="IT 123">
                         </div>
                         <div class="my-3">
-                            <input type="text" class="form-control" name="subjectCode[{{ $i }}1][]" value="IT 456">
+                            <input type="text" class="form-control subjectCodeInput" name="subjectCode[{{ $i }}1][]" value="IT 456">
                         </div>
                         <div class="my-3">
-                            <input type="text" class="form-control" name="subjectCode[{{ $i }}1][]" value="IT 789">
+                            <input type="text" class="form-control subjectCodeInput" name="subjectCode[{{ $i }}1][]" value="IT 789">
                         </div>
                     </div>
                     <div class="col-6 col-md-5" id="descriptionDiv{{ $i }}1">
@@ -68,13 +68,16 @@
                         </div>
                         <div class="d-flex flex-column" id="preReqDiv{{ $i }}1">
                             <div class="form-check mt-3">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="width: 2rem; height: 2rem;">
+                                <input class="form-check-input preReqCheckbox" data-year="{{ $i }}" data-sem="1" type="checkbox" value="" style="width: 2rem; height: 2rem;">
+
                             </div>
                             <div class="form-check mt-3">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="width: 2rem; height: 2rem;">
+                                <input class="form-check-input preReqCheckbox" data-year="{{ $i }}" data-sem="1" type="checkbox" value="" style="width: 2rem; height: 2rem;">
+
                             </div>
                             <div class="form-check mt-3">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="width: 2rem; height: 2rem;">
+                                <input class="form-check-input preReqCheckbox" data-year="{{ $i }}" data-sem="1" type="checkbox" value="" style="width: 2rem; height: 2rem;">
+
                             </div>
                         </div>
                     </div>
@@ -92,13 +95,13 @@
                             Subject Code
                         </div>
                         <div class="my-3">
-                            <input type="text" class="form-control" name="subjectCode[{{ $i }}2][]" value="IT 123">
+                            <input type="text" class="form-control subjectCodeInput" name="subjectCode[{{ $i }}2][]" value="IT 123">
                         </div>
                         <div class="my-3">
-                            <input type="text" class="form-control" name="subjectCode[{{ $i }}2][]" value="IT 456">
+                            <input type="text" class="form-control subjectCodeInput" name="subjectCode[{{ $i }}2][]" value="IT 456">
                         </div>
                         <div class="my-3">
-                            <input type="text" class="form-control" name="subjectCode[{{ $i }}2][]" value="IT 789">
+                            <input type="text" class="form-control subjectCodeInput" name="subjectCode[{{ $i }}2][]" value="IT 789">
                         </div>
                     </div>
                     <div class="col-6 col-md-5" id="descriptionDiv{{ $i }}2">
@@ -135,13 +138,16 @@
                         </div>
                         <div class="d-flex flex-column" id="preReqDiv{{ $i }}2">
                             <div class="form-check mt-3">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="width: 2rem; height: 2rem;">
+                                <input class="form-check-input preReqCheckbox" data-year="{{ $i }}" data-sem="2" type="checkbox" value="" style="width: 2rem; height: 2rem;">
+
                             </div>
                             <div class="form-check mt-3">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="width: 2rem; height: 2rem;">
+                                <input class="form-check-input preReqCheckbox" data-year="{{ $i }}" data-sem="2" type="checkbox" value="" style="width: 2rem; height: 2rem;">
+
                             </div>
                             <div class="form-check mt-3">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="width: 2rem; height: 2rem;">
+                                <input class="form-check-input preReqCheckbox" data-year="{{ $i }}" data-sem="2" type="checkbox" value="" style="width: 2rem; height: 2rem;">
+
                             </div>
                         </div>
                     </div>
@@ -159,13 +165,13 @@
                     Submit
                 </button>
 
-                <button type="button" class="ms-2 btn btn-primary btn btn-info text-white" data-coreui-target="#alertEmtySelect"data-coreui-toggle="modal">
+                <button type="button" class="ms-2 btn btn-primary btn btn-info text-white">
                     Add Summer
                 </button>
             </div>
         </div>
     </form>
-    <div class="modal modal-lg fade" id="presubjectModal" aria-hidden="true" aria-labelledby="presubjectModalLabel" tabindex="-1">
+    <div class="modal modal-lg fade" id="presubjectModal" data-coreui-backdrop="static" data-coreui-keyboard="false" aria-hidden="true" aria-labelledby="presubjectModalLabel" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header bg-dark ps-5">
@@ -174,26 +180,14 @@
             </div>
             <div class="modal-body px-5">
               <p>Note: <span class="text-info">There are two selected prerequisite subjects for this semester. Please choose the prerequisites for this particular subject for the current semester.</span></p>
-                <label for="curriculum-name" class="col-form-label text-black">IT 213  Sample Only Pre Requisite look </label>
+                <label for="curriculum-name" class="col-form-label text-black" id="preReqSubjectLabel"></label>
                 <div class="input-group mb-3">
-                  <select class="form-select" id="inputGroupSelect01">
-                    <option selected></option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                  </select>
-                </div>
-                <label for="curriculum-name" class="col-form-label text-black">IT 456 Sample Only Pre Requisite look </label>
-                <div class="input-group mb-3">
-                  <select class="form-select" id="inputGroupSelect01">
-                    <option selected></option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                  </select>
+                  <input type="text"id="preReqChoices" />
                 </div>
             </div>
             <div class="modal-footer px-5">
-              <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-info text-white" data-coreui-target="#presubjectDialog" data-coreui-toggle="modal" >Save changes</button>
+              <button type="button" class="btn btn-secondary" id="cancelPreReq">Cancel</button>
+              <button type="button" class="btn btn-info text-white" id="savePreReq">Save changes</button>
             </div>
           </div>
         </div>
