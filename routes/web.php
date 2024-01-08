@@ -163,3 +163,12 @@ Route::get('/latin_honor_application/approved_students', function () { return vi
 
 
 Route::get('/latin_honor_final_list', function () { return view('/latin_honor_final_list/index'); });
+Route::get('/latin_honor_final_list/latin_honor', function () { return view('/latin_honor_final_list/latin_honor/index'); });
+Route::get('/latin_honor_final_list/latin_honor/archive', function () { return view('/latin_honor_final_list/latin_honor/archive'); });
+Route::get('/latin_honor_final_list/latin_honor/show', function () { return view('/latin_honor_final_list/latin_honor/show'); });
+
+
+Route::get('/latin_honor_final_list/academic_achiever', function () { return view('/latin_honor_final_list/academic_achiever/index'); });
+Route::get('/latin_honor_final_list/academic_achiever/archive', function () { return view('/latin_honor_final_list/academic_achiever/archive'); });
+Route::get('/latin_honor_final_list/academic_achiever/show', function () { return view('/latin_honor_final_list/academic_achiever/show'); });
+
