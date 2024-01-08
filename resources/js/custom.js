@@ -59,6 +59,33 @@ $(function(){
         })
     });
 
+    $("#coAdminForm").on("submit",function(e){
+        e.preventDefault();
+
+        let frmData     = new FormData($(this)[0]);
+
+        $.ajax({
+            url  : '/admin/saveCoAdmin',
+            data : frmData,
+            type : 'POST',
+            processData: false,
+            contentType: false,
+            success : function(data){
+                if(data.success){
+                    window.location.href = "/admin/co-admin"
+                }
+            },
+            error: function(xhr){
+                // let response = xhr.responseJSON;
+
+                // Toast.fire({
+                //     icon : 'error',
+                //     title: response.message.split('(')[0]
+                // })
+            }
+        })
+    });
+
     $("#adminDepartmentForm").on("submit",function(e){
         e.preventDefault();
 

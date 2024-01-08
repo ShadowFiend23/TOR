@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\CoAdmin;
 use Illuminate\Http\Request;
 use App\Interfaces\EmployeesRepositoryInterface;
@@ -18,11 +19,11 @@ class CoAdminController extends Controller
     public function coAdmin(){
         $employees = CoAdmin::all();
 
-        return view('components.employee.employees', compact('employees'));
+        return view('admin.co_admins.index', compact('employees'));
     }
 
     public function addCoAdminPage(){
-        return view('components.employee.addEmployee');
+        return view('admin.co_admins.new');
     }
 
     public function editCoAdminPage(Request $request){
@@ -30,7 +31,7 @@ class CoAdminController extends Controller
 
         $employee = $this->employeesRepository->getEmployeeById($id);
         if($employee){
-            return view('components.employee.addEmployee',compact('employee'));
+            return view('admin.co_admins.new',compact('employee'));
         }
     }
 
@@ -40,21 +41,20 @@ class CoAdminController extends Controller
         if(!$result){
             return response()->json([
                 "success"   => false,
-                "msg"       => "Error deleting employee"
+                "msg"       => "Error deleting co-admin"
             ]);
         }
 
         return response()->json([
             "success"   => true,
-            "msg"       => "Successfully deleted employee"
+            "msg"       => "Successfully deleted co-admin"
         ]);
     }
 
-    public function saveEmployee(Request $request){
+    public function saveCoAdmin(Request $request){
         if(!empty($request->input('id'))){
             $request->validate([
-                "employeeID"    => "required",
-                "roleCode"      => "required|exists:employee_roles,code",
+                "adminID"       => "required",
                 "lastName"      => "required",
                 "firstName"     => "required",
                 "middleName"    => "required",
@@ -63,17 +63,24 @@ class CoAdminController extends Controller
             ]);
         }else{
             $request->validate([
-                "employeeID"    => "required|unique:employees,employeeID",
-                "roleCode"      => "required|exists:employee_roles,code",
+                "adminID"       => "required|unique:co-admin,adminID",
                 "lastName"      => "required",
                 "firstName"     => "required",
                 "middleName"    => "required",
-                "email"         => "required|unique:employees,email",
+                "email"         => "required|unique:co-admin,email",
                 "password"      => "required",
             ]);
         }
 
-        $query = $this->employeesRepository->createEmployee($request->except('password'));
+        CoAdmin::create($request->except('password'));
+
+        $params = [
+            "userID"    => $request->input('adminID'),
+            "password"  => $request->input('password'),
+            "role"      => 1
+        ];
+
+        $query = User::create($params);
 
         if(!$query){
             return response()->json([
