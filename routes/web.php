@@ -83,7 +83,7 @@ Route::middleware(['auth','user-role:admin'])->group(function(){
         Route::get('/rubrics/edit', [RubricsController::class,'editRubrics'])->name('editRubrics');
     });
 
-}); 
+});
 
 Route::middleware(['auth','user-role:employee'])->group(function(){
     Route::middleware('permission:department-head')->group(function(){
@@ -107,6 +107,11 @@ Route::middleware(['auth','user-role:employee'])->group(function(){
         Route::get('/registrar', function () { return "Registrar Page"; })->name('registrar');
     });
 });
+
+
+
+
+
 
 
 Route::get('/enrollment', function () { return view('/enrollment/index'); });
@@ -144,3 +149,26 @@ Route::get('/enrollment/shiftee/transfer_of_records', function () { return view(
 Route::middleware(['auth','user-role:student'])->group(function(){
 
 });
+
+
+Route::get('/latin_honor_application', function () { return view('/latin_honor_application/index'); });
+Route::get('/latin_honor_application/review', function () { return view('/latin_honor_application/review/index'); });
+Route::get('/latin_honor_application/denied_application', function () { return view('/latin_honor_application/denied_application/index'); });
+Route::get('/latin_honor_application/denied_application/review', function () { return view('/latin_honor_application/denied_application//review/index'); });
+
+
+Route::get('/latin_honor_application/approved_students', function () { return view('/latin_honor_application/approved_students/index'); });
+
+
+
+
+Route::get('/latin_honor_final_list', function () { return view('/latin_honor_final_list/index'); });
+Route::get('/latin_honor_final_list/latin_honor', function () { return view('/latin_honor_final_list/latin_honor/index'); });
+Route::get('/latin_honor_final_list/latin_honor/archive', function () { return view('/latin_honor_final_list/latin_honor/archive'); });
+Route::get('/latin_honor_final_list/latin_honor/show', function () { return view('/latin_honor_final_list/latin_honor/show'); });
+
+
+Route::get('/latin_honor_final_list/academic_achiever', function () { return view('/latin_honor_final_list/academic_achiever/index'); });
+Route::get('/latin_honor_final_list/academic_achiever/archive', function () { return view('/latin_honor_final_list/academic_achiever/archive'); });
+Route::get('/latin_honor_final_list/academic_achiever/show', function () { return view('/latin_honor_final_list/academic_achiever/show'); });
+
