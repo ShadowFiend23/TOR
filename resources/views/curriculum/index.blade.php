@@ -1,4 +1,15 @@
 <x-authenticated_layout>
+    @php
+        if(!$curriculums->isEmpty()){
+            $created_at = $curriculums->map(function ($curriculum) {
+                return collect($curriculum->toArray())
+                    ->only(['created_at'])
+                    ->all();
+            });
+
+            $created_at = date('Y-m-d H:i:s',strtotime(max($created_at->toArray())['created_at']));
+        }
+    @endphp
   <div class="container-fluid px-5">
     <div class="card border border-0 px-0 mx-0">
       <div class="card-header p-4 text-center bg-dark">
@@ -61,7 +72,13 @@
                 <tr class="fw-bold">
                     <td>{{ $curriculum->curriculumName }}</td>
                     <td>1997</td>
-                    <td>Still Active</td>
+                    <td>
+                        @if($created_at == $curriculum->created_at)
+                            Still Active
+                        @else
+                            {{ $curriculum->created_at }}
+                        @endif
+                    </td>
                     <td>
                     <div class="dropdown">
                         <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-coreui-toggle="dropdown" aria-expanded="false">

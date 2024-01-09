@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('curriculum', function (Blueprint $table) {
             $table->id();
+            $table->smallInteger('departmentID')->nullable();
             $table->string('curriculumName')->nullable();
             $table->smallInteger('course')->nullable();
             $table->string('yearLevel')->nullable();

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Courses;
+use App\Models\Employees;
 use App\Models\Curriculum;
+use App\Models\Departments;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
@@ -19,9 +21,14 @@ class DepartmentHeadController extends Controller
     #Course
 
     public function addCourse(){
+        $inCharge = Employees::where('roleCode','=','in-charge')
+                            ->whereRaw('(designation = "" OR designation IS NULL)')
+                            ->get();
+
         $info = [
             'title'     => "Add Course",
-            'button'    => "Submit"
+            'button'    => "Submit",
+            'inCharge'  => $inCharge
         ];
 
         return view('course/form',compact('info'));
@@ -50,6 +57,9 @@ class DepartmentHeadController extends Controller
             "acronym"       => "required",
             "color"         => "required",
         ]);
+
+        $department = Departments::where('departmentHead',auth()->user()->userID)->first();
+        $request->merge(["departmentID" => $department->id]);
 
         $query = Courses::create($request->all());
 
@@ -138,7 +148,14 @@ class DepartmentHeadController extends Controller
         ]);
 
         $info = json_encode($request->except('id'));
-        $result = Curriculum::whereId($request->input('id'))->update([ "info" => $info]);
+        $department = Departments::where('departmentHead',auth()->user()->userID)->first();
+
+        $result = Curriculum::whereId($request->input('id'))->update(
+            [
+                "info" => $info,
+                "departmentID" => $department->id
+            ]
+        );
         if($result){
             return response()->json([
                 "success" => true,

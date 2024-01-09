@@ -15,7 +15,7 @@
     <div class="col-12 col-md-6">
         <div class="card shadow-sm rounded-0" style="background-color:{{ $department->departmentColor }};">
           <div class="d-flex justify-content-between align-items-center p-3">
-            <a href="/admin/courses" class="fs-4 nav-link text-white">{{ $department->departmentName }}</a>
+            <a href="/admin/courses?id={{ $department->id }}" class="fs-4 nav-link text-white">{{ $department->departmentName }}</a>
             <a href="/admin/departments/edit" class="text-decoration-none">
               <span class="text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">

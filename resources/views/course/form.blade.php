@@ -1,8 +1,13 @@
 <x-authenticated_layout>
 @php
     $data = [];
+    $inCharge = [];
     if(isset($info['data'])){
         $data = $info['data'];
+    }
+
+    if(isset($info['inCharge'])){
+        $inCharge = $info['inCharge'];
     }
 @endphp
 <div class="container-lg px-5">
@@ -29,8 +34,11 @@
                     <div class="course mb-3">
                       <label for="exampleSelect1" class="form-label mb-2">Course In-Charge ID</label>
                       <select name='inChargeID' class="form-select" id="exampleSelect1">
-                        <option value='1'>1</option>
-                        <option value='2'>2</option>
+                        @if (!empty($inCharge))
+                            @foreach ($inCharge as $employee)
+                                <option value="{{ $employee->id }}">{{ "$employee->lastName, $employee->firstName" }}</option>
+                            @endforeach
+                        @endif
                       </select>
                     </div>
                     <div class="course mb-3">

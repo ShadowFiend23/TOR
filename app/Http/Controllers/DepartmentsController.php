@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Courses;
 use App\Models\Departments;
 use Illuminate\Http\Request;
 
@@ -12,6 +13,12 @@ class DepartmentsController extends Controller
     public function departments(){
         $departments = Departments::all();
         return view('admin/departments/index',compact('departments'));
+    }
+
+    public function courses(Request $request){
+        $courses = Courses::where('departmentID',$request->input('id'));
+
+        return view('department.index',compact('courses'));
     }
 
     public function addDepartmentPage(){

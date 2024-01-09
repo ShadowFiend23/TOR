@@ -13,6 +13,7 @@ class Courses extends Model
         'courseName',
         'acronym',
         'inChargeID',
-        'color'
+        'color',
+        'departmentID'
     ];
 }

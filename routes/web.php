@@ -61,6 +61,8 @@ Route::middleware(['auth','user-role:admin'])->group(function(){
         Route::post('/saveDepartment',[DepartmentsController::class,'saveDepartment'])->name('saveDepartment');
         Route::post('/deleteDepartment',[DepartmentsController::class,'deleteDepartment']);
 
+        Route::get('/courses',[DepartmentsController::class,'courses']);
+
         # Admin CoAdmin Routes
         Route::get('/co-admin',[CoAdminController::class,'coAdmin'])->name('coAdmin');
         Route::get('/co-admin/new',[CoAdminController::class,'addCoAdminPage'])->name('addCoAdmin');
@@ -83,7 +85,7 @@ Route::middleware(['auth','user-role:admin'])->group(function(){
         Route::get('/rubrics/edit', [RubricsController::class,'editRubrics'])->name('editRubrics');
     });
 
-}); 
+});
 
 Route::middleware(['auth','user-role:employee'])->group(function(){
     Route::middleware('permission:department-head')->group(function(){
