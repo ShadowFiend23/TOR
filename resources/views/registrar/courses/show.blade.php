@@ -17,7 +17,7 @@
     pdf.getPage(pageNumber).then(function(page) {
       console.log('Page loaded');
 
-      var scale = 0.5;
+      var scale = 2;
       var viewport = page.getViewport({scale: scale});
       
       var canvas = document.getElementById('the-canvas');
