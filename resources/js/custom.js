@@ -24,7 +24,8 @@ $(function(){
     let el = document.getElementById('preReqChoices'),
         preReqChoices = null,
         currentPreReq = null,
-        preReqValues  = {};
+        preReqValues  = {},
+        selectedEnrollSubjects = [];
 
     if(el){
         preReqChoices = new Choices(el,{
@@ -199,6 +200,33 @@ $(function(){
         })
     })
 
+    $("#studentForm").on("submit",function(e){
+        e.preventDefault();
+
+        let frmData     = new FormData($(this)[0]);
+
+        $.ajax({
+            url  : '/admin/saveStudents',
+            data : frmData,
+            type : 'POST',
+            processData: false,
+            contentType: false,
+            success : function(response){
+                if(response.success){
+                    window.location.href = "/admin/student-list?id=" + response.id
+                }
+            },
+            error: function(xhr){
+                // let response = xhr.responseJSON;
+
+                // Toast.fire({
+                //     icon : 'error',
+                //     title: response.message.split('(')[0]
+                // })
+            }
+        })
+    })
+
     $(".addSubject").on('click',function(){
         let year        = $(this).data('year'),
             semester    = $(this).data('sem'),
@@ -284,7 +312,78 @@ $(function(){
 
         preReqCheckbox.data('subject',subjectCode);
 
+    });
+
+    $(document).on('click','.studentTDList',function(){
+        let studentID = $(this).data('student');
+
+        $("#enrollmentStudentID").val(studentID);
+
+        $("#regularModal").modal('toggle');
     })
+
+    $("#enrollSubjectForm").on("submit",function(e){
+        e.preventDefault();
+
+        let frmData     = new FormData($("#subjectsForm")[0]),
+            form        = $(this).serializeArray(),
+            data        = [];
+
+        for(let input of form){
+            if(input.name != 'studentID' && input.name != 'studentType'){
+                data.push(input.name);
+            }
+        }
+        frmData.append('credentials',JSON.stringify(data));
+
+        $.ajax({
+            url  : '/storeCredentials',
+            data : frmData,
+            type : 'POST',
+            processData: false,
+            contentType: false,
+            success : function(response){
+
+            },
+            error: function(xhr){
+                // let response = xhr.responseJSON;
+
+                // Toast.fire({
+                //     icon : 'error',
+                //     title: response.message.split('(')[0]
+                // })
+            }
+        });
+    });
+
+    $(document).on("change",".checkboxEnrollSubject",function(){
+        let tr = $(this).closest('tr');
+
+        if($(this).is(':checked')){
+
+            selectedEnrollSubjects.push(tr);
+        }else{
+            let index = selectedEnrollSubjects.indexOf(tr);
+
+            if (index !== -1) {
+                array.splice(index, 1);
+            }
+        }
+
+    });
+
+    $("#submitEnrollmentSubjects").on('click',function(){
+        if(selectedEnrollSubjects){
+            for (const val  of selectedEnrollSubjects) {
+                let clone = val.clone();
+
+                clone.children().last().remove();
+                $("#selectedSubjectTbody").append(clone.prop('outerHTML'));
+            }
+            $("#selectedSubjectModal").modal('toggle');
+        }
+
+    });
 
 });
 

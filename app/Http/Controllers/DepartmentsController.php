@@ -16,9 +16,9 @@ class DepartmentsController extends Controller
     }
 
     public function courses(Request $request){
-        $courses = Courses::where('departmentID',$request->input('id'));
+        $courses = Courses::where('departmentID',$request->input('id'))->get();
 
-        return view('department.index',compact('courses'));
+        return view('admin.courses.index',compact('courses'));
     }
 
     public function addDepartmentPage(){

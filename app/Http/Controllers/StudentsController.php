@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Courses;
 use App\Models\Students;
+use App\Models\Curriculum;
 use App\Models\Departments;
 use Illuminate\Http\Request;
 
@@ -17,8 +18,24 @@ class StudentsController extends Controller
         return view('admin/students/index',compact('departments'));
     }
 
-    public function addStudentsPage(){
-        return view('components.employee.addEmployee');
+    public function studentList(Request $request){
+        $course = Courses::find($request->input('id'))->first();
+        $students = Students::where('course',$course->id)->get();
+        $curriculum = Curriculum::where('course',$course->id)->orderBy('created_at','asc')->first();
+
+        $info = [
+            "course"        => $course,
+            "students"      => $students,
+            "curriculum"    => $curriculum
+        ];
+        return view('admin.students.students',compact('info'));
+    }
+    
+
+    public function addStudentPage(Request $request){
+        $courseID = $request->input('id');
+
+        return view('admin.students.new',compact('courseID'));
     }
 
     public function editStudentsPage(Request $request){
@@ -54,6 +71,7 @@ class StudentsController extends Controller
             "middleName"    => "required",
             "email"         => "required",
             "password"      => "required",
+            "course"        => "required"
         ]);
 
         $query = Students::create($request->all());
@@ -84,7 +102,8 @@ class StudentsController extends Controller
 
         return response()->json([
             "success"   => true,
-            "msg"       => "Successfully add new employee."
+            "msg"       => "Successfully add new employee.",
+            "id"        => $request->input('course')
         ]);
     }
 

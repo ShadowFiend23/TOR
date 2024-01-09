@@ -72,7 +72,8 @@ Route::middleware(['auth','user-role:admin'])->group(function(){
 
         # Admin Students Routes
         Route::get('/students',[StudentsController::class,'students'])->name('students');
-        Route::get('/addStudents',[StudentsController::class,'addStudentPage'])->name('addStudents');
+        Route::get('/student-list',[StudentsController::class,'studentList'])->name('studentList');
+        Route::get('/students/new',[StudentsController::class,'addStudentPage'])->name('addStudentPage');
         Route::get('/editStudents',[StudentsController::class,'editStudentPage'])->name('editStudents');
         Route::post('/saveStudents',[StudentsController::class,'saveStudent'])->name('saveStudents');
         Route::post('/deleteStudents',[StudentsController::class,'deleteStudent']);
@@ -103,6 +104,14 @@ Route::middleware(['auth','user-role:employee'])->group(function(){
         Route::get('/course/add', [DepartmentHeadController::class,'addCourse'])->name('addCourse');
         Route::get('/course/edit', [DepartmentHeadController::class,'editCourse']);
         Route::post('/saveCourse', [DepartmentHeadController::class,'saveCourse']);
+
+        # Students
+        Route::get('/student-list',[DepartmentHeadController::class,'studentList'])->name('depStudentList');
+        Route::get('/regular',[DepartmentHeadController::class,'regular'])->name('regular');
+        Route::post('/regular/new',[DepartmentHeadController::class,'addRegular'])->name('addRegular');
+        Route::get('/regular/show',[DepartmentHeadController::class,'showRegular'])->name('showRegular');
+        Route::get('/regular/edit',[DepartmentHeadController::class,'editRegular'])->name('editRegular');
+
     });
 
     Route::middleware('permission:registrar')->group(function(){

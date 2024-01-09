@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Courses;
+use App\Models\Students;
 use App\Models\Employees;
 use App\Models\Curriculum;
 use App\Models\Departments;
@@ -13,9 +14,24 @@ class DepartmentHeadController extends Controller
 {
     //
     public function dashboard(){
-        $courses = Courses::leftJoin('students','courses.id','=','students.course')->get(['courses.*','students.studentID']);
+        $department = Departments::where('departmentHead',auth()->user()->userID)->first();
+        $courses = Courses::where('departmentID',$department->id)->get();
 
         return view('department/index',compact('courses'));
+    }
+
+    public function studentList(Request $request){
+        $course = Courses::find($request->input('id'))->first();
+        $students = Students::where('course',$course->id)->get();
+        $curriculum = Curriculum::where('course',$course->id)->orderBy('created_at','desc')->first();
+
+        $info = [
+            "course"        => $course,
+            "students"      => $students,
+            "curriculum"    => $curriculum
+        ];
+
+        return view('enrollment.index',compact('info'));
     }
 
     #Course
@@ -166,5 +182,33 @@ class DepartmentHeadController extends Controller
                 "success" => false
             ]);
         }
+    }
+
+    #enrollment
+
+    public function regular(){
+
+    }
+
+    public function addRegular(Request $request){
+        $data = $request->only(['studentID','studentType']);
+        $credentials = array_keys($request->except(['_token','studentID','studentType']));
+        $student = Students::where('studentID',$data['studentID'])->first();
+        $course = Courses::find($student->course);
+
+        $curriculum = Curriculum::where('course',$student->course)->orderBy('created_at','desc')->first();
+
+        $info = [
+            "data" => $data,
+            "credentials" => $credentials,
+            "subjects" => $curriculum->info,
+            "course"    => $course
+        ];
+
+        return view('enrollment.regular.new',compact('info'));
+    }
+
+    public function saveRegular(Request $request){
+        //$studentID = $request
     }
 }
