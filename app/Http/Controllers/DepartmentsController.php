@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Courses;
+use App\Models\Employees;
 use App\Models\Departments;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,15 @@ class DepartmentsController extends Controller
     //
 
     public function departments(){
-        $departments = Departments::all();
+        $departments = Departments::join('employees','departments.departmentHead','=','employees.employeeID')
+                                ->get(
+                                    [
+                                        "departments.*",
+                                        "employees.lastName",
+                                        "employees.firstName",
+                                        "employees.middleName",
+                                    ]
+                                );
         return view('admin/departments/index',compact('departments'));
     }
 
@@ -21,17 +30,41 @@ class DepartmentsController extends Controller
         return view('admin.courses.index',compact('courses'));
     }
 
+    public function getDepartmentHeadInfo(Request $request){
+        $info = Employees::where('employeeID',$request->input('employeeID'))->first();
+
+        if($info){
+            $response = response()->json([
+                "success" => true,
+                "info" => $info
+            ]);
+        }else{
+            $response = response()->json([
+                "success" => false,
+            ]);
+        }
+
+        return $response;
+    }
+
     public function addDepartmentPage(){
-        return view('admin/departments/new');
+        $heads = Employees::where('roleCode','department-head')
+                            ->whereRaw('(designation = "" OR designation IS NULL)')
+                            ->get();
+
+        return view('admin/departments/new',compact('heads'));
     }
 
     public function editDepartmentPage(Request $request){
         $id = $request->input('id');
 
         $department = Departments::find($id);
+        $heads = Employees::where('roleCode','department-head')
+                            ->whereRaw('(designation = "" OR designation IS NULL)')
+                            ->get();
 
         if($department){
-            return view('admin/departments/new',compact('department'));
+            return view('admin/departments/new',compact('department','heads'));
         }
     }
 
@@ -79,6 +112,9 @@ class DepartmentsController extends Controller
             ]);
             $query = Departments::create($request->except(['id','departmentEmail']));
             if($query){
+                Employees::where('employeeID',$request->departmentHead)
+                            ->update([ "designation" => $query->id]);
+
                 $response = [
                     "success" => true
                 ];

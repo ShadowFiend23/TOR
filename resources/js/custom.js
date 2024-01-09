@@ -35,6 +35,31 @@ $(function(){
         })
     }
 
+    $("#adminDepartmentHead").on("change",function(){
+        let employeeID = $(this).val();
+
+        $.ajax({
+            url  : '/admin/getDepartmentHeadInfo',
+            data : {
+                employeeID : employeeID
+            },
+            type : 'POST',
+            success : function(response){
+                if(response.success){
+                    $("#adminDeparmentHeadEmail").val(response.info.email)
+                }
+            },
+            error: function(xhr){
+                // let response = xhr.responseJSON;
+
+                // Toast.fire({
+                //     icon : 'error',
+                //     title: response.message.split('(')[0]
+                // })
+            }
+        })
+    });
+
     $("#employeeForm").on("submit",function(e){
         e.preventDefault();
 
@@ -46,8 +71,10 @@ $(function(){
             type : 'POST',
             processData: false,
             contentType: false,
-            success : function(data){
-
+            success : function(response){
+                if(response.success){
+                    window.location.href = "/admin/employees"
+                }
             },
             error: function(xhr){
                 // let response = xhr.responseJSON;
@@ -361,29 +388,110 @@ $(function(){
 
         if($(this).is(':checked')){
 
-            selectedEnrollSubjects.push(tr);
+            selectedEnrollSubjects[tr.data('subject')] = tr;
         }else{
-            let index = selectedEnrollSubjects.indexOf(tr);
-
-            if (index !== -1) {
-                array.splice(index, 1);
-            }
+            selectedEnrollSubjects[tr.data('subject')] = "";
         }
 
     });
 
     $("#submitEnrollmentSubjects").on('click',function(){
         if(selectedEnrollSubjects){
-            for (const val  of selectedEnrollSubjects) {
-                let clone = val.clone();
+            $("#selectedSubjectTbody").html("");
+            for (const subject in selectedEnrollSubjects) {
+                if(selectedEnrollSubjects[subject]){
+                    let clone = selectedEnrollSubjects[subject].clone();
 
-                clone.children().last().remove();
-                $("#selectedSubjectTbody").append(clone.prop('outerHTML'));
+                    clone.children().last().remove();
+                    $("#selectedSubjectTbody").append(clone.prop('outerHTML'));
+                }
             }
             $("#selectedSubjectModal").modal('toggle');
         }
 
     });
 
+    $("#submitSelectedSubjectsBtn").on("click",function(){
+        let frmData     = new FormData($("#subjectEnrollmentForm")[0]),
+            keys        = Object.keys(selectedEnrollSubjects),
+            subjects   = keys.map(function(e){
+                                return JSON.stringify(e).replace(/['"]+/g, '');
+                            });
+        frmData.append('subjects',subjects.join(","));
+        $.ajax({
+            url  : '/saveEnrollment',
+            data : frmData,
+            type : 'POST',
+            processData: false,
+            contentType: false,
+            success : function(response){
+                if(response.success){
+                    window.location.href = "/regular/show?id="+ response.id
+                }
+            },
+            error: function(xhr){
+                // let response = xhr.responseJSON;
+
+                // Toast.fire({
+                //     icon : 'error',
+                //     title: response.message.split('(')[0]
+                // })
+            }
+        });
+    });
+
+    $("#submitFinalEditGrades").on('click',function(){
+        let frmData     = new FormData($("#editGradesForm")[0]);
+
+        $.ajax({
+            url  : '/saveGrades',
+            data : frmData,
+            type : 'POST',
+            processData: false,
+            contentType: false,
+            success : function(response){
+                if(response.success){
+                    window.location.href = "/student-list?id=" + response.id
+                }else{
+                    alert(response.msg);
+                }
+            },
+            error: function(xhr){
+                // let response = xhr.responseJSON;
+
+                // Toast.fire({
+                //     icon : 'error',
+                //     title: response.message.split('(')[0]
+                // })
+            }
+        })
+    })
+
+    $("#showEnrollBtn").on("click",function(){
+        let enrollID = $(this).data('enroll');
+
+        $.ajax({
+            url  : '/checkEnroll',
+            data : {
+                enrollID : enrollID
+            },
+            type : 'POST',
+            success : function(response){
+                if(response.success){
+
+                }else{
+                    alert(response.msg);
+                }
+            },
+            error: function(xhr){
+                // let response = xhr.responseJSON;
+
+                // Toast.fire({
+                //     icon : 'error',
+                //     title: response.message.split('(')[0]
+                // })
+            }
+        })
+    });
 });
 

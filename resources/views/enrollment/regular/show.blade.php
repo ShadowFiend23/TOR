@@ -1,9 +1,19 @@
 <x-authenticated_layout>
+    @php
+        $subjects = [];
+        $descriptions = [];
+        if(isset($info['enroll'])){
+            $subjects = explode(",",$info['enroll']->enrolledSubjects);
+            $descriptions = $info['descriptions'];
+            $grades = $info["enroll"]->grades ?? "";
+            $grades = json_decode($grades,true);
+        }
+    @endphp
   <div class="container-fluid">
 
     <div class="row">
       <div class="col-12 d-flex justify-content-end">
-        <button class="btn btn-info text-white">
+        <button class="btn btn-info text-white" data-enroll="{{ $info['enroll']->id }}" id="showEnrollBtn">
           Enroll
         </button>
       </div>
@@ -11,8 +21,11 @@
         <h4 class="text-black ms-2"><strong>Students Records</strong></h4>
         <div class="d-flex flex-column ms-4 mb-4">
           <strong class="text-black fw-bold my-2">Student Credentials</strong>
-          <p class="text-black mb-0">Form 138</p>
-          <p class="text-black mb-0">Transcript of Records(TOR)</p>
+          @if (isset($info['credentials']) && !empty($info['credentials']))
+            @foreach ($info['credentials'] as $credentials)
+                <p class="text-black mb-0">{{ $credentials }}</p>
+            @endforeach
+          @endif
         </div>
       </div>
     </div>
@@ -40,76 +53,15 @@
                       <th style="width: 7%">Sec.</th>
                       <th >Description</th>
                   </tr>
+                  @foreach ($subjects as $subject)
                   <tr>
-                    <td> 1.5 </td>
+                    <td>{{ $grades[$subject] ?? "" }}</td>
                     <td>  </td>
-                    <td> IT 134 </td>
+                    <td>{{ $subject }}</td>
                     <td> 1A </td>
-                    <td> Computer Programming 1 </td>
+                    <td>{{ $descriptions[$subject] }}</td>
                   </tr>
-                  <tr>
-                    <td> 1.1 </td>
-                    <td>  </td>
-                    <td> GEN ED 001 </td>
-                    <td> 1A </td>
-                    <td> Purposive Communication </td>
-                  </tr>
-                  <tr>
-                    <td> 2.0 </td>
-                    <td>  </td>
-                    <td> MATH ENHANCE 1 </td>
-                    <td> 1A </td>
-                    <td> College Algebra and Trigonometry </td>
-                  </tr>
-                  <tr>
-                    <td> 1.9 </td>
-                    <td>  </td>
-                    <td> GEN ED 004 </td>
-                    <td> 1A </td>
-                    <td> Mathematics in the Modern world </td>
-                  </tr>
-                  <tr>
-                    <td> 1.1 </td>
-                    <td>  </td>
-                    <td> GEN ED 009 </td>
-                    <td> 1A </td>
-                    <td> The Entrepreneurial Mind </td>
-                  </tr>
-                  <tr>
-                    <td> 1.6 </td>
-                    <td>  </td>
-                    <td> IT 113 </td>
-                    <td> 1A </td>
-                    <td> Introduction to Computing </td>
-                  </tr>
-                  <tr>
-                    <td> 1.2 </td>
-                    <td>  </td>
-                    <td> NSTP 113 </td>
-                    <td> 1A </td>
-                    <td> CWTS, LTS, MTS(Naval or Air Force) </td>
-                  </tr>
-                  <tr>
-                    <td> 1.4 </td>
-                    <td>  </td>
-                    <td> DRR 113 </td>
-                    <td> 1A </td>
-                    <td> Disaster Risk Reduction and Education in Emergencies </td>
-                  </tr>
-                  <tr>
-                    <td> 2.2 </td>
-                    <td>  </td>
-                    <td> GEN ED 002 </td>
-                    <td> 1A </td>
-                    <td> Understanding the Self </td>
-                  </tr>
-                  <tr>
-                    <td> 1.0 </td>
-                    <td>  </td>
-                    <td> PATHFIT 112 </td>
-                    <td> 1A </td>
-                    <td> Movement Competency Training </td>
-                  </tr>
+                  @endforeach
                 </table>
               </div>
             </div>
