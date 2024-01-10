@@ -46,7 +46,7 @@
               <img src="{{ asset('images/evaluator-portal.png') }}" class="img-fluid"/>
             </div>
             <div class="card-footer text-center" style="z-index: 9999;" >
-              <a href="{{ route('login') }}" class="nav-link text-light fs-4 fw-bold">Evaluator Portal</a>
+              <a href="./evaluator/login" class="nav-link text-light fs-4 fw-bold">Evaluator Portal</a>
             </div>
           </div>
         </div>

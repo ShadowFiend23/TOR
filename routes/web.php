@@ -186,3 +186,17 @@ Route::middleware(['auth','user-role:employee'])->group(function(){
 // Route::get('/latin_honor_final_list/academic_achiever/archive', function () { return view('/latin_honor_final_list/academic_achiever/archive'); });
 // Route::get('/latin_honor_final_list/academic_achiever/show', function () { return view('/latin_honor_final_list/academic_achiever/show'); });
 
+# Evaluator Side
+Route::get('/evaluator/login', function () { return view('/evaluator/login');});
+Route::get('/evaluator/register', function () { return view('/evaluator/register');});
+Route::get('/evaluator/otp', function () { return view('/evaluator/otp');});
+Route::get('/evaluator/confirmation', function () { return view('/evaluator/confirmation');});
+
+
+# Interviewer Dashboard
+Route::get('/evaluator/dashboard', function () { return view('/evaluator/dashboard');});
+Route::get('/evaluator', function () { return view('/evaluator/index');});
+Route::get('/evaluator/show', function () { return view('/evaluator/show');});
+
+Route::get('/evaluator/student/show', function () { return view('/evaluator/student/show');});
+
