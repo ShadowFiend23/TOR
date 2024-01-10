@@ -1,4 +1,15 @@
 <x-authenticated_layout>
+    @php
+        if(!$curriculums->isEmpty()){
+            $created_at = $curriculums->map(function ($curriculum) {
+                return collect($curriculum->toArray())
+                    ->only(['created_at'])
+                    ->all();
+            });
+
+            $created_at = date('Y-m-d H:i:s',strtotime(max($created_at->toArray())['created_at']));
+        }
+    @endphp
   <div class="container-fluid px-5">
     <div class="card border border-0 px-0 mx-0">
       <div class="card-header p-4 text-center bg-dark">
@@ -27,24 +38,6 @@
                     <div class="mb-3">
                       <label for="curriculumName" class="col-form-label">Curriculum Name</label>
                       <input type="text" class="form-control" name="curriculumName" id="curriculumName", placeholder="Enter Curriculum Name">
-                    </div>
-                    <label for="yearLevel" class="col-form-label">Year Level</label>
-                    <div class="input-group mb-3">
-                      <select class="form-select" name="yearLevel" id="yearLevel">
-                        <option selected>Select year level</option>
-                        <option value="1">1st</option>
-                        <option value="2">2nd</option>
-                        <option value="3">3rd</option>
-                        <option value="3">4th</option>
-                      </select>
-                    </div>
-                    <label for="semester" class="col-form-label">Semester</label>
-                    <div class="input-group mb-3">
-                      <select class="form-select" name="semester" id="semester">
-                        <option hidden selected>Semester</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                      </select>
                     </div>
                 </div>
                 <div class="modal-footer px-5">
@@ -79,7 +72,13 @@
                 <tr class="fw-bold">
                     <td>{{ $curriculum->curriculumName }}</td>
                     <td>1997</td>
-                    <td>Still Active</td>
+                    <td>
+                        @if($created_at == $curriculum->created_at)
+                            Still Active
+                        @else
+                            {{ $curriculum->created_at }}
+                        @endif
+                    </td>
                     <td>
                     <div class="dropdown">
                         <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-coreui-toggle="dropdown" aria-expanded="false">
@@ -97,7 +96,7 @@
                             View
                             </a>
                         </li>
-                        <li class="d-flex flex-row justify-content-between">
+                        {{-- <li class="d-flex flex-row justify-content-between">
                             <a class="dropdown-item editCurBtn" data-curname="{{ $curriculum->curriculumName }}" data-curid="{{ $curriculum->id }}" href="" data-coreui-toggle="modal" data-coreui-target="#editCurriculumModal">
                             <span class="text-info">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -107,7 +106,7 @@
                             </span>
                             Edit
                             </a>
-                        </li>
+                        </li> --}}
                         </ul>
                     </div>
                     </td>

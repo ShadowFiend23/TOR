@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Courses;
+use App\Models\Employees;
 use App\Models\Departments;
 use Illuminate\Http\Request;
 
@@ -10,22 +12,59 @@ class DepartmentsController extends Controller
     //
 
     public function departments(){
-        $departments = Departments::join('employees','employees.employeeID','=','departments.departmentHead')
-                                    ->get(['departments.*','employees.firstName','employees.lastName']);
+        $departments = Departments::join('employees','departments.departmentHead','=','employees.employeeID')
+                                ->get(
+                                    [
+                                        "departments.*",
+                                        "employees.lastName",
+                                        "employees.firstName",
+                                        "employees.middleName",
+                                    ]
+                                );
         return view('admin/departments/index',compact('departments'));
     }
 
+    public function courses(Request $request){
+        $courses = Courses::where('departmentID',$request->input('id'))->get();
+
+        return view('admin.courses.index',compact('courses'));
+    }
+
+    public function getDepartmentHeadInfo(Request $request){
+        $info = Employees::where('employeeID',$request->input('employeeID'))->first();
+
+        if($info){
+            $response = response()->json([
+                "success" => true,
+                "info" => $info
+            ]);
+        }else{
+            $response = response()->json([
+                "success" => false,
+            ]);
+        }
+
+        return $response;
+    }
+
     public function addDepartmentPage(){
-        return view('admin/departments/new');
+        $heads = Employees::where('roleCode','department-head')
+                            ->whereRaw('(designation = "" OR designation IS NULL)')
+                            ->get();
+
+        return view('admin/departments/new',compact('heads'));
     }
 
     public function editDepartmentPage(Request $request){
         $id = $request->input('id');
 
         $department = Departments::find($id);
+        $heads = Employees::where('roleCode','department-head')
+                            ->whereRaw('(designation = "" OR designation IS NULL)')
+                            ->get();
 
         if($department){
-            return view('admin/departments/new',compact('department'));
+            return view('admin/departments/new',compact('department','heads'));
         }
     }
 
@@ -50,53 +89,43 @@ class DepartmentsController extends Controller
             $request->validate([
                 "departmentName"    => "required",
                 "departmentHead"    => "required",
-                "email"             => "required",
-                "file"              => "required",
+                "departmentColor"   => "required",
             ]);
 
-            $file = $request->file('file');
+            $query = Departments::whereId($request->input('id'))->update($request->except(['id','departmentEmail']));
 
-            if($file->move("uploads",$file->getClientOriginalName())){
-
-                $data = $request->except('id');
-                $data['file'] = "uploads/".$file->getClientOriginalName();
-                $query = Departments::whereId($request->input('id'))->update($data);
-
+            if($query){
+                $response = [
+                    "success" => true
+                ];
             }else{
-                return response()->json([
-                    "success"   => false,
-                    "msg"       => "Error saving department."
-                ]);
+                $response = [
+                    "success" => false
+                ];
             }
-
 
         }else{
             $request->validate([
                 "departmentName"    => "required",
                 "departmentHead"    => "required|exists:employees,employeeID",
-                "email"             => "required",
-                "file"              => "required",
+                "departmentColor"   => "required"
             ]);
+            $query = Departments::create($request->except(['id','departmentEmail']));
+            if($query){
+                Employees::where('employeeID',$request->departmentHead)
+                            ->update([ "designation" => $query->id]);
 
-            $file = $request->file('file');
-
-            if($file->move("uploads",$file->getClientOriginalName())){
-
-                $data = $request->all();
-                $data['file'] = "uploads/".$file->getClientOriginalName();
-                $query = Departments::create($data);
-
+                $response = [
+                    "success" => true
+                ];
             }else{
-                return response()->json([
-                    "success"   => false,
-                    "msg"       => "Error saving department."
-                ]);
+                $response = [
+                    "success" => false
+                ];
             }
         }
 
-        return response()->json([
-            "success"   => true,
-            "msg"       => "Successfully saving department."
-        ]);
+
+        return response()->json($response);
     }
 }

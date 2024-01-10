@@ -16,8 +16,13 @@ $(function(){
             type : 'POST',
             processData: false,
             contentType: false,
-            success : function(data){
-                window.location.replace(data);
+            success : function(response){
+                if(response.success){
+                    window.location.replace(response.route);
+                }else{
+                    alert(response.msg);
+                    location.reload();
+                }
             },
             error: function(xhr){
                 // let response = xhr.responseJSON;

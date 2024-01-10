@@ -44,7 +44,7 @@
       </a>
     </li>
     <li class="nav-item w-100">
-      <a class="nav-link" href="{{ route('curriculum') }}">
+      <a class="nav-link" href="{{ route('curriculumList') }}">
         <i class='bx bx-list-ul' ></i>
         <span class="mx-1">Curriculum List</span>
       </a>

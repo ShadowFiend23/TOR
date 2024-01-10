@@ -54,6 +54,11 @@ class DatabaseSeeder extends Seeder
                 "code" => "saso",
                 "name" => "SASO",
                 "route"=> "saso"
+            ],
+            [
+                "code" => "in-charge",
+                "name" => "in-charge",
+                "route"=> "in-charge"
             ]
         ];
 

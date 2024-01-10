@@ -12,7 +12,6 @@ class Departments extends Model
     protected $fillable = [
         'departmentName',
         'departmentHead',
-        'email',
-        'file',
+        'departmentColor'
     ];
 }

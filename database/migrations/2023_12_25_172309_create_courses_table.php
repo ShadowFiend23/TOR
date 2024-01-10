@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('acronym');
             $table->integer('inChargeID');
             $table->string('color');
+            $table->smallInteger('departmentID');
             $table->timestamps();
         });
     }

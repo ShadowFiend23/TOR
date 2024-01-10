@@ -46,7 +46,7 @@
                          data-action="input->rubrics-calculator#calculateTotals" 
                          value=0>
                 </td>
-                <td> Exceptional academic performance; outstanding depth of knowledge in major subject. </td>
+                <td><input type="text" class="form-control" value=" Exceptional academic performance; outstanding depth of knowledge in major subject. "/></td>
             </tr>
             <tr>
                 <td scope="row">
@@ -56,7 +56,7 @@
                          data-action="input->rubrics-calculator#calculateTotals" 
                          value=0>
                 </td>
-                <td> Strong academic performance; evident depth of understanding. </td>
+                <td><input type="text" class="form-control" value=" Strong academic performance; evident depth of understanding. "/></td>
             </tr>
             <tr>
                 <td scope="row">
@@ -66,7 +66,7 @@
                          data-action="input->rubrics-calculator#calculateTotals" 
                          value=0>
                 </td>
-                <td> Good academic performance; some depth in major subject. </td>
+                <td><input type="text" class="form-control" value=" Good academic performance; some depth in major subject. "/></td>
             </tr>
             <tr>
                 <td scope="row">
@@ -76,7 +76,7 @@
                          data-action="input->rubrics-calculator#calculateTotals" 
                          value=0>
                 </td>
-                <td> Adequate academic performance; limited depth shown. </td>
+                <td><input type="text" class="form-control" value=" Adequate academic performance; limited depth shown. "/></td>
             </tr>
             <tr>
                 <td scope="row">
@@ -86,7 +86,7 @@
                          data-action="input->rubrics-calculator#calculateTotals" 
                          value=0>
                 </td>
-                <td> Poor academic performance; lack of depth. </td>
+                <td><input type="text" class="form-control" value=" Poor academic performance; lack of depth. "/></td>
             </tr>
           </tbody>
         </table>
@@ -117,7 +117,7 @@
                          data-action="input->rubrics-calculator#calculateTotals" 
                          value=0>
                 </td>
-                <td> High level of intellectual curiosity; substantial engagement in research/projects beyond requirements. </td>
+                <td><input type="text" class="form-control" value=" High level of intellectual curiosity; substantial engagement in research/projects beyond requirements. "/></td>
             </tr>
             <tr>
                 <td scope="row">
@@ -127,7 +127,7 @@
                          data-action="input->rubrics-calculator#calculateTotals" 
                          value=0>
                 </td>
-                <td> Demonstrates intellectual curiosity; some engagement beyond coursework. </td>
+                <td><input type="text" class="form-control" value=" Demonstrates intellectual curiosity; some engagement beyond coursework. "/></td>
             </tr>
             <tr>
                 <td scope="row">
@@ -137,7 +137,7 @@
                          data-action="input->rubrics-calculator#calculateTotals" 
                          value=0>
                 </td>
-                <td> Moderate level of curiosity; limited engagement in additional learning activities. </td>
+                <td><input type="text" class="form-control" value=" Moderate level of curiosity; limited engagement in additional learning activities. "/></td>
             </tr>
             <tr>
                 <td scope="row">
@@ -147,7 +147,7 @@
                          data-action="input->rubrics-calculator#calculateTotals" 
                          value=0>
                 </td>
-                <td> Limited curiosity beyond coursework; minimal engagement. </td>
+                <td><input type="text" class="form-control" value=" Limited curiosity beyond coursework; minimal engagement. "/></td>
             </tr>
             <tr>
                 <td scope="row">
@@ -157,7 +157,7 @@
                          data-action="input->rubrics-calculator#calculateTotals" 
                          value=0>
                 </td>
-                <td> No sign of intellectual curiosity; no engagement in additional learning activities. </td>
+                <td><input type="text" class="form-control" value=" No sign of intellectual curiosity; no engagement in additional learning activities. "/></td>
             </tr>
           </tbody>
         </table>
@@ -188,7 +188,7 @@
                          data-action="input->rubrics-calculator#calculateTotals" 
                          value=0>
                 </td>
-                <td>Excellent communication; articulates ideas eloquently. </td>
+                <td><input type="text" class="form-control" value="Excellent communication; articulates ideas eloquently. "/></td>
             </tr>
             <tr>
                 <td scope="row">
@@ -198,7 +198,7 @@
                          data-action="input->rubrics-calculator#calculateTotals" 
                          value=0>
                 </td>
-                <td>Strong communication; expresses ideas effectively.</td>
+                <td><input type="text" class="form-control" value="Strong communication; expresses ideas effectively."/></td>
             </tr>
             <tr>
                 <td scope="row">
@@ -208,7 +208,7 @@
                          data-action="input->rubrics-calculator#calculateTotals" 
                          value=0>
                 </td>
-                <td>Adequate communication; some points could be clearer.</td>
+                <td><input type="text" class="form-control" value="Adequate communication; some points could be clearer."/></td>
             </tr>
             <tr>
                 <td scope="row">
@@ -218,7 +218,7 @@
                          data-action="input->rubrics-calculator#calculateTotals" 
                          value=0>
                 </td>
-                <td>Basic communication skills; struggles to articulate.</td>
+                <td><input type="text" class="form-control" value="Basic communication skills; struggles to articulate."/></td>
             </tr>
             <tr>
                 <td scope="row">
@@ -228,7 +228,7 @@
                          data-action="input->rubrics-calculator#calculateTotals" 
                          value=0>
                 </td>
-                <td>Poor communication; unable to convey ideas.</td>
+                <td><input type="text" class="form-control" value="Poor communication; unable to convey ideas."/></td>
             </tr>
           </tbody>
         </table>
@@ -259,7 +259,7 @@
                          data-action="input->rubrics-calculator#calculateTotals" 
                          value=0>
                 </td>
-                <td>Strong leadership and service record; impact contributions to campus/community.</td>
+                <td><input type="text" class="form-control" value="Strong leadership and service record; impact contributions to campus/community."/></td>
             </tr>
             <tr>
                 <td scope="row">
@@ -269,7 +269,7 @@
                          data-action="input->rubrics-calculator#calculateTotals" 
                          value=0>
                 </td>
-                <td>Demonstrates leadership and service; positive contributions evident.</td>
+                <td><input type="text" class="form-control" value="Demonstrates leadership and service; positive contributions evident."/></td>
             </tr>
             <tr>
                 <td scope="row">
@@ -279,7 +279,7 @@
                          data-action="input->rubrics-calculator#calculateTotals" 
                          value=0>
                 </td>
-                <td>Some involvement in leadership and service activities, but impact is limited.</td>
+                <td><input type="text" class="form-control" value="Some involvement in leadership and service activities, but impact is limited."/></td>
             </tr>
             <tr>
                 <td scope="row">
@@ -289,7 +289,7 @@
                          data-action="input->rubrics-calculator#calculateTotals" 
                          value=0>
                 </td>
-                <td>Minimal leadership and service involvement; limited impact.</td>
+                <td><input type="text" class="form-control" value="Minimal leadership and service involvement; limited impact."/></td>
             </tr>
             <tr>
                 <td scope="row">
@@ -299,7 +299,7 @@
                          data-action="input->rubrics-calculator#calculateTotals" 
                          value=0>
                 </td>
-                <td>No leadership or service involvement.</td>
+                <td><input type="text" class="form-control" value="No leadership or service involvement."/></td>
             </tr>
           </tbody>
         </table>
@@ -330,7 +330,7 @@
                          data-action="input->rubrics-calculator#calculateTotals" 
                          value=0>
                 </td>
-                <td>Strongly recommended for Latin Honors.</td>
+                <td><input type="text" class="form-control" value="Strongly recommended for Latin Honors."/></td>
             </tr>
             <tr>
                 <td scope="row">
@@ -340,7 +340,7 @@
                          data-action="input->rubrics-calculator#calculateTotals" 
                          value=0>
                 </td>
-                <td>Recommended for Latin Honors.</td>
+                <td><input type="text" class="form-control" value="Recommended for Latin Honors."/></td>
             </tr>
             <tr>
                 <td scope="row">
@@ -350,7 +350,7 @@
                          data-action="input->rubrics-calculator#calculateTotals" 
                          value=0>
                 </td>
-                <td>Marginally recommended for Latin Honors.</td>
+                <td><input type="text" class="form-control" value="Marginally recommended for Latin Honors."/></td>
             </tr>
             <tr>
                 <td scope="row">
@@ -360,7 +360,7 @@
                          data-action="input->rubrics-calculator#calculateTotals" 
                          value=0>
                 </td>
-                <td>Not strongly recommended for Latin Honors.</td>
+                <td><input type="text" class="form-control" value="Not strongly recommended for Latin Honors."/></td>
             </tr>
             <tr>
                 <td scope="row">
@@ -370,7 +370,7 @@
                          data-action="input->rubrics-calculator#calculateTotals" 
                          value=0>
                 </td>
-                <td>Not recommended for Latin Honors.</td>
+                <td><input type="text" class="form-control" value="Not recommended for Latin Honors."/></td>
             </tr>
           </tbody>
         </table>

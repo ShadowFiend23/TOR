@@ -28,7 +28,7 @@
             </div>
           </div>
           <div class="d-flex justify-content-end gap-1 m-2">
-            <button class="btn btn-secondary btn-sm">Cancel</button>  
+            <button class="btn btn-secondary btn-sm">Cancel</button>
             <button class="btn btn-info btn-sm">Submit</button>
           </div>
         </form>

@@ -65,12 +65,12 @@
             >Department Head</option>
           </select>
         </div>
-        <div class="col-12 col-md-4 p-1">
+        {{-- <div class="col-12 col-md-4 p-1">
           <label for="designation">Designation</label>
           <select name="designation" class="form-select form-select-sm py-1">
-            <option value="---">---</option>
+            <option hidden>---</option>
           </select>
-        </div>
+        </div> --}}
       </div>
       <div class="row gx-0">
         <div class="col-12 col-md-6 p-1">
