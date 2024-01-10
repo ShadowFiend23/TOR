@@ -41,6 +41,22 @@ Route::get('/registrar/curriculums/show', function () { return view('registrar/c
 Route::get('/registrar/tor_analysis', function () { return view('registrar/tor_analysis'); } );
 Route::get('/registrar/logs', function () { return view('registrar/logs'); } );
 
+Route::get('/student/login', function () { return view('student/login'); } );
+Route::get('/student/register', function () { return view('student/register'); } );
+Route::get('/student/otp', function () { return view('student/otp'); } );
+Route::get('/student/application', function () { return view('student/application'); } );
+Route::get('/student/dashboard', function () { return view('student/dashboard'); } );
+Route::get('/student/update_photo', function () { return view('student/update_photo'); } );
+Route::get('/student/update_password', function () { return view('student/update_password'); } );
+Route::get('/student/request_tor', function () { return view('student/request_tor'); } );
+Route::get('/student/pending', function () { return view('student/pending'); } );
+Route::get('/student/recieved', function () { return view('student/recieved'); } );
+Route::get('/student/history_logs', function () { return view('student/history_logs'); } );
+Route::get('/student/evaluation', function () { return view('student/evaluation'); } );
+Route::get('/student/evaluation_result', function () { return view('student/evaluation_result'); } );
+Route::get('/student/grades', function () { return view('student/grades'); } );
+
+
 Route::middleware(['auth','user-role:admin'])->group(function(){
 
     Route::get('/admin',[EmployeesController::class,'index'])->name('admin');
