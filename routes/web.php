@@ -202,4 +202,5 @@ Route::get('/evaluator', function () { return view('/evaluator/index');});
 Route::get('/evaluator/show', function () { return view('/evaluator/show');});
 
 Route::get('/evaluator/student/show', function () { return view('/evaluator/student/show');});
-
+# Saso Side
+Route::get('/saso', function () { return view('/saso/index');});
