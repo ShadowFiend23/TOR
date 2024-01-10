@@ -3,7 +3,7 @@
     <div class="modal fade" id="examFormModal" tabindex="-1" aria-labelledby="examFormModalLabel" aria-hidden="true">
       <div class="modal-dialog  modal-dialog-centered">
         <div class="modal-content">
-          <div class="modal-header ps-5">
+          <div class="modal-header">
             <div class="d-flex align-items-center justify-content-center pe-5 ps-5 ps-lg-0">
               <svg width="40" height="36" viewBox="0 0 40 36" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <rect width="40" height="36" fill="url(#pattern0)" fill-opacity="0.5"/>
@@ -18,7 +18,7 @@
             </div>
             <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body px-5">
+          <div class="modal-body px-4">
             <form>
               <label for="curriculum-name" class="col-form-label">Exam Score</label>
               <div class="input-group mb-3">
@@ -26,7 +26,7 @@
               </div>
             </form>
           </div>
-          <div class="modal-footer">
+          <div class="modal-footer px-4">
             <button type="button" class="btn btn-danger text-white" data-coreui-toggle="modal" data-coreui-dismiss="modal">Cancel</button>
             <button type="button" class="btn btn-info text-white" data-coreui-toggle="modal" data-coreui-dismiss="modal">Save</button>
           </div>
