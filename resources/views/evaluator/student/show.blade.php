@@ -292,7 +292,7 @@
       </div>
       <div class="col-12 px-4">
         <div class="d-block mt-4">
-          <label class="form-check-label"">
+        <label class="form-check-label"">
               Points
           </label>
           <input type="text" class="form-control form-control" name="suffix" value="10" style="width: 30rem;">

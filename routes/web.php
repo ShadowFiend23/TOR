@@ -187,6 +187,9 @@ Route::middleware(['auth','user-role:employee'])->group(function(){
 // Route::get('/latin_honor_final_list/academic_achiever/show', function () { return view('/latin_honor_final_list/academic_achiever/show'); });
 
 # Evaluator Side
+
+Route::get('/terms_and_conditions', function () { return view('/terms_and_conditions/index');});
+
 Route::get('/evaluator/login', function () { return view('/evaluator/login');});
 Route::get('/evaluator/register', function () { return view('/evaluator/register');});
 Route::get('/evaluator/otp', function () { return view('/evaluator/otp');});

@@ -48,7 +48,7 @@
                                         </div>
                                         <div class="col-xs-12">
                                             <br><br>
-                                            <p class="text-center">By using this service, you understood and agree to the <a href="#" class="nav-link text-dark fw-bold" target="_blank">EVSU Online Services Terms of Use and Privacy Statement</a>
+                                            <p class="text-center">By using this service, you understood and agree to the <a href="../../terms_and_conditions/" class="nav-link text-dark fw-bold" target="_blank">EVSU Online Services Terms of Use and Privacy Statement</a>
                                             </p>
                                         </div>
                                     </div>
