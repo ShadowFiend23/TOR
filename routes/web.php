@@ -54,6 +54,7 @@ Route::get('/student/recieved', function () { return view('student/recieved'); }
 Route::get('/student/history_logs', function () { return view('student/history_logs'); } );
 Route::get('/student/evaluation', function () { return view('student/evaluation'); } );
 Route::get('/student/evaluation_result', function () { return view('student/evaluation_result'); } );
+Route::get('/student/grades', function () { return view('student/grades'); } );
 
 
 Route::middleware(['auth','user-role:admin'])->group(function(){

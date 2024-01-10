@@ -26,31 +26,31 @@
   </div>
   <ul class="sidebar-nav simplebar-scrollable-y" data-coreui="navigation" data-simplebar="init">
     <li class="nav-item w-100">
-      <a class="nav-link" href="{{ route('admin') }}">
+      <a class="nav-link" href="/student/dashboard">
         <i class='bx bx-desktop' ></i>
         <span class="mx-1">Dashboard</span>
       </a>
     </li>
     <li class="nav-item w-100">
-      <a class="nav-link" href="{{ route('employees') }}">
+      <a class="nav-link" href="/student/request_tor">
         <i class='bx bx-file' ></i>
         <span class="mx-1">Request TOR</span>
       </a>
     </li>
     <li class="nav-item w-100">
-      <a class="nav-link" href="{{ route('departments') }}">
+      <a class="nav-link" href="/student/grades">
       <i class='bx bx-library' ></i>
         <span class="mx-1">Grades</span>
       </a>
     </li>
     <li class="nav-item w-100">
-      <a class="nav-link" href="{{ route('students') }}">
+      <a class="nav-link" href="/student/evaluation">
         <i class='bx bx-list-check' ></i>
         <span class="mx-1">Evaluation Result</span>
       </a>
     </li>
     <li class="nav-item w-100">
-      <a class="nav-link" href="{{ route('schoolYear') }}">
+      <a class="nav-link" href="/student/history_logs">
       <i class='bx bx-folder-open' ></i>
         <span class="mx-1">Records</span>
       </a>
