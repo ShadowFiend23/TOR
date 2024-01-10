@@ -12,6 +12,10 @@ class Enrollees extends Model
     protected $fillable = [
         "studentID",
         "enrolledSubjects",
-        "grades"
+        "year",
+        "semester",
+        "schoolYear",
+        "grades",
+        "studentType"
     ];
 }

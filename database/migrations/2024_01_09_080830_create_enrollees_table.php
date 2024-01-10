@@ -15,7 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('studentID');
             $table->text("enrolledSubjects");
+            $table->smallInteger('year');
+            $table->smallInteger('semester');
+            $table->string('schoolYear');
+            $table->string('studentType');
             $table->text("grades")->nullable();
+            //$table->string('section')->();
             $table->smallInteger('active')->default(1);
             $table->timestamps();
         });

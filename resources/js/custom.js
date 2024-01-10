@@ -60,6 +60,41 @@ $(function(){
         })
     });
 
+    $("#minSchoolYear").on("change",function(){
+        let val = parseInt($(this).val());
+
+        $("#maxSchoolYear").val(val + 1);
+    });
+
+    $("#schoolYearForm").on("submit",function(e){
+        e.preventDefault();
+
+        let frmData     = new FormData($(this)[0]);
+
+        $.ajax({
+            url  : '/admin/saveSchoolYear',
+            data : frmData,
+            type : 'POST',
+            processData: false,
+            contentType: false,
+            success : function(response){
+                if(response.success){
+                    location.reload();
+                }else{
+                    alert(response.msg);
+                }
+            },
+            error: function(xhr){
+                // let response = xhr.responseJSON;
+
+                // Toast.fire({
+                //     icon : 'error',
+                //     title: response.message.split('(')[0]
+                // })
+            }
+        })
+    });
+
     $("#employeeForm").on("submit",function(e){
         e.preventDefault();
 
@@ -417,7 +452,7 @@ $(function(){
             subjects   = keys.map(function(e){
                                 return JSON.stringify(e).replace(/['"]+/g, '');
                             });
-        frmData.append('subjects',subjects.join(","));
+        frmData.append('enrolledSubjects',subjects.join(","));
         $.ajax({
             url  : '/saveEnrollment',
             data : frmData,
@@ -478,7 +513,10 @@ $(function(){
             type : 'POST',
             success : function(response){
                 if(response.success){
-
+                    alert(response.msg);
+                    setTimeout(() => {
+                        window.location.href = "/regular/show?id=" + response.id
+                    }, 500);
                 }else{
                     alert(response.msg);
                 }

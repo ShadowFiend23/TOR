@@ -80,7 +80,8 @@ Route::middleware(['auth','user-role:admin'])->group(function(){
         Route::post('/deleteStudents',[StudentsController::class,'deleteStudent']);
 
         # Admin School Year
-        Route::get('/admin/school-year',[SchoolYearController::class,'schoolYear'])->name('schoolYear');
+        Route::get('/school-year',[SchoolYearController::class,'schoolYear'])->name('schoolYear');
+        Route::post('/saveSchoolYear',[SchoolYearController::class,'saveSchoolYear'])->name('saveSchoolYear');
 
         # Admin Rubrics
         Route::get('/rubrics', [RubricsController::class,'rubrics'])->name('rubrics');

@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->year('minYear');
             $table->year('maxYear');
+            $table->smallInteger('firstSem')->default(0);;
+            $table->smallInteger('secondSem')->default(0);
             $table->smallInteger('active')->default(1);
             $table->timestamps();
         });
