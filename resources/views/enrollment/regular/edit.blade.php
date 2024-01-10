@@ -1,4 +1,16 @@
 <x-authenticated_layout>
+    @php
+        $subjects = [];
+        $descriptions = [];
+        $credits = [];
+
+        if(isset($info['enroll'])){
+            $subjects = explode(",",$info['enroll']->enrolledSubjects);
+            $descriptions = $info['descriptions'];
+            $credits = $info['credits'];
+            $credentials = $info['credentials'];
+        }
+    @endphp
   <div class="container-fluid">
     <div class="row">
       <div class="col-12">
@@ -16,43 +28,85 @@
 
         <div class="card-body d-flex flex-column gap-2">
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                @if (in_array('form138',$credentials))
+                    {{ "checked" }}
+                @else
+                    {{ "disabled" }}
+                @endif
+            >
             <label class="form-check-label" for="flexCheckDefault">
               Form 138
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                @if (in_array('grade12',$credentials))
+                    {{ "checked" }}
+                @else
+                    {{ "disabled" }}
+                @endif
+            >
             <label class="form-check-label" for="flexCheckDefault">
               Grade 12 Report Card
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                @if (in_array('gmrc',$credentials))
+                    {{ "checked" }}
+                @else
+                    {{ "disabled" }}
+                @endif
+            >
             <label class="form-check-label" for="flexCheckDefault">
               Certificate of Good Moral Character
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                @if (in_array('PSA',$credentials))
+                    {{ "checked" }}
+                @else
+                    {{ "disabled" }}
+                @endif
+            >
             <label class="form-check-label" for="flexCheckDefault">
               PSA
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                @if (in_array('liveBirth',$credentials))
+                    {{ "checked" }}
+                @else
+                    {{ "disabled" }}
+                @endif
+            >
             <label class="form-check-label" for="flexCheckDefault">
               Live Birth Certificate
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                @if (in_array('TOR',$credentials))
+                    {{ "checked" }}
+                @else
+                    {{ "disabled" }}
+                @endif
+            >
             <label class="form-check-label" for="flexCheckDefault">
               Transcript of Records (TOR)
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                @if (in_array('Other',$credentials))
+                    {{ "checked" }}
+                @else
+                    {{ "disabled" }}
+                @endif
+            >
             <label class="form-check-label" for="flexCheckDefault">
               Other
             </label>
@@ -67,7 +121,9 @@
         <h4 class="fs-6 ms-3 text-black">Semester: <span class="">FIRST SEMESTER</span></h4>
       </div>
         <div class="table-responsive px-3">
-          <form id="editableForm">
+          <form id="editGradesForm">
+            <input type="hidden" value="{{ $info['enroll']->id }}" name="enrollID" />
+            <input type="hidden" value="{{ $info['student']->studentID }}" name="studentID" />
             <table class="table table-hover table-bordered shadow" style="width: 80vw;">
               <thead>
                 <tr>
@@ -78,130 +134,21 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row" class="text-center pt-3" style="width: 10%;">FIL 001</th>
-                  <td colspan="2" class="ps-5 pt-3" style="width: 60%;">Akademiko sa Wikang Filipino</td>
-                  <td class="text-center pt-3" style="width: 5%;">3</td>
-                  <td class="text-center" style="width: 5%;"><input type="text" class="form-control" value="1.9"></td>
-                </tr>
-                <tr>
-                  <th scope="row" class="text-center pt-3" style="width: 10%;">FIL 001</th>
-                  <td colspan="2" class="ps-5 pt-3" style="width: 60%;">Akademiko sa Wikang Filipino</td>
-                  <td class="text-center pt-3" style="width: 5%;">3</td>
-                  <td class="text-center" style="width: 5%;"><input type="text" class="form-control" value="1.9"></td>
-                </tr>
-                <tr>
-                  <th scope="row" class="text-center pt-3" style="width: 10%;">FIL 001</th>
-                  <td colspan="2" class="ps-5 pt-3" style="width: 60%;">Akademiko sa Wikang Filipino</td>
-                  <td class="text-center pt-3" style="width: 5%;">3</td>
-                  <td class="text-center" style="width: 5%;"><input type="text" class="form-control" value="1.9"></td>
-                </tr>
-                <tr>
-                  <th scope="row" class="text-center pt-3" style="width: 10%;">FIL 001</th>
-                  <td colspan="2" class="ps-5 pt-3" style="width: 60%;">Akademiko sa Wikang Filipino</td>
-                  <td class="text-center pt-3" style="width: 5%;">3</td>
-                  <td class="text-center" style="width: 5%;"><input type="text" class="form-control" value="1.9"></td>
-                </tr>
+                @foreach ($subjects as $subject)
+                    <tr>
+                        <th scope="row" class="text-center pt-3" style="width: 10%;">{{ $subject }}</th>
+                        <td colspan="2" class="ps-5 pt-3" style="width: 60%;">{{ $descriptions[$subject] }}</td>
+                        <td class="text-center pt-3" style="width: 5%;">{{ $credits[$subject] }}</td>
+                        <td class="text-center" style="width: 5%;"><input type="text" class="form-control" name="grades[{{ $subject }}]" value=""></td>
+                    </tr>
+                @endforeach
               </tbody>
             </table>
           </form>
         </div>
       </div>
 
-      <div class="col-12">
-        <div class="d-flex flex-row align-items-center">
-          <h4 class="fs-6 ms-3 text-black">Course: <span class="">BSIT</span></h4>
-          <h4 class="fs-6 ms-3 text-black">Year Level: <span class="">1nd Year</span></h4>
-          <h4 class="fs-6 ms-3 text-black">Semester: <span class="">SECOND SEMESTER</span></h4>
-        </div>
-        <div class="table-responsive px-3">
-          <form id="editableForm">
-            <table class="table table-hover table-bordered shadow" style="width: 80vw;">
-              <thead>
-                <tr>
-                  <th scope="col" class='fw-semibold text-center' style="width: 10%;">Subject Code</th>
-                  <th colspan="2" scope="col" class='fw-semibold text-center' style="width: 60%;">Subject Description</th>
-                  <th scope="col" class='fw-semibold text-center' style="width: 5%;">Credits</th>
-                  <th scope="col" class='fw-semibold text-center' style="width: 5%;">Grades</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row" class="text-center pt-3" style="width: 10%;">FIL 001</th>
-                  <td colspan="2" class="ps-5 pt-3" style="width: 60%;">Akademiko sa Wikang Filipino</td>
-                  <td class="text-center pt-3" style="width: 5%;">3</td>
-                  <td class="text-center" style="width: 5%;"><input type="text" class="form-control" value="1.9"></td>
-                </tr>
-                <tr>
-                  <th scope="row" class="text-center pt-3" style="width: 10%;">FIL 001</th>
-                  <td colspan="2" class="ps-5 pt-3" style="width: 60%;">Akademiko sa Wikang Filipino</td>
-                  <td class="text-center pt-3" style="width: 5%;">3</td>
-                  <td class="text-center" style="width: 5%;"><input type="text" class="form-control" value="1.9"></td>
-                </tr>
-                <tr>
-                  <th scope="row" class="text-center pt-3" style="width: 10%;">FIL 001</th>
-                  <td colspan="2" class="ps-5 pt-3" style="width: 60%;">Akademiko sa Wikang Filipino</td>
-                  <td class="text-center pt-3" style="width: 5%;">3</td>
-                  <td class="text-center" style="width: 5%;"><input type="text" class="form-control" value="1.9"></td>
-                </tr>
-                <tr>
-                  <th scope="row" class="text-center pt-3" style="width: 10%;">FIL 001</th>
-                  <td colspan="2" class="ps-5 pt-3" style="width: 60%;">Akademiko sa Wikang Filipino</td>
-                  <td class="text-center pt-3" style="width: 5%;">3</td>
-                  <td class="text-center" style="width: 5%;"><input type="text" class="form-control" value="1.9"></td>
-                </tr>
-              </tbody>
-            </table>
-          </form>
-        </div>
-      </div>
 
-      <div class="col-12">
-      <div class="d-flex flex-row align-items-center">
-        <h4 class="fs-6 ms-3 text-black">Course: <span class="">BSIT</span></h4>
-        <h4 class="fs-6 ms-3 text-black">Year Level: <span class="">2nd Year</span></h4>
-        <h4 class="fs-6 ms-3 text-black">Semester: <span class="">FIRST SEMESTER</span></h4>
-      </div>
-      <div class="table-responsive px-3">
-        <form id="editableForm">
-          <table class="table table-hover table-bordered shadow" style="width: 80vw;">
-            <thead>
-              <tr>
-                <th scope="col" class='fw-semibold text-center' style="width: 10%;">Subject Code</th>
-                <th colspan="2" scope="col" class='fw-semibold text-center' style="width: 60%;">Subject Description</th>
-                <th scope="col" class='fw-semibold text-center' style="width: 5%;">Credits</th>
-                <th scope="col" class='fw-semibold text-center' style="width: 5%;">Grades</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row" class="text-center pt-3" style="width: 10%;">FIL 001</th>
-                <td colspan="2" class="ps-5 pt-3" style="width: 60%;">Akademiko sa Wikang Filipino</td>
-                <td class="text-center pt-3" style="width: 5%;">3</td>
-                <td class="text-center" style="width: 5%;"><input type="text" class="form-control" value="1.9"></td>
-              </tr>
-              <tr>
-                <th scope="row" class="text-center pt-3" style="width: 10%;">FIL 001</th>
-                <td colspan="2" class="ps-5 pt-3" style="width: 60%;">Akademiko sa Wikang Filipino</td>
-                <td class="text-center pt-3" style="width: 5%;">3</td>
-                <td class="text-center" style="width: 5%;"><input type="text" class="form-control" value="1.9"></td>
-              </tr>
-              <tr>
-                <th scope="row" class="text-center pt-3" style="width: 10%;">FIL 001</th>
-                <td colspan="2" class="ps-5 pt-3" style="width: 60%;">Akademiko sa Wikang Filipino</td>
-                <td class="text-center pt-3" style="width: 5%;">3</td>
-                <td class="text-center" style="width: 5%;"><input type="text" class="form-control" value="1.9"></td>
-              </tr>
-              <tr>
-                <th scope="row" class="text-center pt-3" style="width: 10%;">FIL 001</th>
-                <td colspan="2" class="ps-5 pt-3" style="width: 60%;">Akademiko sa Wikang Filipino</td>
-                <td class="text-center pt-3" style="width: 5%;">3</td>
-                <td class="text-center" style="width: 5%;"><input type="text" class="form-control" value="1.9"></td>
-              </tr>
-            </tbody>
-          </table>
-        </form>
-      </div>
     </div>
 
 
@@ -216,7 +163,7 @@
             </p>
             <div class="text-end">
               <button type="button" class="btn btn-secondary btn-sm px-3 text-white" data-coreui-dismiss="modal">Back</button>
-              <a href="../../enrollment/" class='btn btn-info text-white btn-sm px-3 text-decoration-none'>Submit</a>
+              <button id="submitFinalEditGrades" class='btn btn-info text-white btn-sm px-3 text-decoration-none'>Submit</button>
             </div>
           </div>
         </div>

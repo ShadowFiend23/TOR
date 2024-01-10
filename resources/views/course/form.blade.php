@@ -35,6 +35,7 @@
                       <label for="exampleSelect1" class="form-label mb-2">Course In-Charge ID</label>
                       <select name='inChargeID' class="form-select" id="exampleSelect1">
                         @if (!empty($inCharge))
+                            <option hidden>Select In Charge</option>
                             @foreach ($inCharge as $employee)
                                 <option value="{{ $employee->id }}">{{ "$employee->lastName, $employee->firstName" }}</option>
                             @endforeach

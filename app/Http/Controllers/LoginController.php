@@ -33,17 +33,42 @@ class LoginController extends Controller
             Session::put('userRole', $role);
 
             if($role === "admin"){
-                return route('admin');
+
+                $response = response()->json([
+                    "success" => true,
+                    "route" => route('admin')
+                ]);
+
             }else if($role === "employee"){
                 Session::put('firstName', $user->firstName);
 
-                return route($user->route);
+                if(($user->roleCode == "department-head" || $user->roleCode == "in-charge") && empty($user->designation)){
+                    Auth::logout();
+
+                    $request->session()->invalidate();
+                    $request->session()->regenerateToken();
+
+                    $response = response()->json([
+                        "success" => false,
+                        "msg" => "User has no assigned department yet"
+                    ]);
+                }else{
+                    $response = response()->json([
+                        "success" => true,
+                        "route" => route($user->route)
+                    ]);
+                }
+
             }
+        }else{
+
+            $response = response()->json([
+                "success" => false,
+                "msg" => "The provided credentials do not match our records."
+            ]);
         }
 
-        return back()->withErrors([
-            'employeeID' => 'The provided credentials do not match our records.',
-        ]);
+        return $response;
     }
 
     public function logout(Request $request)

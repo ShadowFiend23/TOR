@@ -12,15 +12,17 @@
               <input type="text" name="departmentName" class="form-control form-control-sm"/>
             </div>
             <div class="col-12 col-md-6 p-1">
-              <label>Department Head Email</label>
-              <input type="email" name="departmentEmail" class="form-control form-control-sm"/>
-            </div>
+                <label>Head of Department ID</label>
+                <select name="departmentHead" class="form-select form-select-sm py-1" id="adminDepartmentHead">
+                    <option hidden>Select Department Head Employee</option>
+                  @foreach ($heads as $head)
+                      <option value="{{ $head->employeeID }}">{{ "$head->firstName $head->lastName" }}</option>
+                  @endforeach
+                </select>
+              </div>
             <div class="col-12 col-md-6 p-1">
-              <label>Head of Department ID</label>
-              <select name="departmentHead" class="form-select form-select-sm py-1">
-                <option value="department">Department Head</option>
-                <option value="department2">Department Head 2</option>
-              </select>
+              <label>Department Head Email</label>
+              <input type="email" name="departmentEmail" class="form-control form-control-sm" id="adminDeparmentHeadEmail" disabled/>
             </div>
             <div class="col-12 col-md-6 p-1">
               <label>Select Background Color of this department</label>

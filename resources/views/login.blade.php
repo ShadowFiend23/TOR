@@ -31,8 +31,13 @@
             type : 'POST',
             processData: false,
             contentType: false,
-            success : function(data){
-                window.location.replace(data);
+            success : function(response){
+                console.log(response);
+                // if(response.success){
+                //     window.location.replace(response.route);
+                // }else{
+                //     alert(response.msg)
+                // }
             },
             error: function(xhr){
                 // let response = xhr.responseJSON;

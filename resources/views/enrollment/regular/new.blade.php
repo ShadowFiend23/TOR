@@ -21,13 +21,15 @@
         @php
             $yearSem = (string)$key;
         @endphp
-            @foreach ($data as $type => $val)
-                <input type='hidden' value="{{ $val }}" name="{{ $type }}" />
-            @endforeach
+            <form id="subjectEnrollmentForm">
+                @foreach ($data as $type => $val)
+                    <input type='hidden' value="{{ $val }}" name="{{ $type }}" />
+                @endforeach
 
-            @foreach ($credentials as $credential)
-                <input type='hidden' value="{{ $credential }}" name="credentials[]" />
-            @endforeach
+                @foreach ($credentials as $credential)
+                    <input type='hidden' value="{{ $credential }}" name="credentials[]" />
+                @endforeach
+            </form>
             <div class="row">
                 <div class="col-12">
                     <div class="row pt-2">
@@ -118,7 +120,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary text-white" data-coreui-dismiss="modal">Back</button>
-              <a href="../../enrollment/regular/show" class="btn btn-info text-white">Submit</a>
+              <button id="submitSelectedSubjectsBtn" class="btn btn-info text-white">Submit</button>
             </div>
           </div>
         </div>
