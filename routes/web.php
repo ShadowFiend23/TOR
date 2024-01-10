@@ -187,3 +187,4 @@ Route::middleware(['auth','user-role:employee'])->group(function(){
 // Route::get('/latin_honor_final_list/academic_achiever/archive', function () { return view('/latin_honor_final_list/academic_achiever/archive'); });
 // Route::get('/latin_honor_final_list/academic_achiever/show', function () { return view('/latin_honor_final_list/academic_achiever/show'); });
 
+Route::get('/saso', function () { return view('/saso/index');});
