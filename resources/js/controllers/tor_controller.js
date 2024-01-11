@@ -30,9 +30,9 @@ export default class extends Controller {
             place: 2,
             course: "BSIT",
             sems: [
-                { 
-                    semester: "2021-2022 FIRST SEMESTER", 
-                    subjects: [ 
+                {
+                    semester: "2021-2022 FIRST SEMESTER",
+                    subjects: [
                         {code: "GEN.ED 004", name: "Mathematics in the Modern World", final_rating: 1.5, re_exam: undefined, credits: 3},
                         {code: "IT 113", name: "Introduction to Computing", final_rating: 1, re_exam: undefined, credits: 3},
                         {code: "IT 134", name: "Computer Programming I", final_rating: 1.3, re_exam: undefined, credits: 3},
@@ -71,12 +71,12 @@ export default class extends Controller {
                             if      (attribute == "code"){ element_buffer.classList = "col-1-cus" }
                             else if (attribute == "name"){ element_buffer.classList = "col-2-cus" }
                             else                         { element_buffer.classList = "col-3-cus" }
-                            
+
                             element_buffer.innerText = subject[attribute] || "-"
                             subjects.appendChild(element_buffer)
                         })
 
-                        
+
                         subject_box.appendChild(subjects)
                     })
                 })
@@ -86,7 +86,7 @@ export default class extends Controller {
         window.scrollTo(0,0)
         html2canvas(document.getElementById('toPrint'), { height: 936.09, width: 612, scale: 2.5, dpi: 300 }).then(canvas => {
             document.getElementById('toPrint').innerHTML = ""
-            
+
             const img = document.createElement('img')
             img.src = canvas.toDataURL('image/png')
             img.classList.add('img-fluid')
