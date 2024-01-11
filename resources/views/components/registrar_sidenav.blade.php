@@ -44,7 +44,7 @@
       </a>
     </li>
     <li class="nav-item w-100">
-      <a class="nav-link" href="{{ route('students') }}">
+      <a class="nav-link" href="{{ route('torRequest') }}">
         <i class='bx bx-list-check' ></i>
         <span class="mx-1">TOR Request</span>
       </a>

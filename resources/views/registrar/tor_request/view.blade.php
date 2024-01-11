@@ -63,6 +63,7 @@
     </div>
 
     <div class="container-lg d-flex justify-content-end gap-2">
+        <input type="hidden" id="studentID" value="{{ Request::get('id') }}" />
         <button class="btn btn-info btn-sm" data-coreui-toggle="modal" data-coreui-target="#exampleModal">
             Print
         </button>

@@ -7,6 +7,7 @@ use App\Http\Controllers\CoAdminController;
 use App\Http\Controllers\DepartmentHeadController;
 use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\DepartmentsController;
+use App\Http\Controllers\RegistrarController;
 use App\Http\Controllers\RubricsController;
 use App\Http\Controllers\SchoolYearController;
 use App\Http\Controllers\StudentsController;
@@ -135,7 +136,10 @@ Route::middleware(['auth','user-role:employee'])->group(function(){
     });
 
     Route::middleware('permission:registrar')->group(function(){
-        Route::get('/registrar', function () { return "Registrar Page"; })->name('registrar');
+        Route::get('/registrar',[RegistrarController::class,'registrar'])->name('registrar');
+        Route::get('/tor-request',[RegistrarController::class,'torRequest'])->name('torRequest');
+        Route::get('/view-tor',[RegistrarController::class,'viewTor'])->name('viewTor');
+        Route::get('/fetchTorData',[RegistrarController::class,'fetchTorData']);
     });
 });
 
@@ -155,10 +159,10 @@ Route::middleware(['auth','user-role:employee'])->group(function(){
 
 
 // # Irregular Student
-Route::get('/enrollment/irregular', function () { return view('/enrollment/irregular/index'); });
-Route::get('/enrollment/irregular/new', function () { return view('/enrollment/irregular/new'); });
-Route::get('/enrollment/irregular/show', function () { return view('/enrollment/irregular/show'); });
-Route::get('/enrollment/irregular/edit', function () { return view('/enrollment/irregular/edit'); });
+// Route::get('/enrollment/irregular', function () { return view('/enrollment/irregular/index'); });
+// Route::get('/enrollment/irregular/new', function () { return view('/enrollment/irregular/new'); });
+// Route::get('/enrollment/irregular/show', function () { return view('/enrollment/irregular/show'); });
+// Route::get('/enrollment/irregular/edit', function () { return view('/enrollment/irregular/edit'); });
 
 
 // ## Transferee Student
