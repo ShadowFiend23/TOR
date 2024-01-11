@@ -14,7 +14,7 @@
         <h3>80</h3>
       </div>
       <div class="col-3 text-center">
-        <div>Interview Score</div>
+        <div>Examination Score</div>
         <h3>70</h3>
       </div>
       <div class="col-3 text-center">
