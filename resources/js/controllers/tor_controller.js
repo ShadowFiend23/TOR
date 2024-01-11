@@ -4,8 +4,12 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
     async connect() {
         const studentID = document.getElementById('studentID');
-        const response = await fetch("/fetchTorData?id=" + studentID.value );
-        const studentData = await response.json();
+        let studentData = {};
+        if(studentID){
+
+            const response = await fetch("/fetchTorData?id=" + studentID.value );
+            studentData = await response.json();
+        }
         this.sampleData = studentData
 
         Object.keys(this.sampleData).forEach(key => {
