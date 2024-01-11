@@ -340,7 +340,7 @@
                 <tr>
                     <td class="studentTDList" data-student="{{ $student->studentID }}"><p class="mt-4">{{ $student->studentID }}</p></td>
                     <td class="studentTDList" data-student="{{ $student->studentID }}"><p class="mt-4">{{ "$student->firstName $student->lastName" }}</p></td>
-                    <td class="studentTDList" data-student="{{ $student->studentID }}"><p class="mt-4">{{ $curriculum->curriculumName }}</p></td>
+                    <td class="studentTDList" data-student="{{ $student->studentID }}"><p class="mt-4">{{ $student->curriculumName }}</p></td>
                     <td>
                         <div class="dropdown mt-3">
                         <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-coreui-toggle="dropdown" aria-expanded="false">

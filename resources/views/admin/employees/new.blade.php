@@ -6,7 +6,7 @@
     }
 @endphp
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="employeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
@@ -119,7 +119,7 @@
         </div>
       </div>
       <div class="d-flex justify-content-end gap-1 m-2">
-        <button class="btn btn-info btn-sm" data-coreui-toggle="modal" data-coreui-target="#exampleModal">{{ $info['button'] }}</button>
+        <button class="btn btn-info btn-sm">{{ $info['button'] }}</button>
         <button class="btn btn-secondary btn-sm">Cancel</button>
       </div>
     </form>

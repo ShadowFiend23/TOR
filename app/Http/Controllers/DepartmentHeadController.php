@@ -24,14 +24,14 @@ class DepartmentHeadController extends Controller
     }
 
     public function studentList(Request $request){
-        $course = Courses::find($request->input('id'))->first();
-        $students = Students::where('course',$course->id)->get();
-        $curriculum = Curriculum::where('course',$course->id)->orderBy('created_at','desc')->first();
+        $course = Courses::where('id',$request->input('id'))->first();
+        $students = Students::join('curriculum','students.curriculum','=','curriculum.id')
+                            ->where('students.course',$course->id)
+                            ->get(['students.*', 'curriculum.curriculumName']);
 
         $info = [
             "course"        => $course,
-            "students"      => $students,
-            "curriculum"    => $curriculum
+            "students"      => $students
         ];
 
         return view('enrollment.index',compact('info'));
@@ -82,11 +82,21 @@ class DepartmentHeadController extends Controller
 
         $query = Courses::create($request->all());
 
-        // if($query){
+        if($query){
 
-        // }else{
+            Employees::where('id',$request->input('inChargeID'))->update([ "designation" => $query->id ]);
 
-        // }
+            $response = response()->json([
+                "success" => true
+            ]);
+        }else{
+            $response = response()->json([
+                "success"   => false,
+                "msg"       => "Server Error. Try Again Later."
+            ]);
+        }
+
+        return $response;
     }
 
     # Curriculum
@@ -98,7 +108,11 @@ class DepartmentHeadController extends Controller
     }
 
     public function curriculumList(){
+        $userID = auth()->user()->userID;
+        $employee = Employees::where('employeeID',$userID)->first();
+
         $curriculums = Curriculum::join('courses','curriculum.course','=','courses.id')
+                                ->where('curriculum.departmentID',$employee->designation)
                                 ->get(['curriculum.*', 'courses.courseName']);
 
         return view('curriculum_list/index',compact('curriculums'));
@@ -178,7 +192,7 @@ class DepartmentHeadController extends Controller
         if($result){
             return response()->json([
                 "success" => true,
-                "id"    => Curriculum::find($request->id)->pluck('course')->first()
+                "id"    => Curriculum::where('id',$request->id)->pluck('course')->first()
             ]);
         }else{
             return response()->json([
@@ -236,7 +250,7 @@ class DepartmentHeadController extends Controller
         $student = Students::where('studentID',$data['studentID'])->first();
         $course = Courses::find($student->course);
 
-        $curriculum = Curriculum::where('course',$student->course)->orderBy('created_at','desc')->first();
+        $curriculum = Curriculum::where('course',$student->curriculum)->first();
 
         $info = [
             "data" => $data,
@@ -253,7 +267,7 @@ class DepartmentHeadController extends Controller
         $student        = Students::find($request->input('id'));
         $enroll         = Enrollees::where('studentID',$student->studentID)->where('active',1)->first();
         $credentials    = Credentials::where('studentID',$enroll->studentID)->first();
-        $curriculum     = Curriculum::where('course',$student->course)->orderBy('created_at','desc')->first();
+        $curriculum     = Curriculum::where('id',$student->curriculum)->first();
         $curInfo        = json_decode($curriculum->info,true);
         $subjectCode    = $curInfo['subjectCode'];
         $enrolledSubjects = explode(",",$enroll->enrolledSubjects);
@@ -385,7 +399,7 @@ class DepartmentHeadController extends Controller
         $schoolYear     = SchoolYear::where('active',1)->first();
         $lastEnroll     = Enrollees::where('studentID',$studentID)->orderBy('created_at','desc')->first();
         $student        = Students::where('studentID',$studentID)->first();
-        $curriculum     = Curriculum::where('course',$student->course)->orderBy('created_at','desc')->first();
+        $curriculum     = Curriculum::where('id',$student->curriculum)->first();
         $curInfo        = json_decode($curriculum->info,true);
         $subjectCode    = $curInfo['subjectCode'];
 
