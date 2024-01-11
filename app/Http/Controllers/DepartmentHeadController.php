@@ -319,7 +319,7 @@ class DepartmentHeadController extends Controller
 
         return response()->json([
             "success"   => true,
-            "id"        =>  $query->id
+            "id"        =>  $request->input('studentID')
         ]);
     }
 

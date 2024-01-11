@@ -139,10 +139,10 @@ Route::middleware(['auth','user-role:employee'])->group(function(){
 
 
 // # Irregular Student
-// Route::get('/enrollment/irregular', function () { return view('/enrollment/irregular/index'); });
-// Route::get('/enrollment/irregular/new', function () { return view('/enrollment/irregular/new'); });
-// Route::get('/enrollment/irregular/show', function () { return view('/enrollment/irregular/show'); });
-// Route::get('/enrollment/irregular/edit', function () { return view('/enrollment/irregular/edit'); });
+Route::get('/enrollment/irregular', function () { return view('/enrollment/irregular/index'); });
+Route::get('/enrollment/irregular/new', function () { return view('/enrollment/irregular/new'); });
+Route::get('/enrollment/irregular/show', function () { return view('/enrollment/irregular/show'); });
+Route::get('/enrollment/irregular/edit', function () { return view('/enrollment/irregular/edit'); });
 
 
 // ## Transferee Student
