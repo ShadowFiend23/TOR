@@ -13,7 +13,7 @@ class RegistrarController extends Controller
     //
 
     public function registrar(){
-        return view('registrar.index');
+        return view('registrar.tor_request.show');
     }
 
     public function torRequest(){

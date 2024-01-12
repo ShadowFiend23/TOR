@@ -250,7 +250,7 @@ class DepartmentHeadController extends Controller
         $student = Students::where('studentID',$data['studentID'])->first();
         $course = Courses::find($student->course);
 
-        $curriculum = Curriculum::where('course',$student->curriculum)->first();
+        $curriculum = Curriculum::where('course',$student->course)->first();
 
         $info = [
             "data" => $data,
