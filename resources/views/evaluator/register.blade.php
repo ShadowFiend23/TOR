@@ -17,7 +17,7 @@
                             <div class="my-form-inner-container">
                                 <div class="panel-header">
                                     <h2 class="text-center">
-                                       EMPLOYEE PORTAL
+                                      EVALUATOR PORTAL
                                     </h2>
                                 </div>
                                 <div class="panel-body">
@@ -42,7 +42,7 @@
                                                 </div>
                                                 <div class="d-flex justify-content-between">
                                                   <a href="#" class="nav-link" ><i>Forgot password</i></a>
-                                                  <a href="#" class="nav-link text-info" ><i>Register</i></a>
+                                                  <a href="../evaluator/login" class="nav-link text-info" ><i>Sign in</i></a>
                                                 </div>
                                             </form>
                                         </div>
