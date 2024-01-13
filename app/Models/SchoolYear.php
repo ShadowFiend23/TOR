@@ -11,7 +11,9 @@ class SchoolYear extends Model
 
     protected $fillable = [
         "minYear",
-        "maxYear"
+        "maxYear",
+        "firstSem",
+        "secondSem"
     ];
 
     protected $table = "school_year";

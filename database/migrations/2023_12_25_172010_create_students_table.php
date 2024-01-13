@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('suffix')->nullable();
             $table->string('email');
             $table->smallInteger('course');
+            $table->smallInteger('curriculum');
             $table->timestamps();
         });
     }

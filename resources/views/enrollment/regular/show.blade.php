@@ -7,6 +7,7 @@
             $descriptions = $info['descriptions'];
             $grades = $info["enroll"]->grades ?? "";
             $grades = json_decode($grades,true);
+
         }
     @endphp
   <div class="container-fluid">
@@ -36,9 +37,9 @@
         <h2 class="accordion-header">
           <button class="accordion-button bg-dark text-white" type="button" data-coreui-toggle="collapse" data-coreui-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
             <span class="fs-4 me-2"><i class='bx bx-list-ul' ></i></span>
-                Course : OC BSIT,
-                  AY : 2021-2022,
-                  Sem : 1
+                Course : {{ $info['course']->courseName }} <br>
+                  Academic Year : {{ $info["schoolYear"]->minYear. "-" .$info["schoolYear"]->maxYear }}<br>
+                  Year: {{ $info['enroll']->year }}  Semester : {{ $info['enroll']->semester }}
           </button>
         </h2>
         <div id="collapseOne" class="accordion-collapse collapse show" data-coreui-parent="#accordionExample">

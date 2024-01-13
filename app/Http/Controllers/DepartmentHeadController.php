@@ -24,14 +24,14 @@ class DepartmentHeadController extends Controller
     }
 
     public function studentList(Request $request){
-        $course = Courses::find($request->input('id'))->first();
-        $students = Students::where('course',$course->id)->get();
-        $curriculum = Curriculum::where('course',$course->id)->orderBy('created_at','desc')->first();
+        $course = Courses::where('id',$request->input('id'))->first();
+        $students = Students::join('curriculum','students.curriculum','=','curriculum.id')
+                            ->where('students.course',$course->id)
+                            ->get(['students.*', 'curriculum.curriculumName']);
 
         $info = [
             "course"        => $course,
-            "students"      => $students,
-            "curriculum"    => $curriculum
+            "students"      => $students
         ];
 
         return view('enrollment.index',compact('info'));
@@ -82,11 +82,21 @@ class DepartmentHeadController extends Controller
 
         $query = Courses::create($request->all());
 
-        // if($query){
+        if($query){
 
-        // }else{
+            Employees::where('id',$request->input('inChargeID'))->update([ "designation" => $query->id ]);
 
-        // }
+            $response = response()->json([
+                "success" => true
+            ]);
+        }else{
+            $response = response()->json([
+                "success"   => false,
+                "msg"       => "Server Error. Try Again Later."
+            ]);
+        }
+
+        return $response;
     }
 
     # Curriculum
@@ -98,7 +108,11 @@ class DepartmentHeadController extends Controller
     }
 
     public function curriculumList(){
+        $userID = auth()->user()->userID;
+        $employee = Employees::where('employeeID',$userID)->first();
+
         $curriculums = Curriculum::join('courses','curriculum.course','=','courses.id')
+                                ->where('curriculum.departmentID',$employee->designation)
                                 ->get(['curriculum.*', 'courses.courseName']);
 
         return view('curriculum_list/index',compact('curriculums'));
@@ -178,7 +192,7 @@ class DepartmentHeadController extends Controller
         if($result){
             return response()->json([
                 "success" => true,
-                "id"    => Curriculum::find($request->id)->pluck('course')->first()
+                "id"    => Curriculum::where('id',$request->id)->pluck('course')->first()
             ]);
         }else{
             return response()->json([
@@ -194,7 +208,7 @@ class DepartmentHeadController extends Controller
     }
 
     public function showRegular(Request $request){
-        $enroll         = Enrollees::where('id',$request->input('id'))->where('active',1)->first();
+        $enroll         = Enrollees::where('studentID',$request->input('id'))->where('active',1)->first();
         $credentials    = Credentials::where('studentID',$enroll->studentID)->first();
         $student        = Students::where('studentID',$enroll->studentID)->first();
         $curriculum     = Curriculum::where('course',$student->course)->orderBy('created_at','desc')->first();
@@ -202,6 +216,8 @@ class DepartmentHeadController extends Controller
         $subjectCode    = $curInfo['subjectCode'];
         $enrolledSubjects = explode(",",$enroll->enrolledSubjects);
         $descriptions   = $curInfo['description'];
+        $schoolYear     = SchoolYear::find($enroll->schoolYear);
+        $course         = Courses::find($student->course);
 
         $listDescriptions = [];
 
@@ -221,6 +237,8 @@ class DepartmentHeadController extends Controller
             "enroll"        => $enroll,
             "credentials"   => explode(",",$credentials->credentials),
             "descriptions"  => $listDescriptions,
+            "schoolYear"    => $schoolYear,
+            "course"        => $course
         ];
 
         return view('enrollment.regular.show',compact('info'));
@@ -232,7 +250,7 @@ class DepartmentHeadController extends Controller
         $student = Students::where('studentID',$data['studentID'])->first();
         $course = Courses::find($student->course);
 
-        $curriculum = Curriculum::where('course',$student->course)->orderBy('created_at','desc')->first();
+        $curriculum = Curriculum::where('course',$student->course)->first();
 
         $info = [
             "data" => $data,
@@ -249,7 +267,7 @@ class DepartmentHeadController extends Controller
         $student        = Students::find($request->input('id'));
         $enroll         = Enrollees::where('studentID',$student->studentID)->where('active',1)->first();
         $credentials    = Credentials::where('studentID',$enroll->studentID)->first();
-        $curriculum     = Curriculum::where('course',$student->course)->orderBy('created_at','desc')->first();
+        $curriculum     = Curriculum::where('id',$student->curriculum)->first();
         $curInfo        = json_decode($curriculum->info,true);
         $subjectCode    = $curInfo['subjectCode'];
         $enrolledSubjects = explode(",",$enroll->enrolledSubjects);
@@ -283,8 +301,15 @@ class DepartmentHeadController extends Controller
     }
 
     public function saveEnrollment(Request $request){
-        // $schoolYear = SchoolYear::where('active',1)->first();
-        // $request->merge(['schoolYear' => $schoolYear->id]);
+        $schoolYear = SchoolYear::where('active',1)->first();
+        $semester = $schoolYear->secondSem ? 2 : 1;
+
+        $request->merge([
+            'schoolYear' => $schoolYear->id,
+            'year' => 1,
+            'semester' => $semester,
+            'studentType' => $request->input('studentType')
+        ]);
 
         Enrollees::where('studentID',$request->input('studentID'))->update(["active" => 0]);
 
@@ -297,11 +322,8 @@ class DepartmentHeadController extends Controller
                 "credentials"   => implode(",",$request->input('credentials'))
             ]
         );
-        $params = [
-            "studentID"         => $request->input('studentID'),
-            "enrolledSubjects"  => $request->input('subjects')
-        ];
-        $query = Enrollees::create($params);
+
+        $query = Enrollees::create($request->except('credentials'));
 
         if(!$query){
             return response()->json([
@@ -311,7 +333,7 @@ class DepartmentHeadController extends Controller
 
         return response()->json([
             "success"   => true,
-            "id"        =>  $query->id
+            "id"        =>  $request->input('studentID')
         ]);
     }
 
@@ -339,32 +361,97 @@ class DepartmentHeadController extends Controller
         $enrollID = $request->input('enrollID');
         $enroll = Enrollees::find($enrollID);
 
-        $noGrades = $this->checkIfHasGrades($enroll);
+        $status = $this->checkIfHasGrades($enroll);
 
-        if(empty($noGrades)){
+        if(!empty($status['noGrades'])){
+            return response()->json([
+                "success" => false,
+                "msg" => $status['noGrades']
+            ]);
+        }
+
+        if($this->checkEnrolled($enroll)){
+            return response()->json([
+                "success" => false,
+                "msg"   => "Already enrolled on current semester"
+            ]);
+        }
+
+        $status = $this->_newEnrollment($enroll->studentID);
+
+        if($status){
             $response = response()->json([
                 "success" => true,
+                "id"      => $enroll->studentID,
+                "msg" => "Successfully enrolled"
             ]);
         }else{
             $response = response()->json([
-                "success" => false,
-                "msg" => $noGrades
+                "success" => true,
+                "msg" => "Server Error. Try Again Later."
             ]);
         }
 
         return $response;
     }
 
+    private function _newEnrollment($studentID){
+        $schoolYear     = SchoolYear::where('active',1)->first();
+        $lastEnroll     = Enrollees::where('studentID',$studentID)->orderBy('created_at','desc')->first();
+        $student        = Students::where('studentID',$studentID)->first();
+        $curriculum     = Curriculum::where('id',$student->curriculum)->first();
+        $curInfo        = json_decode($curriculum->info,true);
+        $subjectCode    = $curInfo['subjectCode'];
+
+        if($lastEnroll->semester == 2){
+            $lastEnroll->year += 1;
+            $lastEnroll->semester = 1;
+        }else{
+            $lastEnroll->semester += 1;
+        }
+
+        $params = [
+            "studentID" => $studentID,
+            "enrolledSubjects" => implode(",",$subjectCode["$lastEnroll->year$lastEnroll->semester"]),
+            "year" => $lastEnroll->year,
+            "semester" => $lastEnroll->semester,
+            "schoolYear" => $schoolYear->id,
+            "studentType" => $lastEnroll->studentType
+        ];
+
+        Enrollees::where('studentID',$studentID)->update(['active' => 0]);
+
+        return Enrollees::create($params);
+    }
+
     private function checkIfHasGrades($enroll){
         $enrolledSubjects = explode(",",$enroll->enrolledSubjects);
         $grades = json_decode($enroll->grades,true);
         $noGrades = "";
+        $failedGrades = [];
+
         foreach($enrolledSubjects as $subject){
             if(empty($grades) || !array_key_exists($subject,$grades) || empty($grades[$subject])){
                 $noGrades .= "$subject has no grade. \n";
+            }else if(!empty($grades) && array_key_exists($subject,$grades) && $grades[$subject] > 3){
+                $failedGrades['$subject'] = $grades[$subject];
             }
         }
 
-        return $noGrades;
+        return [
+            "noGrades"  => $noGrades,
+            "failed"    => $failedGrades
+        ];
+    }
+
+    private function checkEnrolled($enroll){
+        $schoolYear = SchoolYear::where('active',1)->first();
+        $semester = $schoolYear->secondSem ? 2 : 1;
+
+        $query = Enrollees::where('studentID',$enroll->studentID)
+                        ->where('schoolYear',$schoolYear->id)
+                        ->where('semester',$semester)->exists();
+
+        return $query;
     }
 }

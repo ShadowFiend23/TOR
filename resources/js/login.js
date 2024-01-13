@@ -25,12 +25,9 @@ $(function(){
                 }
             },
             error: function(xhr){
-                // let response = xhr.responseJSON;
+                let response = xhr.responseJSON;
 
-                // Toast.fire({
-                //     icon : 'error',
-                //     title: response.message.split('(')[0]
-                // })
+                alert(response.message);
             }
         })
     })

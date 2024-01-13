@@ -50,7 +50,7 @@
                 <td>{{ $student->email }}</td>
                 <td>{{ $student->studentID }}</td>
                 <td>{{ "$student->firstName $student->lastName" }}</td>
-                <td>{{ $curriculum->curriculumName }}</td>
+                <td>{{ $student->curriculumName }}</td>
                 <td>
                     <div class="dropdown">
                         <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-coreui-toggle="dropdown" aria-expanded="false">

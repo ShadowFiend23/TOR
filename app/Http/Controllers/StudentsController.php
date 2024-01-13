@@ -20,17 +20,17 @@ class StudentsController extends Controller
 
     public function studentList(Request $request){
         $course = Courses::find($request->input('id'))->first();
-        $students = Students::where('course',$course->id)->get();
-        $curriculum = Curriculum::where('course',$course->id)->orderBy('created_at','asc')->first();
+        $students = Students::join('curriculum','students.curriculum','=','curriculum.id')
+                            ->where('students.course',$course->id)
+                            ->get(['students.*', 'curriculum.curriculumName']);
 
         $info = [
             "course"        => $course,
-            "students"      => $students,
-            "curriculum"    => $curriculum
+            "students"      => $students
         ];
         return view('admin.students.students',compact('info'));
     }
-    
+
 
     public function addStudentPage(Request $request){
         $courseID = $request->input('id');
@@ -72,6 +72,12 @@ class StudentsController extends Controller
             "email"         => "required",
             "password"      => "required",
             "course"        => "required"
+        ]);
+
+        $curriculum     = Curriculum::where('course',$request->input('course'))->orderBy('created_at','desc')->first();
+
+        $request->merge([
+            "curriculum" => $curriculum->id
         ]);
 
         $query = Students::create($request->all());

@@ -16,6 +16,7 @@ class Students extends Model
         "middleName",
         "suffix",
         "email",
-        "course"
+        "course",
+        "curriculum"
     ];
 }

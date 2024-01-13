@@ -7,6 +7,7 @@ use App\Http\Controllers\CoAdminController;
 use App\Http\Controllers\DepartmentHeadController;
 use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\DepartmentsController;
+use App\Http\Controllers\RegistrarController;
 use App\Http\Controllers\RubricsController;
 use App\Http\Controllers\SchoolYearController;
 use App\Http\Controllers\StudentsController;
@@ -40,6 +41,22 @@ Route::get('/registrar/curriculums/show', function () { return view('registrar/c
 
 Route::get('/registrar/tor_analysis', function () { return view('registrar/tor_analysis'); } );
 Route::get('/registrar/logs', function () { return view('registrar/logs'); } );
+
+Route::get('/student/login', function () { return view('student/login'); } );
+Route::get('/student/register', function () { return view('student/register'); } );
+Route::get('/student/otp', function () { return view('student/otp'); } );
+Route::get('/student/application', function () { return view('student/application'); } );
+Route::get('/student/dashboard', function () { return view('student/dashboard'); } );
+Route::get('/student/update_photo', function () { return view('student/update_photo'); } );
+Route::get('/student/update_password', function () { return view('student/update_password'); } );
+Route::get('/student/request_tor', function () { return view('student/request_tor'); } );
+Route::get('/student/pending', function () { return view('student/pending'); } );
+Route::get('/student/recieved', function () { return view('student/recieved'); } );
+Route::get('/student/history_logs', function () { return view('student/history_logs'); } );
+Route::get('/student/evaluation', function () { return view('student/evaluation'); } );
+Route::get('/student/evaluation_result', function () { return view('student/evaluation_result'); } );
+Route::get('/student/grades', function () { return view('student/grades'); } );
+
 
 Route::middleware(['auth','user-role:admin'])->group(function(){
 
@@ -80,7 +97,8 @@ Route::middleware(['auth','user-role:admin'])->group(function(){
         Route::post('/deleteStudents',[StudentsController::class,'deleteStudent']);
 
         # Admin School Year
-        Route::get('/admin/school-year',[SchoolYearController::class,'schoolYear'])->name('schoolYear');
+        Route::get('/school-year',[SchoolYearController::class,'schoolYear'])->name('schoolYear');
+        Route::post('/saveSchoolYear',[SchoolYearController::class,'saveSchoolYear'])->name('saveSchoolYear');
 
         # Admin Rubrics
         Route::get('/rubrics', [RubricsController::class,'rubrics'])->name('rubrics');
@@ -118,11 +136,15 @@ Route::middleware(['auth','user-role:employee'])->group(function(){
     });
 
     Route::middleware('permission:registrar')->group(function(){
-        Route::get('/registrar', function () { return "Registrar Page"; })->name('registrar');
+        Route::get('/registrar',[RegistrarController::class,'registrar'])->name('registrar');
+        Route::get('/tor-request',[RegistrarController::class,'torRequest'])->name('torRequest');
+        Route::get('/view-tor',[RegistrarController::class,'viewTor'])->name('viewTor');
+        Route::get('/fetchTorData',[RegistrarController::class,'fetchTorData']);
     });
 });
 
 
+Route::get('/department/incharge', function () { return view('/department/incharge/index'); });
 
 
 
