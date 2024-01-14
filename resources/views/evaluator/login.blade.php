@@ -17,23 +17,23 @@
                             <div class="my-form-inner-container">
                                 <div class="panel-header">
                                     <h2 class="text-center">
-                                       EMPLOYEE PORTAL
+                                      EVALUATOR PORTAL
                                     </h2>
                                 </div>
                                 <div class="panel-body">
                                     <div class="row">
                                                                                 <div class="col-xs-12">
-                                            <h3 style="font-weight: bold;margin-bottom: 20px;" class="text-center">Register</h3>
-                                            <form action="#" id="authentication" method="post" class="login_validator">
+                                            <h3 style="font-weight: bold;margin-bottom: 20px;" class="text-center">Login</h3>
+                                            <form id="loginForm" class="login_validator">
                                                 <input type="hidden" name="ci_csrf_token" value="" />
                                                 <div class="form-group mb-3">
                                                     <label for="email" class="sr-only">Enter Employee ID</label>
-                                                    <input value="" type="text" class="form-control" id="username" name="username">
+                                                    <input value="" type="text" class="form-control" id="userID" name="userID">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="password" class="sr-only">Enter Employee Email</label>
-                                                    <input type="email" class="form-control" id="email"
-                                                           name="email">
+                                                    <label for="password" class="sr-only">Enter Password</label>
+                                                    <input type="password" class="form-control" id="password"
+                                                           name="password">
                                                 </div>
 
                                                 <div class="form-group">
@@ -42,7 +42,7 @@
                                                 </div>
                                                 <div class="d-flex justify-content-between">
                                                   <a href="#" class="nav-link" ><i>Forgot password</i></a>
-                                                  <a href="#" class="nav-link text-info" ><i>Register</i></a>
+                                                  <a href="../evaluator/register" class="nav-link text-info" ><i>Register</i></a>
                                                 </div>
                                             </form>
                                         </div>
