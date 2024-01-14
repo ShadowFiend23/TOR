@@ -7,6 +7,35 @@
             4 => "4th"
         ];
     @endphp
+
+    <!-- Modal confirmation-->
+<div class="modal fade" id="addSummerModal" tabindex="-1" aria-labelledby="addSummerLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+          <h5>Add Summer</h5>
+
+            <div class="row gx-0">
+              <div class="col-12 p-1">
+                <label>Select Year</label>
+                <select name="semester" id="selectedSummerYear" class="form-select form-select-sm py-1">
+                  <option hidden>--Select Year--</option>
+                  <option value="1">1st Year</option>
+                  <option value="2">2nd Year</option>
+                  <option value="3">3rd Year</option>
+                  <option value="4">4th Year</option>
+                </select>
+              </div>
+            </div>
+            <div class="d-flex justify-content-end gap-1 m-2">
+              <button class="btn btn-info btn-sm" id="saveSummerBtn">Submit</button>
+              <button type="button" class="btn btn-secondary btn-sm" data-coreui-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="container-fluid px-5">
     <div class="d-flex flex-column pt-4 ps-4 bg-dark">
       <h2 class="fs-4 text-center text-white">{{ $curriculum->curriculumName }}</h2>
@@ -159,13 +188,47 @@
         <br>
         @endfor
 
+        <div id="mainSummer" style="display:none;">
+            <h4 class="fs-6 ms-3 text-black p-3" id="summerYearTitle"></h4>
+            <div class="row justify-content-center">
+                <div class="row col-md-10">
+                    <div class="col-3">
+                        <div class="text-black fw-bold">
+                            Subject Code
+                        </div>
+                        <div id="summerSubjects"></div>
+                    </div>
+                    <div class="col-6 col-md-5">
+                        <div class="text-black fw-bold">
+                            Descriptive Title
+                        </div>
+                        <div id="summerDescription"></div>
+                    </div>
+                    <div class="col-2">
+                        <div class="text-black fw-bold">
+                            Credits
+                        </div>
+                        <div id="summerCredits"></div>
+                    </div>
+                    <div class="col-1 col-md-2">
+                        <div class="text-black fw-bold text-nowrap">
+                            Pre-req
+                        </div>
+                        <div class="d-flex flex-column" id="summerPreReq"></div>
+                    </div>
+                    <div class="d-flex justify-content-end my-2">
+                        <button type="button" class="btn btn-info rounded-circle p-2" id="addSummerSubjectBtn"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg></button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="d-flex justify-content-end">
             <div class="px-3">
                 <button type="button" class="btn btn-primary btn btn-info text-white" id="submitSubjects">
                     Submit
                 </button>
 
-                <button type="button" class="ms-2 btn btn-primary btn btn-info text-white">
+                <button type="button" id="addSummerBtn" class="ms-2 btn btn-primary btn btn-info text-white">
                     Add Summer
                 </button>
             </div>

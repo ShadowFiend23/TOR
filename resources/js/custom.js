@@ -535,5 +535,47 @@ $(function(){
             }
         })
     });
+
+    $("#addSummerBtn").on('click',function(){
+        $("#addSummerModal").modal('toggle');
+    });
+
+    $("#saveSummerBtn").on('click',function(){
+        if($("#selectedSummerYear").val() != "--Select Year--"){
+
+            let selectedSummerYear = $("#selectedSummerYear option:selected").text();
+            $("#summerYearTitle").html(`${selectedSummerYear}: SUMMER`);
+            $("#summerSubjects,#summerDescription,#summerCredits,#summerPreReq").html();
+            $(".removable").remove();
+            $("#mainSummer").show();
+            $("#addSummerModal").modal('toggle');
+        }else{
+            alert("Please select a year");
+        }
+    });
+
+    $("#addSummerSubjectBtn").on('click',function(){
+        let year        =   $("#selectedSummerYear").val(),
+            subject     =   `<div class="my-3 removable">
+                                <input type="text" class="form-control subjectCodeInput" name="${year}summer[subjectCode][]" value="">
+                            </div>`,
+            description =   `<div class="my-3 removable">
+                                <input type="text" class="form-control" name="${year}summer[description][]" value="">
+                            </div>`,
+            credits     =   `<div class="my-3 removable">
+                                <input type="text" class="form-control" name="${year}summer[credits][]" value="3">
+                            </div>`,
+            preReq      =   `<div class="form-check mt-3 removable">
+                                <input class="form-check-input preReqCheckbox" type="checkbox" value="" id="flexCheckDefault" style="width: 2rem; height: 2rem;">
+                                <input type="hidden" name="${year}summer[preReq][]" />
+                            </div>`;
+
+            $(`#summerSubjects`).append(subject);
+            $(`#summerDescription`).append(description);
+            $(`#summerCredits`).append(credits);
+            $(`#summerPreReq`).append(preReq);
+    });
+
+    $
 });
 

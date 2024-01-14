@@ -104,6 +104,33 @@
             </table>
             </div>
         </div>
+            @if(array_key_exists($i . "summer",$info) && !empty($info[$i . "summer"]))
+                <div class="col-12">
+                    <h4 class="fs-6 ms-3 text-black">{{ $years[$i] }} Year : SUMMER </h4>
+                    <div class="container">
+                    <table class="table table-hover table-bordered shadow" style="width: 60vw;">
+                        <thead>
+                        <tr>
+                            <th scope="col" class="fw-semibold text-center" style="width: 10%;">Code</th>
+                            <th colspan="2" scope="col" class='fw-semibold text-center' style="width: 60%;">Description</th>
+                            <th scope="col" class='fw-semibold text-center' style="width: 5%;">Credits</th>
+                            <th scope="col" class='fw-semibold text-center' style="width: 5%;">Pre Requisite</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @forelse($info[$i . 'summer']['subjectCode'] as $subjectCode)
+                            <tr>
+                                <th scope="row" class="text-center" style="width: 10%;">{{ $subjectCode }}</th>
+                                <td colspan="2" class="ps-5" style="width: 60%;">{{ $info[$i . 'summer']['description'][$loop->index] }}</td>
+                                <td class="text-center" style="width: 5%;">{{ $info[$i . 'summer']['credits'][$loop->index] }}</td>
+                                <td class="text-center" style="width: 5%;">{{ $info[$i . 'summer']['preReq'][$loop->index] }}</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            @endif
         @endfor
     </div>
   </div>
