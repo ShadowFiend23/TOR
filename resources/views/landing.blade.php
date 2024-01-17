@@ -20,7 +20,7 @@
               <img src="{{ asset('images/student.png') }}" class="img-fluid"/>
             </div>
             <div class="card-footer text-center" style="z-index: 9999;" >
-              <a href="{{ route('login') }}" class="nav-link text-light fs-4 fw-bold">Student Portal</a>
+              <a href="{{ route('studentLogin') }}" class="nav-link text-light fs-4 fw-bold">Student Portal</a>
             </div>
           </div>
         </div>

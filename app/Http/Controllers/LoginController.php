@@ -15,6 +15,11 @@ class LoginController extends Controller
         return view('admin.employees.login');
     }
 
+    public function studentShow()
+    {
+        return view('student.login');
+    }
+
     public function login(Request $request)
     {
         $credentials = $request->validate([

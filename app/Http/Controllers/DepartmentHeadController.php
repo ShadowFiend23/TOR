@@ -211,7 +211,7 @@ class DepartmentHeadController extends Controller
         $enroll         = Enrollees::where('studentID',$request->input('id'))->where('active',1)->first();
         $credentials    = Credentials::where('studentID',$enroll->studentID)->first();
         $student        = Students::where('studentID',$enroll->studentID)->first();
-        $curriculum     = Curriculum::where('course',$student->course)->orderBy('created_at','desc')->first();
+        $curriculum     = Curriculum::where('id',$student->curriculum)->orderBy('created_at','desc')->first();
         $curInfo        = json_decode($curriculum->info,true);
         $subjectCode    = $curInfo['subjectCode'];
         $enrolledSubjects = explode(",",$enroll->enrolledSubjects);
@@ -250,7 +250,7 @@ class DepartmentHeadController extends Controller
         $student = Students::where('studentID',$data['studentID'])->first();
         $course = Courses::find($student->course);
 
-        $curriculum = Curriculum::where('course',$student->course)->first();
+        $curriculum = Curriculum::where('id',$student->curriculum)->first();
 
         $info = [
             "data" => $data,

@@ -31,6 +31,9 @@ Route::get('/login',[LoginController::class,'show'])->middleware('guest')->name(
 Route::post('/login',[LoginController::class,'login'])->middleware('guest');
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
+Route::get('/student/login',[LoginController::class,'studentShow'])->middleware('guest')->name('studentLogin');
+Route::post('/student/login',[LoginController::class,'studentLogin'])->middleware('guest');
+
 Route::get('/registrar', function () { return view('registrar/index'); } );
 Route::get('/registrar/courses', function () { return view('registrar/courses'); } );
 Route::get('/registrar/courses/show', function () { return view('registrar/courses/show'); } );
@@ -42,7 +45,7 @@ Route::get('/registrar/curriculums/show', function () { return view('registrar/c
 Route::get('/registrar/tor_analysis', function () { return view('registrar/tor_analysis'); } );
 Route::get('/registrar/logs', function () { return view('registrar/logs'); } );
 
-Route::get('/student/login', function () { return view('student/login'); } );
+//Route::get('/student/login', function () { return view('student/login'); } );
 Route::get('/student/register', function () { return view('student/register'); } );
 Route::get('/student/otp', function () { return view('student/otp'); } );
 Route::get('/student/application', function () { return view('student/application'); } );
