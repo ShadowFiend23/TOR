@@ -21,6 +21,22 @@ return new class extends Migration
             $table->string('email');
             $table->smallInteger('course');
             $table->smallInteger('curriculum');
+            $table->string('birthPlace')->nullable();
+            $table->date('birthDate')->nullable();
+            $table->string('street')->nullable();
+            $table->string('barangay')->nullable();
+            $table->string('town')->nullable();
+            $table->string('guardian')->nullable();
+            $table->string('guardianAddress')->nullable();
+            $table->string('ncee')->nullable();
+            $table->date('nceeDate')->nullable();
+            $table->string('nceePlace')->nullable();
+            $table->string('elementarySchool')->nullable();
+            $table->string('elementaryYear')->nullable();
+            $table->string('secondarySchool')->nullable();
+            $table->string('secondaryYear')->nullable();
+            $table->string('photo')->nullable();
+            $table->string('registered')->nullable();
             $table->timestamps();
         });
     }

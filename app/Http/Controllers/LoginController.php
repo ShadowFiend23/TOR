@@ -22,7 +22,7 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->validate([
+        $request->validate([
             'userID' => 'required|exists:users,userID',
             'password' => 'required'
         ]);
@@ -65,6 +65,28 @@ class LoginController extends Controller
                 }
 
             }
+        }else{
+
+            $response = response()->json([
+                "success" => false,
+                "msg" => "The provided credentials do not match our records."
+            ]);
+        }
+
+        return $response;
+    }
+
+    public function studentLogin(Request $request){
+        $request->validate([
+            'userID' => 'required|exists:users,userID',
+            'password' => 'required'
+        ]);
+
+        if (Auth::attempt(['userID' => $request->userID, 'password' => $request->password])) {
+            $response = response()->json([
+                "success" => true,
+                "route" => route('studentDashboard')
+            ]);
         }else{
 
             $response = response()->json([

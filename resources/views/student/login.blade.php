@@ -24,8 +24,7 @@
                                     <div class="row">
                                                                                 <div class="col-xs-12">
                                             <h3 style="font-weight: bold;margin-bottom: 20px;" class="text-center">Sign In</h3>
-                                            <form id="loginForm" class="login_validator">
-                                                <input type="hidden" name="ci_csrf_token" value="" />
+                                            <form id="studentLoginForm" class="login_validator">
                                                 <div class="form-group mb-3">
                                                     <label for="email" class="sr-only">Enter Student ID</label>
                                                     <input value="" type="text" class="form-control" id="userID" name="userID">

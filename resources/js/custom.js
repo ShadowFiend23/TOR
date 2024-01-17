@@ -575,7 +575,5 @@ $(function(){
             $(`#summerCredits`).append(credits);
             $(`#summerPreReq`).append(preReq);
     });
-
-    $
 });
 

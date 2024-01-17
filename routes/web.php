@@ -10,6 +10,7 @@ use App\Http\Controllers\DepartmentsController;
 use App\Http\Controllers\RegistrarController;
 use App\Http\Controllers\RubricsController;
 use App\Http\Controllers\SchoolYearController;
+use App\Http\Controllers\StudentPageController;
 use App\Http\Controllers\StudentsController;
 
 /*
@@ -46,19 +47,6 @@ Route::get('/registrar/tor_analysis', function () { return view('registrar/tor_a
 Route::get('/registrar/logs', function () { return view('registrar/logs'); } );
 
 //Route::get('/student/login', function () { return view('student/login'); } );
-Route::get('/student/register', function () { return view('student/register'); } );
-Route::get('/student/otp', function () { return view('student/otp'); } );
-Route::get('/student/application', function () { return view('student/application'); } );
-Route::get('/student/dashboard', function () { return view('student/dashboard'); } );
-Route::get('/student/update_photo', function () { return view('student/update_photo'); } );
-Route::get('/student/update_password', function () { return view('student/update_password'); } );
-Route::get('/student/request_tor', function () { return view('student/request_tor'); } );
-Route::get('/student/pending', function () { return view('student/pending'); } );
-Route::get('/student/recieved', function () { return view('student/recieved'); } );
-Route::get('/student/history_logs', function () { return view('student/history_logs'); } );
-Route::get('/student/evaluation', function () { return view('student/evaluation'); } );
-Route::get('/student/evaluation_result', function () { return view('student/evaluation_result'); } );
-Route::get('/student/grades', function () { return view('student/grades'); } );
 
 
 Route::middleware(['auth','user-role:admin'])->group(function(){
@@ -149,7 +137,24 @@ Route::middleware(['auth','user-role:employee'])->group(function(){
 
 Route::get('/department/incharge', function () { return view('/department/incharge/index'); });
 
+Route::middleware(['auth','user-role:student'])->group(function(){
 
+    //Route::get('/student/register', function () { return view('student/register'); } );
+    //Route::get('/student/otp', function () { return view('student/otp'); } );
+    // Route::get('/student/application', function () { return view('student/application'); } );
+    Route::get('/student/dashboard', [StudentPageController::class,'index'])->name('studentDashboard');
+    Route::get('/student/application', [StudentPageController::class,'application'])->name('studentApplication');
+    Route::post('/saveApplication', [StudentPageController::class,'saveApplication']);
+    // Route::get('/student/update_photo', function () { return view('student/update_photo'); } );
+    // Route::get('/student/update_password', function () { return view('student/update_password'); } );
+    // Route::get('/student/request_tor', function () { return view('student/request_tor'); } );
+    // Route::get('/student/pending', function () { return view('student/pending'); } );
+    // Route::get('/student/recieved', function () { return view('student/recieved'); } );
+    // Route::get('/student/history_logs', function () { return view('student/history_logs'); } );
+    // Route::get('/student/evaluation', function () { return view('student/evaluation'); } );
+    // Route::get('/student/evaluation_result', function () { return view('student/evaluation_result'); } );
+    // Route::get('/student/grades', function () { return view('student/grades'); } );
+});
 
 
 
@@ -184,10 +189,6 @@ Route::get('/department/incharge', function () { return view('/department/inchar
 // # Namespace of Shiftee
 // Route::get('/enrollment/shiftee/transfer_of_records', function () { return view('/enrollment/shiftee/transfer_of_records/index'); });
 
-
-// Route::middleware(['auth','user-role:student'])->group(function(){
-
-// });
 
 
 // Route::get('/latin_honor_application', function () { return view('/latin_honor_application/index'); });
