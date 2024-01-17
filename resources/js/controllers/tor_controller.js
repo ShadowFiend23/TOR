@@ -13,7 +13,13 @@ export default class extends Controller {
         this.sampleData = studentData
 
         Object.keys(this.sampleData).forEach(key => {
-            if(key != "sems")
+            if(key === "photo"){
+                let photo = document.getElementById(key);
+                photo.style.backgroundImage = `url("./photos/${this.sampleData[key]}")` || ""
+                photo.style.backgroundSize = "cover";
+                photo.style.backgroundRepeat = "no-repeat";
+                photo.style.backgroundPosition = "center center";
+            }else if(key != "sems")
             {
                 document.getElementById(key).innerText = this.sampleData[key] || ""
             }else if(key == "sems")

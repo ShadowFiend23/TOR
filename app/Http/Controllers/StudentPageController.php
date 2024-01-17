@@ -16,9 +16,9 @@ class StudentPageController extends Controller
 
         if(
             empty($student->birthPlace) ||
-            empty($student->birthDate) ||
-            empty($student->elementarySchool) ||
-            empty($student->secondaryYear)
+            empty($student->birthDate)
+            // empty($student->elementarySchool) ||
+            // empty($student->secondaryYear)
         ){
             return redirect()->route('studentApplication');
         }
@@ -36,17 +36,18 @@ class StudentPageController extends Controller
 
     public function saveApplication(Request $request){
         $studentID = auth()->user()->userID;
-
-        $path = public_path('photos/');
-        !is_dir($path) &&
-            mkdir($path, 0777, true);
-
-        $imageName = $studentID . '.' . $request->photo->extension();
-        $request->photo->move($path, $imageName);
-
         $data = $request->except(['password']);
-        $data["photo"] = $path . $imageName;
 
+        if(!empty($request->file('photo'))){
+            $path = public_path('photos/');
+            !is_dir($path) &&
+                mkdir($path, 0777, true);
+
+            $imageName = $studentID . '.' . $request->photo->extension();
+            $request->photo->move($path, $imageName);
+            $data["photo"] = $imageName;
+
+        }
         $query = Students::where("studentID", $studentID)
                             ->update($data);
 

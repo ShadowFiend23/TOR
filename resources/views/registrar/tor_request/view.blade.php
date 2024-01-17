@@ -2218,7 +2218,7 @@
                                                         <div class="text-wrapper-12">ORIGINAL</div>
                                                         <p class="text-wrapper-13">Sheet No. 1 of 2</p>
                                                     </div>
-                                                    <div class="rectangle-2"></div>
+                                                    <div class="rectangle-2" id="photo" style=""></div>
                                                 </div>
                                                 <div class="text-wrapper-14">Re Exam</div>
                                                 <div class="text-wrapper-15">Final Rating</div>

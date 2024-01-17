@@ -66,7 +66,8 @@ class RegistrarController extends Controller
             "address_2" => "$student->street, $student->barangay, $student->town",
             "place" => 2,
             "course" => $student->acronym,
-            "sems" => $this->getEnrolledSubject($student)
+            "sems" => $this->getEnrolledSubject($student),
+            "photo" => $student->photo
         ];
 
         return json_encode($data);
